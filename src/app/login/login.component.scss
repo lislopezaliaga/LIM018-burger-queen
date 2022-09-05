@@ -1,0 +1,69 @@
+
+.formContent{
+    height: 100vh;
+    width: 50vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+form{
+    display: flex;
+    flex-direction: column;
+    background-color: #A0BCC2;
+    height: 70vh;
+    width: 30vw;
+    align-items: center;
+    padding: 0;
+    border-radius: 10px;
+}
+
+.inputContent{
+    display: flex;
+    flex-direction: column;
+    width: 17vw;
+    margin: 3% 0;
+}
+.portada{
+    height: 100vh;
+    width: 50vw;
+}
+
+.burguerChef{
+    height: 20%;
+    width: 20%;
+    padding: 5%;
+}
+
+input{
+    margin: 8% 0 ;
+    height: 25px;
+    border-radius: 5px;
+    background-color: #FEFBE7;
+    border: 3px solid #FEFBE7;
+    font-size: 20px;
+}
+
+label{
+    margin: 0;
+    font-family: Lato;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+h1{
+    margin: 0;
+    font-family: Racing Sans One;
+}
+
+button{
+    border-radius: 5px;
+    background-color: #DAE5D0;
+    border: 3px solid #FEFBE7;
+    height: 8%;
+    width: 40%;
+    font-family: Lato;
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 10%;
+}

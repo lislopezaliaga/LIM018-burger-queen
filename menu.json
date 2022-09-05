@@ -1,0 +1,107 @@
+{
+    "desayuno": [
+        {
+        "id": 1,
+        "item": "Café americano",
+        "precio": 5
+        },
+        {
+        "id": 2,
+        "item": "Café con leche",
+        "precio": 7
+        },
+        {
+        "id": 3,
+        "item": "Sandwich de jamón y queso",
+        "precio": 10
+        },
+        {
+        "id": 4,
+        "item": "Jugo de frutas natural",
+        "precio": 7
+        }
+    ],
+
+    "hamburguesas": [
+        {
+        "id": 5,
+        "item": "Hamburguesa simple de pollo",
+        "precio": 10
+        },
+        {
+        "id": 6,
+        "item": "Hamburguesa simple de res",
+        "precio": 10
+        },
+        {
+        "id": 7,
+        "item": "Hamburguesa simple vegetariana",
+        "precio": 10
+        },
+        {
+        "id": 8,
+        "item": "Hamburguesa doble de pollo",
+        "precio": 15
+        },
+        {
+        "id": 9,
+        "item": "Hamburguesa doble de res",
+        "precio": 15
+        },
+        {
+        "id": 10,
+        "item": "Hamburguesa doble vegetariana",
+        "precio": 15
+        }
+    ],
+
+    "acompañamientos": [
+        {
+        "id": 11,
+        "item": "Papas fritas",
+        "precio": 5
+        },
+        {
+        "id": 12,
+        "item": "Aros de cebolla",
+        "precio": 5
+        }
+],
+
+    "bebidas": [
+        {
+        "id": 13,
+        "item": "Agua 500ml",
+        "precio": 5
+        },
+        {
+        "id": 14,
+        "item": "Agua 750ml",
+        "precio": 7
+        },
+        {
+        "id": 15,
+        "item": "Bebida 500ml",
+        "precio": 7
+        },
+        {
+        "id": 16,
+        "item": "Bebida 750ml",
+        "precio": 10
+        }
+    ],
+
+    "adicionales": [
+        {
+        "id": 17,
+        "item": "Queso",
+        "precio": 1
+        },
+        {
+        "id": 18,
+        "item": "Huevo",
+        "precio": 1
+        }
+    ]
+}
+
