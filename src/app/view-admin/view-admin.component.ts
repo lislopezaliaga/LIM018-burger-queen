@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { UserService } from '../servicios/user.service';
 
 @Component({
   selector: 'app-view-admin',
@@ -7,9 +8,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ViewAdminComponent implements OnInit {
 
-  constructor() { }
+  registerSwitch: boolean = false;
+
+  constructor(private registerM:UserService) { }
 
   ngOnInit(): void {
+    this.registerM.$register.subscribe((valor)=>{this.registerSwitch=valor})
+  }
+
+  openRegister(){
+    this.registerSwitch = true;
   }
 
 }

@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { EventEmitter, Injectable } from '@angular/core';
 import { Auth, createUserWithEmailAndPassword, signInWithEmailAndPassword} from '@angular/fire/auth';
 
 @Injectable({
@@ -15,5 +15,7 @@ export class UserService {
   login({email, password}: any) {
     return signInWithEmailAndPassword(this.auth, email, password);
   }
+
+  $register = new EventEmitter<any>();
 
 }
