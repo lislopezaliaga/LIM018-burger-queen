@@ -1,6 +1,6 @@
-<div class="regContent">
     <div class="formContent">
     <form [formGroup] = "formReg" (ngSubmit)="onSubmit()">
+        <button class = "btnCerrar" id="btnCerrar" (click)="closeRegister()">✖</button>
         <h1>Crear usuario</h1>
 
         <div class="inputContent">
@@ -9,9 +9,6 @@
 
             <label>Apellidos</label>
             <input type="text" class="form-control" formControlName="apellidos">
-
-        <!--     <label>Email</label>
-            <input type="text" class="form-control" formControlName="email"> -->
 
             <label>Password</label>
             <input type="password" class="form-control" formControlName="password">
@@ -24,8 +21,7 @@
 
         </div>
 
-        <button type="submit">Registrar</button>
+        <button class="btnRegister" type="submit">Registrar</button>
     </form>
 
     </div>
-</div>

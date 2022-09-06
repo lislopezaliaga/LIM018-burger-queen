@@ -1,12 +1,20 @@
+<div class="administrador">
 <header>
     <img class="burguerChef" src="https://firebasestorage.googleapis.com/v0/b/burger-cangreburger.appspot.com/o/burguerChefv2.png?alt=media&token=0c79ce36-2445-4ca7-924d-0d8704534266">
     <label>Administrador</label>
-    <button>
+    <button (click)="openRegister()" >
         Crear Usuario
-        <img class="user" src="https://firebasestorage.googleapis.com/v0/b/burger-cangreburger.appspot.com/o/users.png?alt=media&token=40eb84fc-91c7-4f1b-8b69-356bd12ca5a9"></button>
+        <img class="user" src="https://firebasestorage.googleapis.com/v0/b/burger-cangreburger.appspot.com/o/users.png?alt=media&token=40eb84fc-91c7-4f1b-8b69-356bd12ca5a9">
+      </button>
 </header>
 
 <div class="userTable">
+
+  <div class="register" *ngIf="registerSwitch == true">
+    <app-register-user></app-register-user>
+  
+  </div>
+
     <table class="usuarios">
 
         <tr>      
@@ -49,3 +57,5 @@
       </table>
 
 </div>
+</div>
+

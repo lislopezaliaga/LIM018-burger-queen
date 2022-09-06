@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
-import { UserService } from 'src/app/user.service';
+import { UserService } from 'src/app/servicios/user.service';
 
 @Component({
   selector: 'app-register-user',
@@ -11,18 +11,15 @@ import { UserService } from 'src/app/user.service';
 export class RegisterUserComponent implements OnInit {
 
   formReg: FormGroup;
-  private emailPassword = {};
 
   constructor(
     private userService: UserService,
-    private router: Router
+    private router: Router,
+    private registerM: UserService,
   ) { 
     this.formReg = new FormGroup({
     nombres: new FormControl(),
     apellidos: new FormControl(),
-
-    /* email: new FormControl(), */
-
     password: new FormControl()
   })
   
@@ -31,9 +28,6 @@ export class RegisterUserComponent implements OnInit {
   ngOnInit(): void {
   }
   onSubmit() {
-    /* console.log(this.formReg.value.nombres.slice(0,1) + this.formReg.value.apellidos + "@burguer.com"); */
-/*    email= this.formReg.value.nombres.slice(0,1) + this.formReg.value.apellidos + "@burguer.com"; */
-
     this.userService.register(
       { email: this.formReg.value.nombres.slice(0,1) + this.formReg.value.apellidos + "@burger.com", 
       password: this.formReg.value.password })
@@ -43,4 +37,9 @@ export class RegisterUserComponent implements OnInit {
       })
       .catch(error => console.log(error));
   }
+
+  closeRegister(){
+    this.registerM.$register.emit(false)
+  }
+
 }

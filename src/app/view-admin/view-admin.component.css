@@ -1,4 +1,7 @@
+.administrador{
+    position: relative;
 
+}
 header{
     display: flex;
     align-items: center;
@@ -71,3 +74,8 @@ th{
     text-align: center;
 }
 
+.register{
+    position: fixed;
+    height: 80%;
+    width: 30%;
+}
