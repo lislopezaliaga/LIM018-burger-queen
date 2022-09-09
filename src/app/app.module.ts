@@ -2,13 +2,13 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppComponent } from './app.component';
-import { LoginComponent } from './login/login.component';
-import { ViewAdminComponent } from './view-admin/view-admin.component';
+import { LoginComponent } from './components/login/login.component';
+import { ViewAdminComponent } from './components/view-admin/view-admin.component';
 import { initializeApp,provideFirebaseApp } from '@angular/fire/app';
 import { environment } from '../environments/environment';
 import { provideAuth,getAuth } from '@angular/fire/auth';
 import { provideFirestore,getFirestore } from '@angular/fire/firestore';
-import { RegisterUserComponent } from './register-user/register-user.component';
+import { RegisterUserComponent } from './components/register-user/register-user.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 

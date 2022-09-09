@@ -26,34 +26,21 @@
           <th>Borrar</th>
         </tr>
       
-        <tr>
+
+        
+        <tr class="user" *ngFor="let user of users; let i = index">
       
-          <th>1</th>
-          <td>xxxxxxxx</td>
-          <td>xxxxxxxx</td>
-          <td>xxxxxxxx</td>
+          <th>{{i+1}}</th>
+          <td>{{user.nombre}} {{user.apellido}}</td>
+          <td>{{user.email}}</td>
+          <td>{{user.funcion}}</td>
           <td class="columnEdit">
             <img class="editar" src="https://firebasestorage.googleapis.com/v0/b/burger-cangreburger.appspot.com/o/update.png?alt=media&token=882efbf4-9400-4031-ae0c-4ba49d1320b3">
           </td>
           <td class="columnEdit">
-            <img class="editar" src="https://firebasestorage.googleapis.com/v0/b/burger-cangreburger.appspot.com/o/trash.png?alt=media&token=026105f1-6c89-4e2b-9fcc-c0eaf45a21f0">
+            <img (click)="onClickDelete(user)" class="editar" src="https://firebasestorage.googleapis.com/v0/b/burger-cangreburger.appspot.com/o/trash.png?alt=media&token=026105f1-6c89-4e2b-9fcc-c0eaf45a21f0">
           </td>
-        </tr>
-      
-        <tr>      
-          <th>2</th>      
-          <td>xxxxxxxx</td>      
-          <td>xxxxxxxx</td>      
-          <td>xxxxxxxx</td>
-        </tr>
-      
-        <tr>
-          <th>3</th>      
-          <td>xxxxxxxx</td>      
-          <td>xxxxxxxx</td>      
-          <td>xxxxxxxx</td>
-        </tr>
-      
+        </tr >     
       </table>
 
 </div>

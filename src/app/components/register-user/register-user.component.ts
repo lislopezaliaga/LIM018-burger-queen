@@ -20,7 +20,8 @@ export class RegisterUserComponent implements OnInit {
     this.formReg = new FormGroup({
     nombres: new FormControl(),
     apellidos: new FormControl(),
-    password: new FormControl()
+    password: new FormControl(),
+    funcion: new FormControl()
   })
   
 }
@@ -29,13 +30,31 @@ export class RegisterUserComponent implements OnInit {
   }
   onSubmit() {
     this.userService.register(
-      { email: this.formReg.value.nombres.slice(0,1) + this.formReg.value.apellidos + "@burger.com", 
+      { email: this.formReg.value.nombres.slice(0,1).toLowerCase() + this.formReg.value.apellidos.toLowerCase() + "@burger.com", 
       password: this.formReg.value.password })
-      .then(response => {
+      .then(async response => {
+        //this.router.navigate(['/login']);
         console.log(response);
-        this.router.navigate(['/login']);
+        console.log(response.user.uid);
+        
+
+        const res = await this.userService.addUser({ 
+          uid: response.user.uid,
+          nombre: this.formReg.value.nombres,
+          apellido: this.formReg.value.apellidos,
+          email: this.formReg.value.nombres.slice(0,1).toLowerCase() + this.formReg.value.apellidos.toLowerCase() + "@burger.com", 
+          funcion: this.formReg.value.funcion,
+        });
+        console.log(res);
+
+
       })
       .catch(error => console.log(error));
+
+
+      this.registerM.$register.emit(false);
+
+
   }
 
   closeRegister(){

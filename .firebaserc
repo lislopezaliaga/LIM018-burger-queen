@@ -1,6 +1,7 @@
 {
   "projects": {
-    "burger": "burger-cangreburger"
+    "burger": "burger-cangreburger",
+    "default": "burger-cangreburger"
   },
   "targets": {},
   "etags": {}
