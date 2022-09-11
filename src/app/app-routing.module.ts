@@ -4,6 +4,7 @@ import { LoginComponent } from './components/login/login.component';
 import { RegisterUserComponent } from './components/register-user/register-user.component';
 import { ViewAdminComponent } from './components/view-admin/view-admin.component';
 import { canActivate, redirectUnauthorizedTo } from '@angular/fire/auth-guard';
+import { MeseroComponent } from './components/mesero/mesero.component';
 
 const routes: Routes = [
   { path: '', pathMatch: 'full', redirectTo: '/login' },
@@ -16,7 +17,8 @@ const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'admin', component: ViewAdminComponent ,
   /* ...canActivate(() => redirectUnauthorizedTo(['/login'])) */
-  }
+  },
+  { path: 'mesero', component: MeseroComponent },
 ];
 
 @NgModule({

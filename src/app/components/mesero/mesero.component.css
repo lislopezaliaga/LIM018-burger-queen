@@ -1,0 +1,43 @@
+header{
+    display: flex;
+    width: 100%;
+    height: 10vh;
+    align-items: center;
+    position: relative;
+    background-color: #DAE5D0;
+    justify-content: space-between;
+    font-family: 'Racing Sans One';
+    font-size: 22px;
+}
+
+.name{
+    display: flex;
+    align-items: center;
+}
+.burguerChef{
+    height: 12%;
+    width: 12%;
+    padding: 1%;
+    margin: 1% 4%; 
+}
+.mesera{
+    width: 4%;
+}
+.salir{
+    width: 2%;
+    padding: 1%;
+    margin: 0 1%;
+}
+.vistasgeneral{
+    display: flex;
+}
+.vistas{
+    margin: 0 1%;
+    text-align: center;
+}
+.vistas:hover{
+    background-color: #FEFBE7;
+}
+app-tomar-pedido{
+display: flex;
+}

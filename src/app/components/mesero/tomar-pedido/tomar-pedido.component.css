@@ -1,0 +1,23 @@
+.options{
+    display: flex;
+    flex-direction: column;
+    width: 6%;
+    height: 90vh;
+    background-color: #DAE5D0;
+    align-items: center;
+}
+.optionImg{
+    width: 65%;
+   padding: 40% 0;
+}
+.mesa{
+display: flex;
+}
+.menu{
+    display: flex;
+    flex-wrap: wrap;
+    width: 50%;
+    height: 39vh;
+    background-color: #A0BCC2;
+    margin: 3% ;
+}

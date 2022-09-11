@@ -11,11 +11,11 @@ export class UserService {
 
   constructor(private auth: Auth,
     private firestore: Firestore) { }
-
-  register ({ email, password }: any){
-    return createUserWithEmailAndPassword(this.auth, email, password)
-  }
-
+    
+    register ({ email, password }: any){
+      return createUserWithEmailAndPassword(this.auth, email, password)
+    }
+  
   login({email, password}: any) {
     return signInWithEmailAndPassword(this.auth, email, password);
   }
@@ -37,7 +37,7 @@ export class UserService {
     return deleteDoc(userRef );
   }
 
-/*   deleteUsuario(user: Users){
+  /*   deleteUsuario(user: Users){
     return deleteUser(user.uid);
   } */
 

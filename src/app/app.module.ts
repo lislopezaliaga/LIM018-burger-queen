@@ -11,13 +11,17 @@ import { provideFirestore,getFirestore } from '@angular/fire/firestore';
 import { RegisterUserComponent } from './components/register-user/register-user.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
+import { MeseroComponent } from './components/mesero/mesero.component';
+import { TomarPedidoComponent } from './components/mesero/tomar-pedido/tomar-pedido.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
     ViewAdminComponent,
-    RegisterUserComponent
+    RegisterUserComponent,
+    MeseroComponent,
+    TomarPedidoComponent
   ],
   imports: [
     BrowserModule,
