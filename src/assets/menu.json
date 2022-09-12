@@ -1,0 +1,129 @@
+    [
+    {
+    "id": 1,
+    "item": "Café americano",
+    "img":"https://firebasestorage.googleapis.com/v0/b/burger-cangreburger.appspot.com/o/cafe.png?alt=media&token=54af8e09-f8fa-4829-b4a8-c7d3314190c7" ,
+    "precio": 5,
+    "type":"desayuno"
+    },
+    {
+    "id": 2,
+    "item": "Café con leche",
+    "img":"https://firebasestorage.googleapis.com/v0/b/burger-cangreburger.appspot.com/o/leche1.png?alt=media&token=a20d40fc-1874-4b0a-8bba-b28183849f6f",
+    "precio": 7,
+    "type":"desayuno"
+    },
+    {
+    "id": 3,
+    "item": "Sandwich de jamón y queso",
+    "img":"https://firebasestorage.googleapis.com/v0/b/burger-cangreburger.appspot.com/o/sandwich.png?alt=media&token=c4f2b84e-0c7f-46a5-8e10-d9d6e47654ac",
+    "precio": 10,
+    "type":"desayuno"
+    },
+    {
+    "id": 4,
+    "item": "Jugo de frutas natural",
+    "img":"https://firebasestorage.googleapis.com/v0/b/burger-cangreburger.appspot.com/o/jugo.png?alt=media&token=462379ea-4130-46b3-8dd7-4bdb5cf32e0b",
+    "precio": 7,
+    "type":"desayuno"
+    },
+    {
+    "id": 5,
+    "item": "Hamburguesa simple de pollo",
+    "img":"https://firebasestorage.googleapis.com/v0/b/burger-cangreburger.appspot.com/o/pollo.png?alt=media&token=47316f22-d21d-496a-be12-a480b9ae717d",
+    "precio": 10,
+    "type":"hamburguesa simple"
+    },
+    {
+    "id": 6,
+    "item": "Hamburguesa simple de res",
+    "img":"https://firebasestorage.googleapis.com/v0/b/burger-cangreburger.appspot.com/o/burguerCarne.png?alt=media&token=6fa487dd-e968-4da3-b0d4-0da228f5008f",
+    "precio": 10,
+    "type":"hamburguesa simple"
+    },
+    {
+    "id": 7,
+    "item": "Hamburguesa simple vegetariana",
+    "img":"https://firebasestorage.googleapis.com/v0/b/burger-cangreburger.appspot.com/o/vegetariana.png?alt=media&token=5002511e-6959-4b8a-a69a-b1ec641702f1",
+    "precio": 10,
+    "type":"hamburguesa simple"
+    },
+    {
+    "id": 8,
+    "item": "Hamburguesa doble de pollo",
+    "img":"https://firebasestorage.googleapis.com/v0/b/burger-cangreburger.appspot.com/o/doblepollo.png?alt=media&token=a247a852-c59a-44a4-ad55-6ee851e9cd30",
+    "precio": 15,
+    "type":"hamburguesa doble"
+    },
+    {
+    "id": 9,
+    "item": "Hamburguesa doble de res",
+    "img":"https://firebasestorage.googleapis.com/v0/b/burger-cangreburger.appspot.com/o/doblecarne.png?alt=media&token=86a4927a-388a-4601-ba77-78957885349b",
+    "precio": 15,
+    "type":"hamburguesa doble"
+    },
+    {
+    "id": 10,
+    "item": "Hamburguesa doble vegetariana",
+    "img":"https://firebasestorage.googleapis.com/v0/b/burger-cangreburger.appspot.com/o/doblevegetariana.png?alt=media&token=d355f147-33c2-49cc-b0a1-8ade155a76d2",
+    "precio": 15,
+    "type":"hamburguesa doble"
+    },
+    {
+    "id": 11,
+    "item": "Papas fritas",
+    "img":"https://firebasestorage.googleapis.com/v0/b/burger-cangreburger.appspot.com/o/papitas.png?alt=media&token=ccfcc9d6-c3e3-48c4-a379-b0df833adbbd",
+    "precio": 5,
+    "type":"acompañamientos"
+    },
+    {
+    "id": 12,
+    "item": "Aros de cebolla",
+    "img":"https://firebasestorage.googleapis.com/v0/b/burger-cangreburger.appspot.com/o/cebolla.png?alt=media&token=f1857f31-6a55-4f30-9aec-a71c6339c89a",
+    "precio": 5,
+    "type":"acompañamientos"
+    },
+    {
+    "id": 13,
+    "item": "Agua 500ml",
+    "img":"https://firebasestorage.googleapis.com/v0/b/burger-cangreburger.appspot.com/o/agua5.png?alt=media&token=38dcb670-e0c9-4ded-9628-31febfe02191",
+    "precio": 5,
+    "type": "bebidas"
+    },
+    {
+    "id": 14,
+    "item": "Agua 750ml",
+    "img":"https://firebasestorage.googleapis.com/v0/b/burger-cangreburger.appspot.com/o/agua7.png?alt=media&token=50dc3778-5e01-4664-890c-0ee1afd6553e",
+    "precio": 7,
+    "type": "bebidas"
+    },
+    {
+    "id": 15,
+    "item": "Bebida 500ml",
+    "img":"https://firebasestorage.googleapis.com/v0/b/burger-cangreburger.appspot.com/o/huevo-frito.png?alt=media&token=19f57fc9-a9e7-452e-b851-8dfcebb468c6",
+    "precio": 7,
+    "type": "bebidas"
+    },
+    {
+    "id": 16,
+    "item": "Bebida 750ml",
+    "img":"",
+    "precio": 10,
+    "type": "bebidas"
+    },
+    {
+    "id": 17,
+    "item": "Queso",
+    "img":"https://firebasestorage.googleapis.com/v0/b/burger-cangreburger.appspot.com/o/queso.png?alt=media&token=ab255584-2695-4b1d-b5d6-13a71f4a00bb",
+    "precio": 1,
+    "type": "adicionales"
+    },
+    {
+    "id": 18,
+    "item": "Huevo",
+    "img":"https://firebasestorage.googleapis.com/v0/b/burger-cangreburger.appspot.com/o/huevo-frito.png?alt=media&token=19f57fc9-a9e7-452e-b851-8dfcebb468c6",
+    "precio": 1,
+    "type": "adicionales"
+    }
+]
+

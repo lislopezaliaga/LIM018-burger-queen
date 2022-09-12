@@ -13,7 +13,8 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 import { MeseroComponent } from './components/mesero/mesero.component';
 import { TomarPedidoComponent } from './components/mesero/tomar-pedido/tomar-pedido.component';
-
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatCardModule } from '@angular/material/card';
 @NgModule({
   declarations: [
     AppComponent,
@@ -29,7 +30,9 @@ import { TomarPedidoComponent } from './components/mesero/tomar-pedido/tomar-ped
     provideFirebaseApp(() => initializeApp(environment.firebase)),
     provideAuth(() => getAuth()),
     provideFirestore(() => getFirestore()),
-    AppRoutingModule
+    AppRoutingModule,
+    BrowserAnimationsModule,
+    MatCardModule
   ],
   providers: [],
   bootstrap: [AppComponent]

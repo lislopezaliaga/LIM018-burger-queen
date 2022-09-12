@@ -1,26 +1,113 @@
 .tomarPedido{
     display: flex;
+    width: 100%;
+    background-color: #F9EBC8;
 }
 .options{
     display: flex;
     flex-direction: column;
     width: 6%;
-    height: 90vh;
+    height: auto;
     background-color: #DAE5D0;
     align-items: center;
 }
 .optionImg{
-    width: 65%;
-   padding: 40% 0;
+  width: 50px;
+  padding: 40% 0;
+}
+.contenedorMesero{
+    display: flex;
+    flex-direction: column;
+    width: 94%;
+}
+.menuOrden{
+  display: flex;
+  justify-content: center;
 }
 .mesa{
-display: flex;
+  display: flex;
+  height: 5%;
+  width: 100%;
+  padding: 1% 23%;
 }
+.table{
+  background-color: #A0BCC2;
+  border-radius: 4px;
+  padding: 1px 3%;
+  margin: 0 1%;
+}
+.nTable{
+  width: 4%;
+}
+
 .menu{
-    display: flex;
-    flex-wrap: wrap;
-    width: 50%;
-    height: 39vh;
-    background-color: #A0BCC2;
-    margin: 3% ;
+  display: grid;
+  width: 58%;
+  height: auto;
+  grid-template-columns: repeat(2, 1fr);
+  background-color: #A0BCC2;
+  justify-items: center;
+  padding: 2%;
+  margin: 1%;
+  border-radius: 6px;
+  gap: 2%;
+}
+mat-card{
+  background-color: #FEFBE7;
+  width: 86%;
+  border-radius: 8px;
+
+}
+.imgMenu{
+    width: 80%;
+    height: 150px;
+    margin: 10%;
+
+}
+
+.eliminar{
+    height: 40px;
+    width: 40px;
+}
+.btnAñadir{
+  width: 35%;
+  height: 30px;
+  border: 1px solid#625D63;
+  border-radius: 6px;
+  background-color: #DAE5D0;
+}
+.ordenPedido{
+  display: flex;
+  flex-direction: column;
+  width: 36%;
+  margin: 1%;
+  padding: 1%;
+  height: auto;
+  background-color: #A0BCC2;
+  border-radius: 8px;
+
+}
+.tableOrder{
+  background-color: #A0BCC2;
+  margin: 1% 0%;
+  width: 100%;
+  font-family: "Lato";
+  font-size: 16px;
+  /* border-spacing: 1%; */
+  /* padding: 3%; */
+  text-align: center;
+}
+.sendKitchen{
+  width: 100%;
+  position: relative;
+
+}
+.send{
+  position: absolute;
+  height: 30px;
+  border: 1px solid#625D63;
+  border-radius: 6px;
+  background-color: #DAE5D0;
+  width: 40%;
+  right: 2%;
 }

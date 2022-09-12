@@ -11,16 +11,58 @@
     </div>
     <div class="contenedorMesero">
         <div class="mesa">
-            <label>Mesa</label>
-            <select>
+            <label class="table">Mesa</label>
+            <select class="nTable">
                 <option value="1">1</option>
                 <option value="2">2</option>
                 <option value="">3</option>
                 <option value="">4</option>
             </select>
         </div>
-        <div class="menu">
-            <div></div>
+        <div class="menuOrden">
+            <div class="menu">
+                <mat-card *ngFor="let menu of menus">
+                    <mat-card-header>
+                        <mat-card-title>{{menu.item}}</mat-card-title>
+                    </mat-card-header>
+                    <img class="imgMenu" src={{menu.img}} alt=""  mat-card-image>
+                    <mat-card-content></mat-card-content>
+                    <mat-card-actions align="end">
+                        <button class="btnAñadir">Agregar</button>
+                    </mat-card-actions>
+                </mat-card>
+
+            </div>
+            <div class="ordenPedido">
+                <label >Orden de Mesa</label>
+                <table class="tableOrder">
+
+                    <tr>      
+                    <th scope="row">Descripción</th>
+                    <th>Cantidad</th>
+                    <th>Precio</th>
+                    <th></th>
+                    </tr>                
+                    <tr>
+                
+                    <th>huevo</th>
+                    <td>
+                        <button>-</button>  1  <button>+</button></td>
+                    <td>5</td>
+                    <td></td>
+                    
+                    <td class="columnEdit">
+                        <img  class="eliminar" src="https://firebasestorage.googleapis.com/v0/b/burger-cangreburger.appspot.com/o/trash.png?alt=media&token=026105f1-6c89-4e2b-9fcc-c0eaf45a21f0">
+                    </td>
+                    </tr >     
+                </table>
+                <label>TOTAL</label>
+                <div class="sendKitchen">
+                    <button class="send"> Enviar a la Cocina</button>
+                </div>
+               
+
+            </div>
         </div>
     </div>
 </div>
