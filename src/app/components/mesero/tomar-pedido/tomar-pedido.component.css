@@ -1,3 +1,6 @@
+.tomarPedido{
+    display: flex;
+}
 .options{
     display: flex;
     flex-direction: column;
