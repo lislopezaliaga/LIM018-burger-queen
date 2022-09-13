@@ -15,6 +15,7 @@ import { MeseroComponent } from './components/mesero/mesero.component';
 import { TomarPedidoComponent } from './components/mesero/tomar-pedido/tomar-pedido.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatCardModule } from '@angular/material/card';
+import {MatSelectModule} from '@angular/material/select';
 @NgModule({
   declarations: [
     AppComponent,
@@ -32,7 +33,8 @@ import { MatCardModule } from '@angular/material/card';
     provideFirestore(() => getFirestore()),
     AppRoutingModule,
     BrowserAnimationsModule,
-    MatCardModule
+    MatCardModule,
+    MatSelectModule
   ],
   providers: [],
   bootstrap: [AppComponent]

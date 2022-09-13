@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { UserService } from '../../servicios/user.service';
 import Users from '../../data/data.users';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-view-admin',
@@ -15,7 +16,7 @@ export class ViewAdminComponent implements OnInit {
   registerSwitch: boolean = false;
 
   constructor(private registerM:UserService,
-    private userService: UserService,) {
+    private userService: UserService,private router:Router) {
       this.users = [{
         uid: 'xxxxxx',
         nombre: 'remy',
@@ -41,6 +42,9 @@ export class ViewAdminComponent implements OnInit {
     await this.userService.deleteRegistro(users);
     console.log(users);
     /*this.userService.deleteUsuario(users.uid).then(response =>); */
+  }
+  logout(){
+    this.router.navigate(['login']);
   }
 
 }

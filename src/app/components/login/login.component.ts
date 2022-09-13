@@ -27,8 +27,13 @@ export class LoginComponent implements OnInit {
   onSubmit() {
     this.userService.login(this.formLogin.value)
     .then(response => {
-      console.log(response);
-      this.router.navigate(['admin']);
+      console.log(response.user);
+      if(response.user.email==="admin@burger.com"){
+        this.router.navigate(['admin']);
+      }else{
+        this.router.navigate(['mesero']);
+      }
+
     })
     .catch(error => console.log(error))
   }

@@ -5,12 +5,18 @@
 header{
     display: flex;
     align-items: center;
-    position: relative;
+    justify-content: space-between;
+    background-color: #DAE5D0;
+    /* position: relative; */
 }
-
+.logo{
+    display: flex;
+    margin-left: 2%;
+    align-items: center;
+}
 .burguerChef{
     height: 5%;
-    width: 5%;
+    width: 10%;
     padding: 1%;
     margin: 0 1%;
 }
@@ -20,15 +26,15 @@ button{
     align-items: center;
     justify-content: center;
     border-radius: 20px;
-    background-color: #DAE5D0;
-    border: 3px solid #A0BCC2;
+    background-color: #A0BCC2;
+    border: 3px solid #625D63;
     font-family: Lato;
     font-size: 17px;
     font-weight: bold;
-    position: absolute;
+    /* position: absolute; */
     right: 4%;
-    height: 55%;
-    width: 15%;
+    height: 40px;
+    width: 180px;
 }
 
 label{
@@ -38,7 +44,7 @@ label{
 }
 
 .user{
-    height: 70%;
+    height: 90%;
     margin-left: 5%;
 }
 
@@ -58,6 +64,12 @@ label{
     display: flex;
     align-items: center;
     justify-content: center;
+}
+.salir{
+    width: 2%;
+    padding: 1%;
+    margin: 0 5%;
+
 }
 
 th{

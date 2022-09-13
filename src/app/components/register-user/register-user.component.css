@@ -1,20 +1,23 @@
 .formContent{
-    height: 100vh;
+    height: 100%;
     width: 100%;
+    margin-top: 30%;
     display: flex;
     justify-content: center;
     align-items: center;
+    align-content: flex-end;
 }
 form{
     position: relative;
     display: flex;
     flex-direction: column;
     background-color: #A0BCC2;
-    height: 80%;
     width: 100%;
     align-items: center;
     padding: 0;
     border-radius: 10px;
+    justify-content: center;
+    border: 1px solid #625D63;
 }
 
 .inputContent{
@@ -26,7 +29,7 @@ form{
 
 input, select{
     margin: 6% 0 ;
-    height: 25px;
+    height: 28px;
     border-radius: 5px;
     background-color: #FEFBE7;
     border: 3px solid #FEFBE7;

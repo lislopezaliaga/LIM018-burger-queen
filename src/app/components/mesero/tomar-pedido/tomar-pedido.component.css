@@ -2,6 +2,7 @@
     display: flex;
     width: 100%;
     background-color: #F9EBC8;
+    font-family: Lato;
 }
 .options{
     display: flex;
@@ -27,8 +28,8 @@
 .mesa{
   display: flex;
   height: 5%;
-  width: 100%;
   padding: 1% 23%;
+  font-size: 20px;
 }
 .table{
   background-color: #A0BCC2;
@@ -37,31 +38,51 @@
   margin: 0 1%;
 }
 .nTable{
-  width: 4%;
+  width: 8%;
 }
-
+.titleMenu{
+  display: flex;
+  flex-direction: column;
+  width: 58%;
+  background-color: #A0BCC2;
+  margin: 0 1%;
+  border-radius: 6px;
+  justify-items: center;
+  text-align: center;
+}
 .menu{
   display: grid;
-  width: 58%;
+  width: 100%;
   height: auto;
   grid-template-columns: repeat(2, 1fr);
-  background-color: #A0BCC2;
+
   justify-items: center;
-  padding: 2%;
-  margin: 1%;
-  border-radius: 6px;
-  gap: 2%;
+}
+.typeMenu{
+  font-family: Lato;
+  font-size: 25px;
+  font-weight: bold;
+  margin: 2% 0;
 }
 mat-card{
   background-color: #FEFBE7;
-  width: 86%;
+  width: 75%;
   border-radius: 8px;
+  font-size: 20px;
+  text-align: center;
+  margin-bottom: 5%;
 
+}
+mat-card-header{
+  width: 100%;
+  height: 48px;
+  display: flex;
+  justify-content: center;
 }
 .imgMenu{
     width: 80%;
     height: 150px;
-    margin: 10%;
+    margin:0  10%;
 
 }
 
@@ -75,12 +96,14 @@ mat-card{
   border: 1px solid#625D63;
   border-radius: 6px;
   background-color: #DAE5D0;
+  font-size: 100%;
 }
+
 .ordenPedido{
   display: flex;
   flex-direction: column;
   width: 36%;
-  margin: 1%;
+  margin: 0 1%;
   padding: 1%;
   height: auto;
   background-color: #A0BCC2;
@@ -104,10 +127,44 @@ mat-card{
 }
 .send{
   position: absolute;
-  height: 30px;
+  font-size: 20px;
   border: 1px solid#625D63;
   border-radius: 6px;
   background-color: #DAE5D0;
   width: 40%;
+  margin-top: 8%;
   right: 2%;
+}
+.orderTable{
+  font-size: 20px;
+  text-align: center;
+  font-weight: bold;
+  margin: 2% 0;
+}
+.simpleDoble{
+  display: flex;
+  justify-content: space-around;
+  font-size: 20px;
+  padding: 0% 0 3% 0;
+  font-weight: bold;
+}
+.btnBurguer{
+  width: 35%;
+  height: 30px;
+  border: 1px solid#625D63;
+  border-radius: 6px;
+  background-color: #DAE5D0;
+  font-size: 20px;
+}
+.adicional{
+  display: flex;
+  justify-content: space-around;
+}
+.checkAdicional{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.eggCheese{
+  width: 20%;
 }

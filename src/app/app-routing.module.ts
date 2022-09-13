@@ -19,12 +19,7 @@ const routes: Routes = [
   { path: 'admin', component: ViewAdminComponent ,
   /* ...canActivate(() => redirectUnauthorizedTo(['/login'])) */
   },
-  { path: 'mesero', component: MeseroComponent, children:[
-    {
-      path: "pedido",
-      component: TomarPedidoComponent,
-    }
-  ]},
+  { path: 'mesero', component: MeseroComponent}
 ];
 
 @NgModule({

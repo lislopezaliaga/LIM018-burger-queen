@@ -1,12 +1,12 @@
 <div class="tomarPedido">
     <div class="options">
-        <img class="optionImg" src="https://firebasestorage.googleapis.com/v0/b/burger-cangreburger.appspot.com/o/taza-de-cafe.png?alt=media&token=d9b0de7e-5500-4dda-8988-58c901de9a56
+        <img class="optionImg" (click)="breakfast()" src="https://firebasestorage.googleapis.com/v0/b/burger-cangreburger.appspot.com/o/taza-de-cafe.png?alt=media&token=d9b0de7e-5500-4dda-8988-58c901de9a56
         ">
-        <img class="optionImg" src="https://firebasestorage.googleapis.com/v0/b/burger-cangreburger.appspot.com/o/hamburguesa.png?alt=media&token=8fe79943-d7ae-43b2-93dd-054f139db25a
+        <img class="optionImg" (click)="hamburguer()" src="https://firebasestorage.googleapis.com/v0/b/burger-cangreburger.appspot.com/o/hamburguesa.png?alt=media&token=8fe79943-d7ae-43b2-93dd-054f139db25a
         ">
-        <img class="optionImg" src="https://firebasestorage.googleapis.com/v0/b/burger-cangreburger.appspot.com/o/soda.png?alt=media&token=b2bb18c8-9e63-4b2e-939d-777e60fb22cc
+        <img class="optionImg" (click)="bebidas()" src="https://firebasestorage.googleapis.com/v0/b/burger-cangreburger.appspot.com/o/soda.png?alt=media&token=b2bb18c8-9e63-4b2e-939d-777e60fb22cc
         ">
-        <img class="optionImg" src="https://firebasestorage.googleapis.com/v0/b/burger-cangreburger.appspot.com/o/fried-potatoes.png?alt=media&token=7c9ec7fc-e98b-4a5f-bc7f-ab387814b9c8
+        <img class="optionImg" (click)="acompa()" src="https://firebasestorage.googleapis.com/v0/b/burger-cangreburger.appspot.com/o/fried-potatoes.png?alt=media&token=7c9ec7fc-e98b-4a5f-bc7f-ab387814b9c8
         ">
     </div>
     <div class="contenedorMesero">
@@ -20,21 +20,47 @@
             </select>
         </div>
         <div class="menuOrden">
+            <div class="titleMenu">
+                <label class="typeMenu"> {{typeMenu}}</label>
+                <div class="simpleDoble" *ngIf="simpleDoble">
+                    <button class="btnBurguer" (click)="burguerSimple()" >Simples</button>
+                    <button class="btnBurguer" (click)="burguerDoble()">Dobles</button>
+                </div>
+      
             <div class="menu">
+              
                 <mat-card *ngFor="let menu of menus">
-                    <mat-card-header>
+                    <mat-card-header >
                         <mat-card-title>{{menu.item}}</mat-card-title>
                     </mat-card-header>
+                    
+
                     <img class="imgMenu" src={{menu.img}} alt=""  mat-card-image>
-                    <mat-card-content></mat-card-content>
+                    <div class="adicional" *ngIf="simpleDoble">
+                        <div class="checkAdicional">
+                            <img  class="eggCheese" src="https://firebasestorage.googleapis.com/v0/b/burger-cangreburger.appspot.com/o/huevo-frito.png?alt=media&token=19f57fc9-a9e7-452e-b851-8dfcebb468c6
+                            " alt="">
+                            <input type="checkbox" id="cbox2" value="second_checkbox">
+                        </div>
+                        <div class="checkAdicional">
+                            <img  class="eggCheese" src="https://firebasestorage.googleapis.com/v0/b/burger-cangreburger.appspot.com/o/queso.png?alt=media&token=ab255584-2695-4b1d-b5d6-13a71f4a00bb
+                            " alt="">
+                            <input type="checkbox" id="cbox2" value="second_checkbox">
+                        </div>
+                       
+                    </div>
+
                     <mat-card-actions align="end">
                         <button class="btnAñadir">Agregar</button>
                     </mat-card-actions>
                 </mat-card>
 
             </div>
+
+            </div>
+            
             <div class="ordenPedido">
-                <label >Orden de Mesa</label>
+                <label class="orderTable" >Orden de Mesa</label>
                 <table class="tableOrder">
 
                     <tr>      
