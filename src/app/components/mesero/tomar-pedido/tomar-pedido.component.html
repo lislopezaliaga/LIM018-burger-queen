@@ -10,15 +10,6 @@
         ">
     </div>
     <div class="contenedorMesero">
-        <div class="mesa">
-            <label class="table">Mesa</label>
-            <select class="nTable">
-                <option value="1">1</option>
-                <option value="2">2</option>
-                <option value="">3</option>
-                <option value="">4</option>
-            </select>
-        </div>
         <div class="menuOrden">
             <div class="titleMenu">
                 <label class="typeMenu"> {{typeMenu}}</label>
@@ -29,38 +20,44 @@
       
             <div class="menu">
               
-                <mat-card *ngFor="let menu of menus">
-                    <mat-card-header >
-                        <mat-card-title>{{menu.item}}</mat-card-title>
-                    </mat-card-header>
-                    
-
-                    <img class="imgMenu" src={{menu.img}} alt=""  mat-card-image>
+                <div class="tarjeta" *ngFor="let menu of menus">
+                    <label class="menuName">{{menu.item}}</label>
+                    <img class="imgMenu" src={{menu.img}}>
                     <div class="adicional" *ngIf="simpleDoble">
                         <div class="checkAdicional">
-                            <img  class="eggCheese" src="https://firebasestorage.googleapis.com/v0/b/burger-cangreburger.appspot.com/o/huevo-frito.png?alt=media&token=19f57fc9-a9e7-452e-b851-8dfcebb468c6
-                            " alt="">
-                            <input type="checkbox" id="cbox2" value="second_checkbox">
+                            <select class="chesse" name="select">
+                                <option value="0" disabled selected>🍳</option>
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>                    
+                                </select>
                         </div>
                         <div class="checkAdicional">
-                            <img  class="eggCheese" src="https://firebasestorage.googleapis.com/v0/b/burger-cangreburger.appspot.com/o/queso.png?alt=media&token=ab255584-2695-4b1d-b5d6-13a71f4a00bb
-                            " alt="">
-                            <input type="checkbox" id="cbox2" value="second_checkbox">
-                        </div>
-                       
+                            <select class="chesse" name="select">
+                                <option value="0" disabled selected>🧀</option>
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>                    
+                              </select>
+                        </div>                     
                     </div>
-
-                    <mat-card-actions align="end">
-                        <button class="btnAñadir">Agregar</button>
-                    </mat-card-actions>
-                </mat-card>
+                    <div class="pricebtn">
+                   <label class="price">$ {{menu.price}}</label>
+                   <button class="btnAdd" (click)="addNombre(menu.item, menu.price)">Agregar</button>
+                </div>
+                </div>
 
             </div>
 
             </div>
             
-            <div class="ordenPedido">
-                <label class="orderTable" >Orden de Mesa</label>
+            <div class="orden">
+                <div class="client">
+                    <label class="clientLabel">Cliente</label>
+                    <input class="clientInput" type="text">
+                </div>
+                <div class="ordenPedido">
+                <label class="orderTable" >Orden de Pedido</label>
                 <table class="tableOrder">
 
                     <tr>      
@@ -68,13 +65,15 @@
                     <th>Cantidad</th>
                     <th>Precio</th>
                     <th></th>
-                    </tr>                
-                    <tr>
+                    </tr>  
+
+                    <tr class="itemsPedido" *ngFor="let orden of pedido">
                 
-                    <th>huevo</th>
+                    <td class="descripcion" >{{orden.descripcion}}</td>
                     <td>
-                        <button>-</button>  1  <button>+</button></td>
-                    <td>5</td>
+                        <button class="btnPlus">-</button> 1 <button class="btnPlus">+</button>
+                    </td>
+                    <td>$ {{orden.precio}}</td>
                     <td></td>
                     
                     <td class="columnEdit">
@@ -82,12 +81,14 @@
                     </td>
                     </tr >     
                 </table>
-                <label>TOTAL</label>
-                <div class="sendKitchen">
-                    <button class="send"> Enviar a la Cocina</button>
+            </div>
+            <div class="sendKitchen">
+                <div class="total">
+                    <label class="precioTotal">TOTAL</label>
+                    <label class="precioTotal">$ 30</label>
                 </div>
-               
-
+                <button class="send"> Enviar a la Cocina</button>
+            </div>
             </div>
         </div>
     </div>
