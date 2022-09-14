@@ -6,34 +6,41 @@ header{
     position: relative;
     background-color: #DAE5D0;
     justify-content: space-between;
-    font-family: 'Racing Sans One';
+    font-family: 'League Spartan';
+    font-weight: 700;
     font-size: 22px;
 }
 
 .name{
     display: flex;
     align-items: center;
+    width: 33%;
 }
 .burguerChef{
-    height: 12%;
-    width: 12%;
+    width: 45px;
     padding: 1%;
     margin: 1% 4%; 
 }
 .mesera{
-    width: 4%;
+    width: 40px;
 }
 .salir{
-    width: 2%;
+    width: 30px;
     padding: 1%;
-    margin: 0 1%;
+    margin-left: 2%;
 }
 .vistasgeneral{
     display: flex;
+    width: 40%;
+    align-items: center;
+    margin-right: 2%;
+
+    
 }
 .vistas{
     margin: 0 1%;
     text-align: center;
+    width: 50%;
 }
 .vistas:hover{
     background-color: #FEFBE7;
