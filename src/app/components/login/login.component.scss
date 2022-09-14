@@ -40,7 +40,7 @@ form{
 }
 
 input{
-    margin: 8% 0 ;
+    margin: 5% 0 ;
     height: 25px;
     border-radius: 5px;
     background-color: #FEFBE7;
@@ -56,8 +56,10 @@ label{
 }
 
 h1{
-    margin: 0;
-    font-family: Racing Sans One;
+    margin: 2% 0 4% 0;
+    font-family: 'League Spartan';
+    font-size: 30px;
+    font-weight: 700;
 }
 
 button{
@@ -69,5 +71,12 @@ button{
     font-family: Lato;
     font-size: 20px;
     font-weight: bold;
-    margin-bottom: 10%;
+    margin: 2% 0 10% 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.usuario{
+    margin-bottom: 7%;
 }

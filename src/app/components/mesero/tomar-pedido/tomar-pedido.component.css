@@ -8,132 +8,155 @@
     display: flex;
     flex-direction: column;
     width: 6%;
-    height: auto;
-    background-color: #DAE5D0;
+    height: 87vh;
+    background-color: #A0BCC2;
     align-items: center;
+    margin: 1% 0;
+    border-radius: 6px;
+    justify-content: center;
+    position: fixed;
 }
+
 .optionImg{
-  width: 50px;
-  padding: 40% 0;
+  width: 40px;
+  padding: 65% 0;
 }
 .contenedorMesero{
     display: flex;
     flex-direction: column;
-    width: 94%;
+    width: 100%;
 }
 .menuOrden{
   display: flex;
   justify-content: center;
 }
-.mesa{
+.client{
   display: flex;
-  height: 5%;
-  padding: 1% 23%;
+  justify-content: center;
+  align-items: center;
+  height: 30px;
   font-size: 20px;
+  border-radius: 6px;
+  padding: 3% 0;
+  background-color: #A0BCC2;
+  margin-bottom: 4%;
 }
-.table{
+.clientInput{
+  background-color: #FEFBE7;
+  height: 70%;
+  border-radius: 5px;
+  margin: 2% 0;
+  border: 1.5px solid#625D63;
+}
+.clientLabel{
   background-color: #A0BCC2;
   border-radius: 4px;
   padding: 1px 3%;
   margin: 0 1%;
 }
-.nTable{
-  width: 8%;
+.btnPlus{
+  background-color: #FEFBE7;
+  width: 25px;
+  height: 25px;
+  border-radius: 5px;
+  border: 1.5px solid#625D63;
 }
+
 .titleMenu{
   display: flex;
   flex-direction: column;
-  width: 58%;
+  width: 52%;
   background-color: #A0BCC2;
-  margin: 0 1%;
+  margin: 1% 0 0 8%;
   border-radius: 6px;
   justify-items: center;
   text-align: center;
+  min-height: 87vh;
 }
 .menu{
   display: grid;
   width: 100%;
   height: auto;
   grid-template-columns: repeat(2, 1fr);
-
+  align-items: center;
   justify-items: center;
 }
 .typeMenu{
   font-family: Lato;
   font-size: 25px;
   font-weight: bold;
-  margin: 2% 0;
+  margin: 3% 0;
 }
-mat-card{
+.tarjeta{
   background-color: #FEFBE7;
-  width: 75%;
+  width: 90%;
+  height: auto;
   border-radius: 8px;
-  font-size: 20px;
+  font-size: 17px;
   text-align: center;
-  margin-bottom: 5%;
-
+  margin: 5%;
+  padding: 5% 0;
 }
-mat-card-header{
-  width: 100%;
-  height: 48px;
+
+.menuName{
+  width: 98%;
+  height: 40px;
   display: flex;
   justify-content: center;
+  font-size: 16px;
+  align-items: center;
 }
 .imgMenu{
-    width: 80%;
-    height: 150px;
-    margin:0  10%;
-
+  width: 70%;
+  height: 80px;
+  margin: 0 14%;
 }
 
 .eliminar{
-    height: 40px;
-    width: 40px;
+    height: 25px;
+    width: 25px;
 }
-.btnAñadir{
-  width: 35%;
-  height: 30px;
-  border: 1px solid#625D63;
+.btnAdd{
+  height: 25px;
+  border: 1.5px solid#625D63;
   border-radius: 6px;
   background-color: #DAE5D0;
-  font-size: 100%;
+  font-size: 15px;
 }
 
-.ordenPedido{
+.orden{
   display: flex;
   flex-direction: column;
-  width: 36%;
-  margin: 0 1%;
-  padding: 1%;
+  width: 45%;
+  margin: 1% 2% 0 2%;
   height: auto;
-  background-color: #A0BCC2;
   border-radius: 8px;
-
 }
 .tableOrder{
-  background-color: #A0BCC2;
   margin: 1% 0%;
   width: 100%;
   font-family: "Lato";
   font-size: 16px;
-  /* border-spacing: 1%; */
-  /* padding: 3%; */
   text-align: center;
 }
 .sendKitchen{
+  bottom: 1%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   width: 100%;
-  position: relative;
-
+  background-color: #A0BCC2;
+  border-radius: 0 0 6px 6px;
 }
+
 .send{
-  position: absolute;
   font-size: 20px;
-  border: 1px solid#625D63;
+  border: 1.5px solid#625D63;
   border-radius: 6px;
   background-color: #DAE5D0;
-  width: 40%;
-  margin-top: 8%;
+  margin: 5% 0 4% 0;
   right: 2%;
+  padding: 1% 3%;
 }
 .orderTable{
   font-size: 20px;
@@ -145,7 +168,7 @@ mat-card-header{
   display: flex;
   justify-content: space-around;
   font-size: 20px;
-  padding: 0% 0 3% 0;
+  padding: 0% 0 1% 0;
   font-weight: bold;
 }
 .btnBurguer{
@@ -159,12 +182,85 @@ mat-card-header{
 .adicional{
   display: flex;
   justify-content: space-around;
+  margin: 2% 0 3% 0;
 }
 .checkAdicional{
   display: flex;
   align-items: center;
   justify-content: center;
+  flex-direction: column;
 }
 .eggCheese{
-  width: 20%;
+      width: 25%;
+    margin-bottom: 5%;
+}
+.btnEggCheese{
+  background-color: #FEFBE7;
+  width: 25px;
+  height: 25px;
+  border-radius: 5px;
+  border: 1.5px solid#625D63;
+}
+
+.ordenPedido{
+  background-color: #A0BCC2;
+  display: flex;
+  flex-direction: column;
+  border-radius: 6px 6px 0 0;
+  min-height: 60vh;
+}
+.total{
+  display:flex;
+  justify-content: center;
+  width: 100%;
+}
+
+.precioTotal{
+  width: 50%;
+  padding: 0 15%;
+  text-align: center;
+}
+
+.pricebtn{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 3% 5% 0 5%;
+}
+
+.price{
+  font-size: 14px;
+}
+
+.chesse{
+  width: 100%;
+  font-size: 17px;
+  border: none;
+  background-color: #FEFBE7;
+}
+
+td{
+  font-size: 13px;
+}
+.descripcion{
+  text-align: left;
+  width: 43%;
+  padding-left: 3%;
+}
+
+
+@media only screen and (min-width: 1200px){
+  .menu{
+    grid-template-columns: repeat(3, 1fr);
+  }
+  .titleMenu{
+    width: 60%;
+    padding: 0 1.5%;
+  }
+  td{
+    font-size: 15px;
+  }
+  .ordenPedido{
+    min-height: 59vh;
+  }
 }

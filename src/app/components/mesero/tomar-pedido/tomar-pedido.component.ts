@@ -9,6 +9,9 @@ export class TomarPedidoComponent implements OnInit {
   menus:any=menu;
   typeMenu:string='Menú';
   simpleDoble:boolean=false;
+  pedido:any=[];
+
+
   constructor() { }
 
   ngOnInit(): void {
@@ -49,6 +52,11 @@ export class TomarPedidoComponent implements OnInit {
   this.menus=menu.filter((element:any)=>element.type==="acompañamientos");
   this.typeMenu='Acompañamientos';
   this.simpleDoble=false;
+}
+
+addNombre(name:string, price:string){
+  this.pedido.push({descripcion:name, precio:price});
+  console.log(this.pedido);
 }
 
 }
