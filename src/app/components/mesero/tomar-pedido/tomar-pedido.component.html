@@ -14,26 +14,29 @@
             <div class="titleMenu">
                 <label class="typeMenu"> {{typeMenu}}</label>
                 <div class="simpleDoble" *ngIf="simpleDoble">
+                  
                     <button class="btnBurguer" (click)="burguerSimple()" >Simples</button>
                     <button class="btnBurguer" (click)="burguerDoble()">Dobles</button>
+            
                 </div>
-      
+
             <div class="menu">
               
                 <div class="tarjeta" *ngFor="let menu of menus">
                     <label class="menuName">{{menu.item}}</label>
                     <img class="imgMenu" src={{menu.img}}>
-                    <div class="adicional" *ngIf="simpleDoble">
+                    <div class="adicional" *ngIf="menu.adicionales">
                         <div class="checkAdicional">
-                            <select class="chesse" name="select">
+                            
+                            <select class="chesse" name="select"  (change) = "addEgg($event)"  [value]="select" >
                                 <option value="0" disabled selected>🍳</option>
                                 <option value="1">1</option>
                                 <option value="2">2</option>
                                 <option value="3">3</option>                    
-                                </select>
+                            </select>
                         </div>
                         <div class="checkAdicional">
-                            <select class="chesse" name="select">
+                            <select class="chesse" name="select" (change) = "addCheese($event)">
                                 <option value="0" disabled selected>🧀</option>
                                 <option value="1">1</option>
                                 <option value="2">2</option>
@@ -43,7 +46,7 @@
                     </div>
                     <div class="pricebtn">
                    <label class="price">$ {{menu.price}}</label>
-                   <button class="btnAdd" (click)="addNombre(menu.item, menu.price)">Agregar</button>
+                   <button class="btnAdd" (click)="addNombre(menu.item, menu.price,contador)">Agregar</button>
                 </div>
                 </div>
 
@@ -53,8 +56,8 @@
             
             <div class="orden">
                 <div class="client">
-                    <label class="clientLabel">Cliente</label>
-                    <input class="clientInput" type="text">
+                    <label class="clientLabel" >Cliente</label>
+                    <input [formControl]="cliente" class="clientInput"  type="text">
                 </div>
                 <div class="ordenPedido">
                 <label class="orderTable" >Orden de Pedido</label>
@@ -71,13 +74,13 @@
                 
                     <td class="descripcion" >{{orden.descripcion}}</td>
                     <td>
-                        <button class="btnPlus">-</button> 1 <button class="btnPlus">+</button>
+                        <button class="btnPlus" (click)="removeItems(orden.descripcion,orden.precio)">-</button> {{orden.cantidad}} <button class="btnPlus" (click)="addItems(orden.descripcion,orden.precio)">+</button>
                     </td>
                     <td>$ {{orden.precio}}</td>
                     <td></td>
                     
                     <td class="columnEdit">
-                        <img  class="eliminar" src="https://firebasestorage.googleapis.com/v0/b/burger-cangreburger.appspot.com/o/trash.png?alt=media&token=026105f1-6c89-4e2b-9fcc-c0eaf45a21f0">
+                        <img  class="eliminar" (click)="deleteItems(orden.descripcion)" src="https://firebasestorage.googleapis.com/v0/b/burger-cangreburger.appspot.com/o/trash.png?alt=media&token=026105f1-6c89-4e2b-9fcc-c0eaf45a21f0">
                     </td>
                     </tr >     
                 </table>
@@ -85,7 +88,7 @@
             <div class="sendKitchen">
                 <div class="total">
                     <label class="precioTotal">TOTAL</label>
-                    <label class="precioTotal">$ 30</label>
+                    <label class="precioTotal">$ {{precioTotal()}}</label>
                 </div>
                 <button class="send"> Enviar a la Cocina</button>
             </div>

@@ -4,14 +4,17 @@
     "item": "Café americano",
     "img":"https://firebasestorage.googleapis.com/v0/b/burger-cangreburger.appspot.com/o/cafe.png?alt=media&token=54af8e09-f8fa-4829-b4a8-c7d3314190c7" ,
     "price": 5,
-    "type":"desayuno"
+    "type":"desayuno",
+    "contador":1
+
     },
     {
     "id": 2,
     "item": "Café con leche",
     "img":"https://firebasestorage.googleapis.com/v0/b/burger-cangreburger.appspot.com/o/leche1.png?alt=media&token=a20d40fc-1874-4b0a-8bba-b28183849f6f",
     "price": 7,
-    "type":"desayuno"
+    "type":"desayuno",
+    "contador":1
     },
     {
     "id": 3,
@@ -32,42 +35,144 @@
     "item": "Hamburguesa simple de pollo",
     "img":"https://firebasestorage.googleapis.com/v0/b/burger-cangreburger.appspot.com/o/pollo.png?alt=media&token=47316f22-d21d-496a-be12-a480b9ae717d",
     "price": 10,
-    "type":"hamburguesa simple"
+    "type":"hamburguesa simple",
+    "adicionales":[
+        {
+            "id": 17,
+            "item": "Queso",
+            "img":"https://firebasestorage.googleapis.com/v0/b/burger-cangreburger.appspot.com/o/queso.png?alt=media&token=ab255584-2695-4b1d-b5d6-13a71f4a00bb",
+            "price": 1,
+            "type": "adicionales"
+        },
+        {
+            "id": 18,
+            "item": "Huevo",
+            "img":"https://firebasestorage.googleapis.com/v0/b/burger-cangreburger.appspot.com/o/huevo-frito.png?alt=media&token=19f57fc9-a9e7-452e-b851-8dfcebb468c6",
+            "price": 1,
+            "type": "adicionales"
+            }
+        
+    ]
     },
     {
     "id": 6,
     "item": "Hamburguesa simple de res",
     "img":"https://firebasestorage.googleapis.com/v0/b/burger-cangreburger.appspot.com/o/burguerCarne.png?alt=media&token=6fa487dd-e968-4da3-b0d4-0da228f5008f",
     "price": 10,
-    "type":"hamburguesa simple"
+    "type":"hamburguesa simple",
+    "adicionales":[
+        {
+            "id": 17,
+            "item": "Queso",
+            "img":"https://firebasestorage.googleapis.com/v0/b/burger-cangreburger.appspot.com/o/queso.png?alt=media&token=ab255584-2695-4b1d-b5d6-13a71f4a00bb",
+            "price": 1,
+            "type": "adicionales"
+        },
+        {
+            "id": 18,
+            "item": "Huevo",
+            "img":"https://firebasestorage.googleapis.com/v0/b/burger-cangreburger.appspot.com/o/huevo-frito.png?alt=media&token=19f57fc9-a9e7-452e-b851-8dfcebb468c6",
+            "price": 1,
+            "type": "adicionales"
+            }
+        
+    ]
     },
     {
     "id": 7,
     "item": "Hamburguesa simple vegetariana",
     "img":"https://firebasestorage.googleapis.com/v0/b/burger-cangreburger.appspot.com/o/vegetariana.png?alt=media&token=5002511e-6959-4b8a-a69a-b1ec641702f1",
     "price": 10,
-    "type":"hamburguesa simple"
+    "type":"hamburguesa simple",
+    "adicionales":[
+        {
+            "id": 17,
+            "item": "Queso",
+            "img":"https://firebasestorage.googleapis.com/v0/b/burger-cangreburger.appspot.com/o/queso.png?alt=media&token=ab255584-2695-4b1d-b5d6-13a71f4a00bb",
+            "price": 1,
+            "type": "adicionales"
+        },
+        {
+            "id": 18,
+            "item": "Huevo",
+            "img":"https://firebasestorage.googleapis.com/v0/b/burger-cangreburger.appspot.com/o/huevo-frito.png?alt=media&token=19f57fc9-a9e7-452e-b851-8dfcebb468c6",
+            "price": 1,
+            "type": "adicionales"
+            }
+        
+    ]
     },
     {
     "id": 8,
     "item": "Hamburguesa doble de pollo",
     "img":"https://firebasestorage.googleapis.com/v0/b/burger-cangreburger.appspot.com/o/doblepollo.png?alt=media&token=a247a852-c59a-44a4-ad55-6ee851e9cd30",
     "price": 15,
-    "type":"hamburguesa doble"
+    "type":"hamburguesa doble",
+    "adicionales":[
+        {
+            "id": 17,
+            "item": "Queso",
+            "img":"https://firebasestorage.googleapis.com/v0/b/burger-cangreburger.appspot.com/o/queso.png?alt=media&token=ab255584-2695-4b1d-b5d6-13a71f4a00bb",
+            "price": 1,
+            "type": "adicionales"
+        },
+        {
+            "id": 18,
+            "item": "Huevo",
+            "img":"https://firebasestorage.googleapis.com/v0/b/burger-cangreburger.appspot.com/o/huevo-frito.png?alt=media&token=19f57fc9-a9e7-452e-b851-8dfcebb468c6",
+            "price": 1,
+            "type": "adicionales"
+            }
+        
+    ]
     },
     {
     "id": 9,
     "item": "Hamburguesa doble de res",
     "img":"https://firebasestorage.googleapis.com/v0/b/burger-cangreburger.appspot.com/o/doblecarne.png?alt=media&token=86a4927a-388a-4601-ba77-78957885349b",
     "price": 15,
-    "type":"hamburguesa doble"
+    "type":"hamburguesa doble",
+    "adicionales":[
+        {
+            "id": 17,
+            "item": "Queso",
+            "img":"https://firebasestorage.googleapis.com/v0/b/burger-cangreburger.appspot.com/o/queso.png?alt=media&token=ab255584-2695-4b1d-b5d6-13a71f4a00bb",
+            "price": 1,
+            "type": "adicionales"
+        },
+        {
+            "id": 18,
+            "item": "Huevo",
+            "img":"https://firebasestorage.googleapis.com/v0/b/burger-cangreburger.appspot.com/o/huevo-frito.png?alt=media&token=19f57fc9-a9e7-452e-b851-8dfcebb468c6",
+            "price": 1,
+            "type": "adicionales"
+            }
+        
+    ]
     },
     {
     "id": 10,
     "item": "Hamburguesa doble vegetariana",
     "img":"https://firebasestorage.googleapis.com/v0/b/burger-cangreburger.appspot.com/o/doblevegetariana.png?alt=media&token=d355f147-33c2-49cc-b0a1-8ade155a76d2",
     "price": 15,
-    "type":"hamburguesa doble"
+    "type":"hamburguesa doble",
+    "adicionales":[
+        {
+            "id": 17,
+            "item": "Queso",
+            "img":"https://firebasestorage.googleapis.com/v0/b/burger-cangreburger.appspot.com/o/queso.png?alt=media&token=ab255584-2695-4b1d-b5d6-13a71f4a00bb",
+            "price": 1,
+            "type": "adicionales"
+        },
+        {
+            "id": 18,
+            "item": "Huevo",
+            "img":"https://firebasestorage.googleapis.com/v0/b/burger-cangreburger.appspot.com/o/huevo-frito.png?alt=media&token=19f57fc9-a9e7-452e-b851-8dfcebb468c6",
+            "price": 1,
+            "type": "adicionales"
+            }
+        
+    ]
     },
     {
     "id": 11,
@@ -110,20 +215,7 @@
     "img":"https://firebasestorage.googleapis.com/v0/b/burger-cangreburger.appspot.com/o/gaseosa%207.png?alt=media&token=4b8f1963-2bb0-4183-8b05-51021c9587fb",
     "price": 10,
     "type": "bebidas"
-    },
-    {
-    "id": 17,
-    "item": "Queso",
-    "img":"https://firebasestorage.googleapis.com/v0/b/burger-cangreburger.appspot.com/o/queso.png?alt=media&token=ab255584-2695-4b1d-b5d6-13a71f4a00bb",
-    "price": 1,
-    "type": "adicionales"
-    },
-    {
-    "id": 18,
-    "item": "Huevo",
-    "img":"https://firebasestorage.googleapis.com/v0/b/burger-cangreburger.appspot.com/o/huevo-frito.png?alt=media&token=19f57fc9-a9e7-452e-b851-8dfcebb468c6",
-    "price": 1,
-    "type": "adicionales"
     }
+
 ]
 
