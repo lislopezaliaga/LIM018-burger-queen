@@ -14,6 +14,8 @@ export class ViewAdminComponent implements OnInit {
   numOrden: number=0;
 
   registerSwitch: boolean = false;
+  shorTotalOrd: boolean = false;
+  showRegister: boolean = true;
 
   constructor(private registerM:UserService,
     private userService: UserService,private router:Router) {
@@ -45,6 +47,11 @@ export class ViewAdminComponent implements OnInit {
   }
   logout(){
     this.router.navigate(['login']);
+  }
+
+  showTotalOrders(){
+    this.shorTotalOrd=true;
+    this.showRegister=false;
   }
 
 }

@@ -1,46 +1,3 @@
-header{
-    display: flex;
-    width: 100%;
-    height: 10vh;
-    align-items: center;
-    position: relative;
-    background-color: #DAE5D0;
-    justify-content: space-between;
-    font-family: 'League Spartan';
-    font-weight: 700;
-    font-size: 22px;
-}
-
-.name{
-    display: flex;
-    align-items: center;
-    width: 33%;
-}
-.burguerChef{
-    width: 50px;
-    padding: 1%;
-    margin: 1% 4%; 
-}
-.logo{
-    width: 33%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-.sal{
-    width: 33%;
-    display: flex;
-    justify-content: end;
-    align-items: center;
-}
-.chef{
-    width: 50px;
-}
-.salir{
-    width: 30px;
-    padding: 1%;
-    margin-right: 5%;
-}
 .orders{
     display: flex;
     flex-direction: column;
@@ -101,4 +58,3 @@ table, tr, td, th{
         width: 21%;
     }
   }
-
