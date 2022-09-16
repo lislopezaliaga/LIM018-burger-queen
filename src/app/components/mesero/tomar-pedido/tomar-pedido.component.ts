@@ -168,6 +168,7 @@ export class TomarPedidoComponent implements OnInit {
       waiter:this.usuario,
       client: this.cliente.value,
       pedidos: this.pedido,
+      timeShow: this.date,
       timeStart: new Date,
       timeEnd:'',
       status:'pending',
