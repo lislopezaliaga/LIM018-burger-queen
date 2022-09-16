@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit,Input } from '@angular/core';
 import { elementAt } from 'rxjs';
 import menu from '../../../../assets/menu.json';
 import { FormControl } from '@angular/forms';
+import { PedidoService } from 'src/app/servicios/pedido.service';
 
 
 @Component({
@@ -10,6 +11,12 @@ import { FormControl } from '@angular/forms';
   styleUrls: ['./tomar-pedido.component.css']
 })
 export class TomarPedidoComponent implements OnInit {
+  // @ViewChild('hola') element: ElementRef;
+  // @Input() nameuser:any;
+  sesion:any=sessionStorage.getItem('User');
+  user=JSON.parse(this.sesion);
+  usuario:any=this.user.nombre;
+  date:any=this.dateTime();
   menus:any=menu;
   typeMenu:string='Menú';
   simpleDoble:boolean=false;
@@ -17,137 +24,96 @@ export class TomarPedidoComponent implements OnInit {
   contador:number=1;
   total:any=0;
   select:any;
-  
+
   
   cliente = new FormControl('', []);
   egg:any=0;
   cheese:any=0;
   eggName:any='';
+  cheeseName:any='';
+  takeOrder:any={};
 
-
-  constructor() {
+  constructor(private pedidoService:PedidoService) {
     // const a:any=this.pedido.forEach((element:any)=>this.total+=element.precio)
     
    }
 
   ngOnInit(): void {
-  
-   
 
+ 
+   
   }
   // capturar(){
   //   this.addCheese
     
   // }
 
-  breakfast(){
+  filterMenu(types:string){
     // this.menus=menu;
-    this.menus=menu.filter((element:any)=>element.type==="desayuno");
-    this.typeMenu='Desayuno';
-    this.simpleDoble=false;
-    
-  }
-  hamburguer(){
-    this.menus=menu.filter((element:any)=>element.type==="hamburguesa simple");
-    this.typeMenu='Hamburguesas';
-    this.simpleDoble=true;
-  }
-  bebidas(){
-    this.menus=menu.filter((element:any)=>element.type==="bebidas");
-    this.typeMenu='Bebidas';
-    this.simpleDoble=false;
-  }
-  burguerSimple(){
-    this.menus=menu.filter((element:any)=>element.type==="hamburguesa simple");
-    this.typeMenu='Hamburguesas';
-    this.simpleDoble=true;
-  }
-  burguerDoble(){
-    this.menus=menu.filter((element:any)=>element.type==="hamburguesa doble");
-    this.typeMenu='Hamburguesas';
-    this.simpleDoble=true;
-  }
-
-
-  acompa(){
-  this.menus=menu.filter((element:any)=>element.type==="acompañamientos");
-  this.typeMenu='Acompañamientos';
-  this.simpleDoble=false;
-}
-
-addNombre(name:string, price:string,cantItems:number){
-
-  let prueb:boolean=this.pedido.filter((element:any, indice:any) => {
-    if(element.descripcion===name){
-      this.pedido[indice].cantidad+=1;
-      this.pedido[indice].precio+=parseInt(price);
-      this.select="0";
-      return true
+    if(types=="Hamburguesa simple"||types=="Hamburguesa doble"){
+      this.typeMenu="Hamburguesa";
+      this.simpleDoble=true;
+    }else{
+      this.typeMenu=types;
+      this.simpleDoble=false;
+  
     }
-    return false;
+    this.menus=menu.filter((element:any)=>element.type===types);
+  
+  }
+
+
+  addNombre(id:any,name:string, price:string,cantItems:number){
+    console.log(id);
+
+    let prueb:boolean=this.pedido.filter((element:any, indice:any) => {
+      if(element.descripcion===name){
+        this.pedido[indice].cantidad+=1;
+        this.pedido[indice].precio+=parseInt(price);
+        this.select="0";
+        return true
+      }
+      return false;
+      })
+    if(prueb==false){
+      name=name+this.eggName+this.cheeseName;
+    this.pedido.push({descripcion:name, precio:price,cantidad:cantItems,egg:this.egg,cheese:this.cheese}); 
+    this.eggName='';
+    this.select="0";
+    }
+  }
+
+  addItems(name:any,precio:any){
+    console.log(name,precio);
+    
+    return this.pedido.map((element:any) => {
+      if(element.descripcion===name){
+        element.cantidad+=1;
+    
+        element.precio=precio/(element.cantidad-1)*element.cantidad;
+      }
+      
+    }
+
+  )}
+
+  removeItems(name:any, precio:any){
+
+    this.pedido.map((element:any)=>{
+    
+      if(element.descripcion===name){
+        element.cantidad-=1;
+        element.precio=precio/(element.cantidad+1)*element.cantidad;
+      }
     })
-  if(prueb==false){
-   this.pedido.push({descripcion:name+this.eggName, precio:price,cantidad:cantItems,egg:this.egg,cheese:this.cheese}); 
-   this.eggName='';
-   this.select="0";
-  //  <HTMLSelectElement>.reset();
-  // Option.select=false
-  }
-
-
-  // if(this.pedido.length===0){
-  //   this.pedido.push({descripcion:name, precio:price,cantidad:cantItems}); 
-  // }else{
-  //   return this.pedido.map((element:any,i:any,ar:any)=>{
-  //     if(element.descripcion==name){
-  //      return element.cantidad+=1;
-  //     }else {
-  //      ar.push({descripcion:name, precio:price,cantidad:cantItems});
-  //     }
-  //   })
-  // }
-  // console.log(this.pedido);
-  
-  // return this.pedido.map((element:any)=>{
-  // if(element.descripcion==name){
-  //   element.cantidad+=1;
-  // }
-  // })
-
-}
-
-addItems(name:any,precio:any){
-  console.log(name,precio);
-  
-  return this.pedido.map((element:any) => {
-    if(element.descripcion===name){
-      element.cantidad+=1;
-  
-       element.precio=precio/(element.cantidad-1)*element.cantidad;
-    }
     
+    this.pedido.forEach((element:any)=>{
+      if(element.cantidad==0){
+      this.deleteItems(element.descripcion)
+      };
+    })
+    return this.pedido
   }
-
-)}
-
-removeItems(name:any, precio:any){
-
-  this.pedido.map((element:any)=>{
-  
-    if(element.descripcion===name){
-      element.cantidad-=1;
-      element.precio=precio/(element.cantidad+1)*element.cantidad;
-    }
-  })
-
-  
-  this.pedido.forEach((element:any)=>{
-    if(element.cantidad==0){
-    this.deleteItems(element.descripcion)
-    };
-  })
-  return this.pedido
-}
 
   deleteItems(name:string){
     this.pedido=this.pedido.filter((element:any)=>element.descripcion!==name);
@@ -164,17 +130,51 @@ removeItems(name:any, precio:any){
     return this.total = result
 
   }
+ 
+
+  dateTime(){
+    const datePost:any = {
+      month: 'numeric',
+      day: 'numeric',
+      year: 'numeric',
+    };
+    const timePost:any = {
+      hour12: 'true',
+      hour: 'numeric',
+      minute: 'numeric',
+    };
+  
+    const date = new Date().toLocaleDateString('es-Es', datePost);
+    const time = new Date().toLocaleTimeString('es-Es', timePost);
+    const dateTime1 = `${date} ${time}`;
+  
+    return dateTime1;
+  };
+    
+  addEgg(event:any){
+    this.eggName=event.target.value+'h '
+    this.egg=event.target.value;
+
+  }
   addCheese(event:any){
     
-    this.cheese= event.target.value;
-  //  event.target.value=this.select;
-    
-  }
-  addEgg(event:any){
-    this.eggName=event.target.value+'c/h'
-    this.egg=event.target.value;
-  // this.select=event.target.value;
+    this.cheeseName= event.target.value + 'q';
+    this.cheese=event.target.value;
 
+  }
+ 
+  sendOrder(){
+    this.takeOrder={
+      waiter:this.usuario,
+      client: this.cliente.value,
+      pedidos: this.pedido,
+      timeStart: new Date,
+      timeEnd:'',
+      status:'pending',
+      totalPrice:this.total
+    };
+    console.log(this.takeOrder);
+    this.pedidoService.addPedido(this.takeOrder)
   }
 
 

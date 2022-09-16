@@ -44,7 +44,7 @@ export class RegisterUserComponent implements OnInit {
           apellido: this.formReg.value.apellidos,
           email: this.formReg.value.nombres.slice(0,1).toLowerCase() + this.formReg.value.apellidos.toLowerCase() + "@burger.com", 
           funcion: this.formReg.value.funcion,
-        });
+        },response.user.uid);
         console.log(res);
 
 

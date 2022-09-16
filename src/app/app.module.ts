@@ -17,6 +17,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatCardModule } from '@angular/material/card';
 import {MatSelectModule} from '@angular/material/select';
 import { FormsModule } from '@angular/forms';
+import { ChefComponent } from './components/chef/chef.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -24,7 +25,8 @@ import { FormsModule } from '@angular/forms';
     ViewAdminComponent,
     RegisterUserComponent,
     MeseroComponent,
-    TomarPedidoComponent
+    TomarPedidoComponent,
+    ChefComponent
   ],
   imports: [
     BrowserModule,
