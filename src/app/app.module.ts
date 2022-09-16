@@ -18,6 +18,8 @@ import { MatCardModule } from '@angular/material/card';
 import {MatSelectModule} from '@angular/material/select';
 import { FormsModule } from '@angular/forms';
 import { ChefComponent } from './components/chef/chef.component';
+import { OrderReadyComponent } from './components/mesero/order-ready/order-ready.component';
+import { TotalOrdersComponent } from './components/view-admin/total-orders/total-orders.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -26,7 +28,9 @@ import { ChefComponent } from './components/chef/chef.component';
     RegisterUserComponent,
     MeseroComponent,
     TomarPedidoComponent,
-    ChefComponent
+    ChefComponent,
+    OrderReadyComponent,
+    TotalOrdersComponent
   ],
   imports: [
     BrowserModule,

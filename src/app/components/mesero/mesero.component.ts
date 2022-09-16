@@ -12,6 +12,9 @@ export class MeseroComponent implements OnInit {
   sesion:any=sessionStorage.getItem('User');
   user=JSON.parse(this.sesion);
   usuario:any=this.user.nombre;
+  showTakeO:boolean=true;
+  showOrdersR:boolean=false;
+
 
   constructor(private router: Router,
     private userService:UserService) { }
@@ -31,7 +34,17 @@ export class MeseroComponent implements OnInit {
     sessionStorage.clear();
     this.router.navigate(['login']);
   }
-  
+
+  showTakeOrder(){
+    this.showTakeO=true;
+    this.showOrdersR=false;
+
+  }
+
+  showOrderReady(){
+    this.showOrdersR=true;
+    this.showTakeO=false;
+  }
 
 
 }

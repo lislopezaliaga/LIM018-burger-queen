@@ -1,0 +1,28 @@
+<div class="orders">
+    <div class="title">
+        <label>Pedidos listos para entregar</label>
+    </div>
+    <div class="tableOrder">
+        <div class="pendingOrder" *ngFor="let pedido of pedidos">
+            <label>Fecha: {{pedido.timeShow}}</label>
+            <label>Cliente: {{pedido.client}}</label>
+            <label class="centrar">Pedido</label>
+            <table>
+                <tr>      
+                    <th scope="row">Cant</th>
+                    <th>Descripción</th>
+                </tr>  
+
+                <tr class="itemsPedido" *ngFor="let orden of pedido.pedidos">
+                    <td class="centrar">{{orden.cantidad}}</td>
+                    <td>{{orden.descripcion}}</td>
+                </tr >  
+            </table>
+            <label class="total">Total: {{pedido.totalPrice}}</label>
+            <button class="btnListo" (click)="sendOrderDelivered(pedido.id)">Entregado</button>
+
+        </div>
+
+    </div>
+</div>
+
