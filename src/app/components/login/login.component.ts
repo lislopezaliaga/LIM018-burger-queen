@@ -28,13 +28,18 @@ export class LoginComponent implements OnInit {
     this.userService.login(this.formLogin.value)
     .then(response => { 
       this.userService.getUserById(response.user.uid).then((user:any)=>{
+        console.log(user);
+        
     
         sessionStorage.setItem('User', JSON.stringify(user));
+
         
-      if(response.user.email==="admin@burger.com"){
+      if(user.funcion==="admin"){
         this.router.navigate(['admin']);
-      }else{
-        this.router.navigate(['mesero']);
+      }else if(user.funcion==="mesero"){
+        this.router.navigate(['waiter']);
+      }else if(user.funcion==="cocinero"){
+        this.router.navigate(['chef']);
       }
       })
 

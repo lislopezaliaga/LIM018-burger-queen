@@ -6,8 +6,8 @@
     <img class='mesera' src="https://firebasestorage.googleapis.com/v0/b/burger-cangreburger.appspot.com/o/waitress.png?alt=media&token=e7061018-4062-4449-8892-40193a3cd774
     ">
     <div class="vistasgeneral">
-        <label class="vistas" (click)="showTakeOrder()">Tomar Pedido</label>
-        <label class="vistas" (click)="showOrderReady()">Ver Pedidos</label>
+        <label class="vistas" [ngClass]="{'backType':showTakeO}" (click)="showTakeOrder()">Tomar Pedido</label>
+        <label class="vistas" [ngClass]="{'backType':showOrdersR}"(click)="showOrderReady()">Ver Pedidos</label>
        
     <img class='salir' (click)="logout()" src="https://firebasestorage.googleapis.com/v0/b/burger-cangreburger.appspot.com/o/logout.png?alt=media&token=ae4fc83b-49c2-47c4-be50-ffab74bb8eb7">
 </div>

@@ -20,7 +20,7 @@ const routes: Routes = [
   { path: 'admin', component: ViewAdminComponent ,
   /* ...canActivate(() => redirectUnauthorizedTo(['/login'])) */
   },
-  { path: 'mesero', component: MeseroComponent},
+  { path: 'waiter', component: MeseroComponent},
   { path: 'chef', component: ChefComponent}
   
 ];

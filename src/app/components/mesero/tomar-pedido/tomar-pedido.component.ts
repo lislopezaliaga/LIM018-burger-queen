@@ -20,10 +20,12 @@ export class TomarPedidoComponent implements OnInit {
   menus:any=menu;
   typeMenu:string='Menú';
   simpleDoble:boolean=false;
+  selectSimple:boolean=true;
+  selectDoble:boolean=false;
   pedido:any=[];
   contador:number=1;
   total:any=0;
-  select:any;
+  select:any=0;
 
   
   cliente = new FormControl('', []);
@@ -50,6 +52,13 @@ export class TomarPedidoComponent implements OnInit {
 
   filterMenu(types:string){
     // this.menus=menu;
+    if(types=="Hamburguesa simple"){
+      this.selectSimple=true;
+      this.selectDoble=false;
+    }else{
+      this.selectSimple=false;
+      this.selectDoble=true;
+    }
     if(types=="Hamburguesa simple"||types=="Hamburguesa doble"){
       this.typeMenu="Hamburguesa";
       this.simpleDoble=true;
@@ -65,7 +74,7 @@ export class TomarPedidoComponent implements OnInit {
 
   addNombre(id:any,name:string, price:string,cantItems:number){
     console.log(id);
-
+    name=name+this.eggName+this.cheeseName;
     let prueb:boolean=this.pedido.filter((element:any, indice:any) => {
       if(element.descripcion===name){
         this.pedido[indice].cantidad+=1;
@@ -76,11 +85,13 @@ export class TomarPedidoComponent implements OnInit {
       return false;
       })
     if(prueb==false){
-      name=name+this.eggName+this.cheeseName;
+   
     this.pedido.push({descripcion:name, precio:price,cantidad:cantItems,egg:this.egg,cheese:this.cheese}); 
-    this.eggName='';
-    this.select="0";
+   
     }
+    this.eggName='';
+    this.cheeseName='';
+    this.select=0;
   }
 
   addItems(name:any,precio:any){

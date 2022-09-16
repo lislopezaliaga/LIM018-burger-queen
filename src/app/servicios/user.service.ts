@@ -1,5 +1,5 @@
 import { EventEmitter, Injectable } from '@angular/core';
-import { Auth, createUserWithEmailAndPassword, signInWithEmailAndPassword, getAuth, deleteUser} from '@angular/fire/auth';
+import { Auth, createUserWithEmailAndPassword, signInWithEmailAndPassword, getAuth, deleteUser,signOut} from '@angular/fire/auth';
 import { Firestore, collection, addDoc, collectionData, doc, deleteDoc, setDoc, getDoc} from '@angular/fire/firestore';
 import { Observable } from 'rxjs';
 import Users from '../data/data.users';
@@ -18,6 +18,9 @@ export class UserService {
   
   login({email, password}: any) {
     return signInWithEmailAndPassword(this.auth, email, password);
+  }
+  signOutUser(){
+   return signOut(this.auth);
   }
 
   $register = new EventEmitter<any>();

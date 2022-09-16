@@ -26,13 +26,13 @@ export class OrderReadyComponent implements OnInit {
 
   ngOnInit(): void {
     this.pedidoService.getPedido("ready").subscribe((pedidos) => {
-      this.pedidos = pedidos;       
-      console.log(this.pedidos);
+       
+      this.pedidos=pedidos.sort((a:any,b:any)=>a.timeEnd-b.timeEnd); 
     })
   }
 
-  sendOrderDelivered(id:any){
-    this.pedidoService.updatePedido("delivered", id);
+  sendOrderDelivered(id:any,timeend:any){
+    this.pedidoService.updatePedido("delivered", id,timeend);
   }
 
 }

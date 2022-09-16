@@ -45,12 +45,12 @@ table, tr, td, th{
     margin:2%;
 }
 .btnListo{
-    width: 30%;
+    width: 38%;
     border: 1.5px solid#625D63;
     border-radius: 6px;
     background-color: #DAE5D0;
     font-size: 15px;
-    margin: 0 35%;
+    margin: 0 31%;
 }
 
 @media only screen and (min-width: 1200px){

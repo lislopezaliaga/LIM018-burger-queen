@@ -19,7 +19,7 @@
                 </tr >  
             </table>
             <label class="total">Total: {{pedido.totalPrice}}</label>
-            <button class="btnListo" (click)="sendOrderDelivered(pedido.id)">Entregado</button>
+            <button class="btnListo" (click)="sendOrderDelivered(pedido.id,pedido.timeEnd)">Entregado</button>
 
         </div>
 

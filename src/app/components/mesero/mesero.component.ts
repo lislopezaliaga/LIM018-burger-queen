@@ -14,7 +14,7 @@ export class MeseroComponent implements OnInit {
   usuario:any=this.user.nombre;
   showTakeO:boolean=true;
   showOrdersR:boolean=false;
-
+  cssColor:any=true;
 
   constructor(private router: Router,
     private userService:UserService) { }
@@ -33,6 +33,7 @@ export class MeseroComponent implements OnInit {
   logout(){
     sessionStorage.clear();
     this.router.navigate(['login']);
+    this.userService.signOutUser();
   }
 
   showTakeOrder(){

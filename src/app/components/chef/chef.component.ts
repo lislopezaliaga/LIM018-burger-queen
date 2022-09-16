@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { PedidoService } from '../../servicios/pedido.service';
 import Pedidos from '../../data/data.pedido';
+import { Router } from '@angular/router';
+import { UserService } from 'src/app/servicios/user.service';
 
 @Component({
   selector: 'app-chef',
@@ -9,8 +11,12 @@ import Pedidos from '../../data/data.pedido';
 })
 export class ChefComponent implements OnInit {
   pedidos: Pedidos[];
+  sesion:any=sessionStorage.getItem('User');
+  user=JSON.parse(this.sesion);
+  usuario:any=this.user.nombre;
  
-  constructor(private pedidoService: PedidoService) { 
+  constructor(private pedidoService: PedidoService,private router: Router,
+    private userService:UserService) { 
     this.pedidos= [{
       waiter: 'Mesero',
       client: 'TengoHambre',
@@ -25,8 +31,7 @@ export class ChefComponent implements OnInit {
 
   ngOnInit(): void {
     this.pedidoService.getPedido("pending").subscribe((pedidos) => {
-      this.pedidos = pedidos;       
-      console.log(this.pedidos);
+      this.pedidos=pedidos.sort((a:any,b:any)=>a.timeStart-b.timeStart);    
     })
   }
 
@@ -34,6 +39,10 @@ export class ChefComponent implements OnInit {
     console.log(id);  
     this.pedidoService.updatePedido("ready", id, new Date);
   }
-
+  logout(){
+    sessionStorage.clear();
+    this.router.navigate(['login']);
+    this.userService.signOutUser();
+  }
   
 }

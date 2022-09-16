@@ -15,8 +15,8 @@
                 <label class="typeMenu"> {{typeMenu}}</label>
                 <div class="simpleDoble" *ngIf="simpleDoble">
                   
-                    <button class="btnBurguer" (click)="filterMenu('Hamburguesa simple')" >Simples</button>
-                    <button class="btnBurguer" (click)="filterMenu('Hamburguesa doble')">Dobles</button>
+                    <button class="btnBurguer" [ngClass]="{'backType':selectSimple}" (click)="filterMenu('Hamburguesa simple')" >Simples</button>
+                    <button class="btnBurguer" [ngClass]="{'backType':selectDoble}"(click)="filterMenu('Hamburguesa doble')">Dobles</button>
             
                 </div>
 
@@ -27,7 +27,7 @@
                     <img class="imgMenu" src={{menu.img}}>
                     <div class="adicional" *ngIf="menu.adicionales">
                         <div class="checkAdicional">    
-                            <select class="chesse" name="select"  (change) = "addEgg($event)"  #menu.id >
+                            <select class="chesse" name="select"  (change) = "addEgg($event)" [value]="select" >
                                 <option value="0" disabled selected>🍳</option>
                                 <option value="1">1</option>
                                 <option value="2">2</option>
@@ -35,7 +35,7 @@
                             </select>
                         </div>
                         <div class="checkAdicional">
-                            <select class="chesse" name="select" (change) = "addCheese($event)">
+                            <select class="chesse" name="select" (change) = "addCheese($event)" [value]="select">
                                 <option value="0" disabled selected>🧀</option>
                                 <option value="1">1</option>
                                 <option value="2">2</option>
