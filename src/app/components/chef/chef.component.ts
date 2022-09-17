@@ -3,6 +3,7 @@ import { PedidoService } from '../../servicios/pedido.service';
 import Pedidos from '../../data/data.pedido';
 import { Router } from '@angular/router';
 import { UserService } from 'src/app/servicios/user.service';
+import { Time } from '@angular/common';
 
 @Component({
   selector: 'app-chef',
@@ -14,6 +15,8 @@ export class ChefComponent implements OnInit {
   sesion:any=sessionStorage.getItem('User');
   user=JSON.parse(this.sesion);
   usuario:any=this.user.nombre;
+  timeCook:any=new Date;
+  tiempo:any;
  
   constructor(private pedidoService: PedidoService,private router: Router,
     private userService:UserService) { 
@@ -33,6 +36,10 @@ export class ChefComponent implements OnInit {
     this.pedidoService.getPedido("pending").subscribe((pedidos) => {
       this.pedidos=pedidos.sort((a:any,b:any)=>a.timeStart-b.timeStart);    
     })
+    setTimeout(()=>{
+      console.log(this.cronometro());
+    },4000)
+    
   }
 
   sendOrderReady(id:any){
@@ -44,5 +51,17 @@ export class ChefComponent implements OnInit {
     this.router.navigate(['login']);
     this.userService.signOutUser();
   }
-  
+ 
+  mueveReloj(){
+    let momentoActual:any = new Date();
+    let hora = momentoActual.getHours();
+    let minuto = momentoActual.getMinutes();
+    let segundo = momentoActual.getSeconds();
+    this.tiempo = hora + " : " + minuto + " : " + segundo;
+    return this.tiempo;
+    
+  }
+  cronometro(){
+    setInterval(this.mueveReloj,1000);
+  }
 }

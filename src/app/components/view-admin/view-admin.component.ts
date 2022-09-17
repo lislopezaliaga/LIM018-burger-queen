@@ -17,6 +17,9 @@ export class ViewAdminComponent implements OnInit {
   shorTotalOrd: boolean = false;
   showRegister: boolean = true;
 
+  showTakeO:boolean=true;
+  showOrdersR:boolean=false;
+
   constructor(private registerM:UserService,
     private userService: UserService,private router:Router) {
       this.users = [{
@@ -53,5 +56,10 @@ export class ViewAdminComponent implements OnInit {
     this.shorTotalOrd=true;
     this.showRegister=false;
   }
+  showUsers(){
+    this.shorTotalOrd=false;
+    this.showRegister=true;
+  }
+  
 
 }

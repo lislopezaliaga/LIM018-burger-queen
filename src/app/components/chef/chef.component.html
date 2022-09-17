@@ -17,7 +17,7 @@
     </div>
     <div class="tableOrder">
         <div class="pendingOrder" *ngFor="let pedido of pedidos">
-           
+            <input onload="" #tiempo [value]="cronometro()">
             <label>Fecha: {{pedido.timeShow}}</label>
             <label>Cliente: {{pedido.client}}</label>
             <label class="centrar">Pedido</label>

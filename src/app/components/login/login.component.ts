@@ -10,6 +10,8 @@ import { Router } from '@angular/router';
 })
 export class LoginComponent implements OnInit {
   formLogin: FormGroup;
+  errorText:boolean=true;
+  textError:string='';
 
   constructor(
     private userService: UserService,
@@ -45,7 +47,28 @@ export class LoginComponent implements OnInit {
 
 
     })
-    .catch(error => console.log(error))
+    .catch(error => {
+      if(error.code=='auth/missing-email'){
+        this.errorText=true;
+        this.textError='Debe ingresar un usuario y contraseña';
+        setTimeout(() => {
+          this.errorText=false;
+        }, 3000);
+      }else if(error.code=='auth/wrong-password'){
+        this.errorText=true;
+        this.textError='Contraseña incorrecta';
+        setTimeout(() => {
+          this.errorText=false;
+        }, 3000);
+      }else if(error.code=='auth/user-not-found'){
+        this.errorText=true;
+        this.textError='Usuario no registrado';
+        setTimeout(() => {
+          this.errorText=false;
+        }, 3000);
+      }
+      console.log(error)
+    })
   }
 
 }

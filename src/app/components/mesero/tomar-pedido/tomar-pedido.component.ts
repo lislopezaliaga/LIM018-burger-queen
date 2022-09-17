@@ -44,6 +44,8 @@ export class TomarPedidoComponent implements AfterViewInit {
   ngOnInit(): void {
   }
   ngAfterViewInit(){
+    console.log(this.eSelected);
+    this.eSelected.forEach((e,i)=>i==0?console.log(e.nativeElement.value):console.log('hola'));
     
   }
 
@@ -70,6 +72,7 @@ export class TomarPedidoComponent implements AfterViewInit {
 
 
   addNombre(inde:number,name:string, price:string,cantItems:number){
+
     name=name+this.eggName+this.cheeseName;
     console.log(price);
     
@@ -95,20 +98,12 @@ export class TomarPedidoComponent implements AfterViewInit {
     this.eggName='';
     this.cheeseName='';
     
-    // this.selected.get(inde-4)?.nativeElement.value=0;
-    // this.selected.filter((e,i)=>i==inde-4?e.nativeElement.value)
-    // console.log(a);
-    // this.selected[0].nativeElement.value=0
    
       this.eSelected.filter((e,i)=>i==inde?e.nativeElement.value ="0":e.nativeElement.value);
       this.cSelected.filter((e,i)=>i==inde?e.nativeElement.value ="0":e.nativeElement.value); // Aquí igualas al value del ítem que quieras
     
-    // this.selected.reset(ElementRef);
   }
-  // $scope.reset = function() {
-  //   $scope.form.estadoActi="";
-
-  // };
+ 
   addItems(name:any,precio:any){
     console.log(name,precio);
     
@@ -178,13 +173,13 @@ export class TomarPedidoComponent implements AfterViewInit {
   };
     
   addEgg(event:any){
-    this.eggName='  ' +event.target.value+'huev '
+    this.eggName='  ' +event.target.value+'🍳 '
     this.egg=event.target.value;
 
   }
   addCheese(event:any){
     
-    this.cheeseName= event.target.value + ' ques';
+    this.cheeseName= '  '+event.target.value + '🧀';
     this.cheese=event.target.value;
 
   }

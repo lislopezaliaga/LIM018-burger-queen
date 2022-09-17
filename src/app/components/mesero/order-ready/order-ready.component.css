@@ -52,9 +52,14 @@ table, tr, td, th{
     font-size: 15px;
     margin: 0 31%;
 }
+@media only screen and (max-width: 490px){
+    .pendingOrder{
+        width: 46%;
+    }
+}
 
 @media only screen and (min-width: 1200px){
     .pendingOrder{
         width: 21%;
     }
-  }
+}

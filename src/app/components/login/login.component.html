@@ -5,11 +5,12 @@
             <img class="burguerChef" src="https://firebasestorage.googleapis.com/v0/b/burger-cangreburger.appspot.com/o/burguerChefv2.png?alt=media&token=0c79ce36-2445-4ca7-924d-0d8704534266">
             <h1>BURGER QUEEN</h1>
             <div class="inputContent">
-            <label>Usuario</label>
-            <input class="usuario" type="text" formControlName="email">
-            <label>Contraseña</label>
-            <input class="contraseña" type="password" formControlName="password">
+                <label>Usuario</label>
+                <input class="usuario" type="text" formControlName="email">
+                <label>Contraseña</label>
+                <input class="contraseña" type="password" formControlName="password">
             </div>
+            <label class="error" *ngIf="errorText">{{textError}}</label>
             <button type="submit">Ingresar</button>
         </form>
     </div>
