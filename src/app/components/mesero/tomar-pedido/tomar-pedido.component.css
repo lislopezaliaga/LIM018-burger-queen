@@ -8,10 +8,10 @@
     display: flex;
     flex-direction: column;
     width: 6%;
-    height: 87vh;
+    height: 88vh;
     background-color: #A0BCC2;
     align-items: center;
-    margin: 1% 0;
+    margin: 11vh 0;
     border-radius: 6px;
     justify-content: center;
     position: fixed;
@@ -29,6 +29,7 @@
 .menuOrden{
   display: flex;
   justify-content: center;
+  margin-top: 10vh ;
 }
 .client{
   display: flex;
@@ -39,7 +40,7 @@
   border-radius: 6px;
   padding: 3% 0;
   background-color: #A0BCC2;
-  margin-bottom: 4%;
+  margin-bottom: 2%;
 }
 .clientInput{
   background-color: #FEFBE7;
@@ -67,7 +68,7 @@
   flex-direction: column;
   width: 52%;
   background-color: #A0BCC2;
-  margin: 1% 0 0 8%;
+  margin: 1% 47% 0 7%;
   border-radius: 6px;
   justify-items: center;
   text-align: center;
@@ -127,10 +128,13 @@
   display: flex;
   flex-direction: column;
   width: 45%;
-  margin: 1% 2% 0 2%;
+  margin: 1% 1% 0 2%;
   height: auto;
   border-radius: 8px;
+  position: fixed;
+  right: 0;
 }
+
 .tableOrder{
   margin: 1% 0%;
   width: 100%;
@@ -206,7 +210,7 @@
   display: flex;
   flex-direction: column;
   border-radius: 6px 6px 0 0;
-  min-height: 60vh;
+  min-height: 58vh;
 }
 .total{
   display:flex;
@@ -254,7 +258,35 @@ td{
 .backType{
   background-color: #F9EBC8;
 }
+.error{
+  color: red;
+}
+@media only screen and (max-width: 490px){
 
+  .menuOrden{
+   flex-direction: column;
+  }
+  .orden{
+
+    position: relative;
+    width: 88%;
+    margin-left: 11%;
+  }
+  .titleMenu{
+    width: 88%;
+    margin-left: 11%;
+    max-height: 57vh;
+    min-height: 40vh;
+    overflow: scroll;
+  }
+  .options{
+    width: 10%;
+    margin-top: 10.5vh;
+  }
+  .ordenPedido{
+    min-height: auto;
+  }
+}
 
 @media only screen and (min-width: 1200px){
   .menu{
@@ -268,11 +300,15 @@ td{
     font-size: 15px;
   }
   .ordenPedido{
-    min-height: 59vh;
+    min-height: 61vh;
   }
   .date{
 
     width: 13%;
  
+  }
+  .options{
+    height: 87vh;
+    margin-top: 11.5vh;
   }
 }

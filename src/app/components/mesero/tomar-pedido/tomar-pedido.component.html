@@ -27,7 +27,7 @@
                     <img class="imgMenu" src={{menu.img}}>
                     <div class="adicional" *ngIf="menu.adicionales">
                         <div class="checkAdicional">    
-                            <select class="chesse" name="select"  (change) = "addEgg($event)" [value]="select" >
+                            <select class="chesse"   (change) = "addEgg($event)" #eggSelected>
                                 <option value="0" disabled selected>🍳</option>
                                 <option value="1">1</option>
                                 <option value="2">2</option>
@@ -35,7 +35,7 @@
                             </select>
                         </div>
                         <div class="checkAdicional">
-                            <select class="chesse" name="select" (change) = "addCheese($event)" [value]="select">
+                            <select class="chesse"  (change) = "addCheese($event)" #cheeseSelected>
                                 <option value="0" disabled selected>🧀</option>
                                 <option value="1">1</option>
                                 <option value="2">2</option>
@@ -45,7 +45,7 @@
                     </div>
                     <div class="pricebtn">
                    <label class="price">$ {{menu.price}}</label>
-                   <button class="btnAdd" (click)="addNombre(menu.id,menu.item, menu.price,contador)">Agregar</button>
+                   <button class="btnAdd" (click)="addNombre(menu.id-5,menu.item, menu.price,contador)">Agregar</button>
                 </div>
                 </div>
 
@@ -90,6 +90,7 @@
                     <label class="precioTotal">TOTAL</label>
                     <label class="precioTotal">$ {{precioTotal()}}</label>
                 </div>
+                <label class="error" *ngIf="orderEmpty">El nombre del cliente o la orden estan vacíos</label>
                 <button class="send" (click)="sendOrder()" > Enviar a la Cocina</button>
             </div>
             </div>

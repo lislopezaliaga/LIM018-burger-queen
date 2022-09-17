@@ -1,4 +1,4 @@
-import { Component, OnInit,Input } from '@angular/core';
+import { Component, OnInit,Input,ViewChild, ElementRef,AfterViewInit, ViewChildren, QueryList} from '@angular/core';
 import { elementAt } from 'rxjs';
 import menu from '../../../../assets/menu.json';
 import { FormControl } from '@angular/forms';
@@ -10,9 +10,11 @@ import { PedidoService } from 'src/app/servicios/pedido.service';
   templateUrl: './tomar-pedido.component.html',
   styleUrls: ['./tomar-pedido.component.css']
 })
-export class TomarPedidoComponent implements OnInit {
-  // @ViewChild('hola') element: ElementRef;
-  // @Input() nameuser:any;
+export class TomarPedidoComponent implements AfterViewInit {
+  @ViewChildren('eggSelected') eSelected!: QueryList<ElementRef>;
+  @ViewChildren('cheeseSelected') cSelected!: QueryList<ElementRef>;
+
+ 
   sesion:any=sessionStorage.getItem('User');
   user=JSON.parse(this.sesion);
   usuario:any=this.user.nombre;
@@ -25,8 +27,8 @@ export class TomarPedidoComponent implements OnInit {
   pedido:any=[];
   contador:number=1;
   total:any=0;
-  select:any=0;
-
+  selectPedidos:any=0;
+  orderEmpty:boolean=false
   
   cliente = new FormControl('', []);
   egg:any=0;
@@ -37,18 +39,13 @@ export class TomarPedidoComponent implements OnInit {
 
   constructor(private pedidoService:PedidoService) {
     // const a:any=this.pedido.forEach((element:any)=>this.total+=element.precio)
-    
    }
 
   ngOnInit(): void {
-
- 
-   
   }
-  // capturar(){
-  //   this.addCheese
+  ngAfterViewInit(){
     
-  // }
+  }
 
   filterMenu(types:string){
     // this.menus=menu;
@@ -72,28 +69,46 @@ export class TomarPedidoComponent implements OnInit {
   }
 
 
-  addNombre(id:any,name:string, price:string,cantItems:number){
-    console.log(id);
+  addNombre(inde:number,name:string, price:string,cantItems:number){
     name=name+this.eggName+this.cheeseName;
+    console.log(price);
+    
+    price=price+parseInt(this.egg)+parseInt(this.cheese);
+    console.log(this.egg,this.cheese, price);
+    
+    // console.log(inde);
+    
     let prueb:boolean=this.pedido.filter((element:any, indice:any) => {
       if(element.descripcion===name){
         this.pedido[indice].cantidad+=1;
         this.pedido[indice].precio+=parseInt(price);
-        this.select="0";
+       
         return true
       }
       return false;
       })
     if(prueb==false){
-   
-    this.pedido.push({descripcion:name, precio:price,cantidad:cantItems,egg:this.egg,cheese:this.cheese}); 
-   
+      this.pedido.push({descripcion:name, precio:price,cantidad:cantItems}); 
     }
+    this.egg=0;
+    this.cheese=0;
     this.eggName='';
     this.cheeseName='';
-    this.select=0;
+    
+    // this.selected.get(inde-4)?.nativeElement.value=0;
+    // this.selected.filter((e,i)=>i==inde-4?e.nativeElement.value)
+    // console.log(a);
+    // this.selected[0].nativeElement.value=0
+   
+      this.eSelected.filter((e,i)=>i==inde?e.nativeElement.value ="0":e.nativeElement.value);
+      this.cSelected.filter((e,i)=>i==inde?e.nativeElement.value ="0":e.nativeElement.value); // Aquí igualas al value del ítem que quieras
+    
+    // this.selected.reset(ElementRef);
   }
+  // $scope.reset = function() {
+  //   $scope.form.estadoActi="";
 
+  // };
   addItems(name:any,precio:any){
     console.log(name,precio);
     
@@ -163,13 +178,13 @@ export class TomarPedidoComponent implements OnInit {
   };
     
   addEgg(event:any){
-    this.eggName=event.target.value+'h '
+    this.eggName='  ' +event.target.value+'huev '
     this.egg=event.target.value;
 
   }
   addCheese(event:any){
     
-    this.cheeseName= event.target.value + 'q';
+    this.cheeseName= event.target.value + ' ques';
     this.cheese=event.target.value;
 
   }
@@ -186,7 +201,18 @@ export class TomarPedidoComponent implements OnInit {
       totalPrice:this.total
     };
     console.log(this.takeOrder);
-    this.pedidoService.addPedido(this.takeOrder)
+    if(this.pedido.length>0 && this.cliente.value!==''){
+      this.pedidoService.addPedido(this.takeOrder);
+      this.pedido=[];
+      this.cliente = new FormControl('', []);
+    }else{
+      this.orderEmpty=true;
+      setTimeout(() => {
+        this.orderEmpty=false;
+      }, 3000);
+
+    }
+
   }
 
 
