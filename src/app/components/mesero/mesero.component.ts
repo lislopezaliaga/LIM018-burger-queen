@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import Users from 'src/app/data/data.users';
 
 import { UserService } from 'src/app/servicios/user.service';
 
@@ -10,7 +11,7 @@ import { UserService } from 'src/app/servicios/user.service';
 })
 export class MeseroComponent implements OnInit {
   sesion:any=sessionStorage.getItem('User');
-  user=JSON.parse(this.sesion);
+  user:Users=JSON.parse(this.sesion);
   usuario:any=this.user.nombre;
   showTakeO:boolean=true;
   showOrdersR:boolean=false;

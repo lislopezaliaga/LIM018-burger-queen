@@ -9,11 +9,14 @@ import { MeseroComponent } from './mesero.component';
 describe('MeseroComponent', () => {
   let component: MeseroComponent;
   let fixture: ComponentFixture<MeseroComponent>;
+  let UserServiceSpy:jasmine.SpyObj<UserService>;
 
   beforeEach(async () => {
+    UserServiceSpy=jasmine.createSpyObj<UserService>('UserService',['register','login','signOutUser']);
+
     await TestBed.configureTestingModule({
       declarations: [ MeseroComponent ],
-      providers: [{provide: Auth, useValue: UserService},{provide: Firestore, useValue: UserService}],
+      providers: [{provide: UserService, useValue:UserServiceSpy }],
 
       
       
