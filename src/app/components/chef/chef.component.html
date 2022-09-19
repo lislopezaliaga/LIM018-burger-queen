@@ -16,8 +16,8 @@
         <label>Pedidos Pendientes</label>
     </div>
     <div class="tableOrder">
-        <div class="pendingOrder" *ngFor="let pedido of pedidos">
-            <input onload="" #tiempo [value]="cronometro()">
+        <div class="pendingOrder" *ngFor="let pedido of pedidos; let i = index">
+            <label class="time" #timeEnd>{{mueveReloj(pedido.timeStart.seconds)}}</label>
             <label>Fecha: {{pedido.timeShow}}</label>
             <label>Cliente: {{pedido.client}}</label>
             <label class="centrar">Pedido</label>
@@ -33,7 +33,7 @@
                 </tr >  
             </table>
             <label class="total">Total: {{pedido.totalPrice}}</label>
-            <button class="btnListo" (click)="sendOrderReady(pedido.id)">Listo</button>
+            <button class="btnListo" (click)="sendOrderReady(pedido.id,i)">Listo</button>
 
         </div>
 

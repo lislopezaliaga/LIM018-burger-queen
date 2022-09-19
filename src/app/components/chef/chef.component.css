@@ -30,7 +30,7 @@ header{
 .sal{
     width: 33%;
     display: flex;
-    justify-content: end;
+    justify-content: flex-end;
     align-items: center;
 }
 .chef{
@@ -95,6 +95,12 @@ table, tr, td, th{
     font-size: 15px;
     margin: 0 35%;
 }
+.time{
+    margin-left: 70%;
+   font-size: 16px;
+   font-weight: bold; 
+}
+
 @media only screen and (max-width: 490px){
     .pendingOrder{
         width: 46%;

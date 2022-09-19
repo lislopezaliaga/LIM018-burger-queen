@@ -1,13 +1,14 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { FIREBASE_OPTIONS } from '@angular/fire/compat';
 
 import { AppComponent } from './app.component';
 import { LoginComponent } from './components/login/login.component';
 import { ViewAdminComponent } from './components/view-admin/view-admin.component';
 import { initializeApp,provideFirebaseApp } from '@angular/fire/app';
 import { environment } from '../environments/environment';
-import { provideAuth,getAuth } from '@angular/fire/auth';
-import { provideFirestore,getFirestore } from '@angular/fire/firestore';
+import { provideAuth,getAuth, Auth } from '@angular/fire/auth';
+import { provideFirestore,getFirestore, Firestore } from '@angular/fire/firestore';
 import { RegisterUserComponent } from './components/register-user/register-user.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
@@ -20,6 +21,9 @@ import { FormsModule } from '@angular/forms';
 import { ChefComponent } from './components/chef/chef.component';
 import { OrderReadyComponent } from './components/mesero/order-ready/order-ready.component';
 import { TotalOrdersComponent } from './components/view-admin/total-orders/total-orders.component';
+import { PedidoService } from './servicios/pedido.service';
+import { UserService } from './servicios/user.service';
+// import { PedidoService } from './servicios/pedido.service';
 @NgModule({
   declarations: [
     AppComponent,
@@ -44,7 +48,9 @@ import { TotalOrdersComponent } from './components/view-admin/total-orders/total
     MatSelectModule,
     FormsModule
   ],
-  providers: [],
+  // providers: [{provide: UserService, useValue: Auth},{provide: Firestore, useValue: UserService}],
+  //  providers: [PedidoService,UserService,{ provide: FIREBASE_OPTIONS, useValue: environment.firebase }],
+    // ,{ provide: FIREBASE_OPTIONS, useValue: environment.firebase }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
