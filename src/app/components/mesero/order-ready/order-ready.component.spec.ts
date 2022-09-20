@@ -1,14 +1,42 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { PedidoService } from 'src/app/servicios/pedido.service';
 
 import { OrderReadyComponent } from './order-ready.component';
+import { of } from 'rxjs';
 
 describe('OrderReadyComponent', () => {
   let component: OrderReadyComponent;
   let fixture: ComponentFixture<OrderReadyComponent>;
+  let pedidoServiceSpy:jasmine.SpyObj<PedidoService>;
 
   beforeEach(async () => {
+    pedidoServiceSpy=jasmine.createSpyObj<PedidoService>('PedidoService',['addPedido','getPedido','getOrderTotal','updatePedido']);
+    pedidoServiceSpy.getPedido.and.returnValue(of([
+      {
+        waiter: 'Miguel',
+        client: 'TengoHambre',
+        pedidos: [],
+        timeShow: '',
+        timeStart: '',
+        timeEnd: 'cocinero',
+        status: 'cocinero',
+        totalPrice: 'cocinero'
+      },
+      {
+        waiter: 'Juan',
+        client: 'TengoHambre',
+        pedidos: [],
+        timeShow: '',
+        timeStart: '',
+        timeEnd: 'cocinero',
+        status: 'cocinero',
+        totalPrice: 'cocinero'
+      }
+    ]));
+    
     await TestBed.configureTestingModule({
-      declarations: [ OrderReadyComponent ]
+      declarations: [ OrderReadyComponent ],
+      providers: [{provide: PedidoService, useValue:pedidoServiceSpy }],
     })
     .compileComponents();
 

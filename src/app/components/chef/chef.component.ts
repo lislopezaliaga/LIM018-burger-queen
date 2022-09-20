@@ -1,23 +1,29 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, QueryList, ViewChild, ViewChildren,AfterViewInit } from '@angular/core';
 import { PedidoService } from '../../servicios/pedido.service';
 import Pedidos from '../../data/data.pedido';
 import { Router } from '@angular/router';
 import { UserService } from 'src/app/servicios/user.service';
 import { Time } from '@angular/common';
+import { timeout } from 'rxjs';
+
 
 @Component({
   selector: 'app-chef',
   templateUrl: './chef.component.html',
   styleUrls: ['./chef.component.css']
 })
-export class ChefComponent implements OnInit {
+export class ChefComponent implements AfterViewInit {
+  // @ViewChild('timeEnd')timeEnd!:ElementRef;
+  @ViewChildren('timeEnd') timeEnd!:QueryList<ElementRef>;
+  
+
   pedidos: Pedidos[];
   sesion:any=sessionStorage.getItem('User');
   user=JSON.parse(this.sesion);
   usuario:any=this.user.nombre;
-  timeCook:any=new Date;
+  timeCook:any;
   tiempo:any;
- 
+  
   constructor(private pedidoService: PedidoService,private router: Router,
     private userService:UserService) { 
     this.pedidos= [{
@@ -36,15 +42,28 @@ export class ChefComponent implements OnInit {
     this.pedidoService.getPedido("pending").subscribe((pedidos) => {
       this.pedidos=pedidos.sort((a:any,b:any)=>a.timeStart-b.timeStart);    
     })
-    setTimeout(()=>{
-      console.log(this.cronometro());
-    },4000)
+  
+      console.log(this.timeEnd);
+      
+    setInterval((this.mueveReloj),1000);
+  
     
   }
+  
+  ngAfterViewInit ():void{
+    // setTimeout(()=>{
+    //   this.timeEnd.forEach((e)=> console.log( e.nativeElement));
+    // },2000)
+     
+  }
 
-  sendOrderReady(id:any){
-    console.log(id);  
-    this.pedidoService.updatePedido("ready", id, new Date);
+
+  sendOrderReady(id:any,i:any){
+    
+    this.timeEnd.forEach((e,index)=> index==i?this.timeCook =e.nativeElement.textContent:0 );
+    this.pedidoService.updatePedido("ready", id, this.timeCook);
+    // console.log(this.timeCook);
+  
   }
   logout(){
     sessionStorage.clear();
@@ -52,16 +71,20 @@ export class ChefComponent implements OnInit {
     this.userService.signOutUser();
   }
  
-  mueveReloj(){
-    let momentoActual:any = new Date();
-    let hora = momentoActual.getHours();
-    let minuto = momentoActual.getMinutes();
-    let segundo = momentoActual.getSeconds();
-    this.tiempo = hora + " : " + minuto + " : " + segundo;
-    return this.tiempo;
+  mueveReloj(timeS:any){
+    // timeS= timeS.seconds;
+    // console.log(timeS);-timeS;
     
-  }
-  cronometro(){
-    setInterval(this.mueveReloj,1000);
+    let momentoActual:any = new Date();
+    let seg=(Date.parse(momentoActual)*0.001)-timeS;
+
+    let hour:any = Math.floor(seg / 3600);
+      hour = (hour < 10)? '0' + hour : hour;
+    let minute:any = Math.floor((seg / 60) % 60);
+      minute = (minute < 10)? '0' + minute : minute;
+    let second:any = seg % 60;
+      second = (second < 10)? '0' + second : second;
+    this.tiempo=hour + ':' + minute + ':' + second;
+    return this.tiempo
   }
 }

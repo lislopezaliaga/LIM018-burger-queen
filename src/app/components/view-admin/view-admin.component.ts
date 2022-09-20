@@ -49,7 +49,9 @@ export class ViewAdminComponent implements OnInit {
     /*this.userService.deleteUsuario(users.uid).then(response =>); */
   }
   logout(){
+    sessionStorage.clear();
     this.router.navigate(['login']);
+    this.userService.signOutUser();
   }
 
   showTotalOrders(){

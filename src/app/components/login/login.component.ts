@@ -8,6 +8,7 @@ import { Router } from '@angular/router';
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss']
 })
+
 export class LoginComponent implements OnInit {
   formLogin: FormGroup;
   errorText:boolean=true;
@@ -27,8 +28,10 @@ export class LoginComponent implements OnInit {
   }
 
   onSubmit() {
+    sessionStorage.clear();
     this.userService.login(this.formLogin.value)
     .then(response => { 
+      console.log(response);
       this.userService.getUserById(response.user.uid).then((user:any)=>{
         console.log(user);
         
