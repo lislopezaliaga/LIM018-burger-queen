@@ -28,6 +28,7 @@ export class LoginComponent implements OnInit {
   }
 
   onSubmit() {
+    console.log('wwwwwwwwww');
     sessionStorage.clear();
     this.userService.login(this.formLogin.value)
     .then(response => { 
@@ -52,11 +53,16 @@ export class LoginComponent implements OnInit {
     })
     .catch(error => {
       if(error.code=='auth/missing-email'){
+   
+        
         this.errorText=true;
         this.textError='Debe ingresar un usuario y contraseña';
+      
+        
         setTimeout(() => {
           this.errorText=false;
         }, 3000);
+        console.log( this.textError);
       }else if(error.code=='auth/wrong-password'){
         this.errorText=true;
         this.textError='Contraseña incorrecta';
