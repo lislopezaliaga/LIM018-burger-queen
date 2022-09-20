@@ -44,7 +44,7 @@ export class UserService {
     return deleteDoc(userRef );
   }
   
-  getUserById = (userId:any) => {
+  getUserById(userId:any){
     const docRef = doc(this.firestore, 'users', userId);
     const docSnap = getDoc(docRef).then((userDoc) => userDoc.data());
     return docSnap;

@@ -28,25 +28,27 @@ export class LoginComponent implements OnInit {
   }
 
   onSubmit() {
-    console.log('wwwwwwwwww');
+
     sessionStorage.clear();
     this.userService.login(this.formLogin.value)
     .then(response => { 
-      console.log(response);
+     
       this.userService.getUserById(response.user.uid).then((user:any)=>{
-        console.log(user);
+        console.log('yyyyyyyyyyy');
+        // console.log(user);
         
-    
+       
         sessionStorage.setItem('User', JSON.stringify(user));
 
-        
-      if(user.funcion==="admin"){
-        this.router.navigate(['admin']);
-      }else if(user.funcion==="mesero"){
-        this.router.navigate(['waiter']);
-      }else if(user.funcion==="cocinero"){
-        this.router.navigate(['chef']);
-      }
+       
+        if(user.funcion==="admin"){
+          console.log('gggggggggggggggg');
+          this.router.navigate(['admin']);
+        }else if(user.funcion==="mesero"){
+          this.router.navigate(['waiter']);
+        }else if(user.funcion==="cocinero"){
+          this.router.navigate(['chef']);
+        }
       })
 
 
@@ -62,7 +64,6 @@ export class LoginComponent implements OnInit {
         setTimeout(() => {
           this.errorText=false;
         }, 3000);
-        console.log( this.textError);
       }else if(error.code=='auth/wrong-password'){
         this.errorText=true;
         this.textError='Contraseña incorrecta';
