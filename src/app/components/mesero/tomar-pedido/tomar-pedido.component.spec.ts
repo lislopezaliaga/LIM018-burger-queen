@@ -22,6 +22,8 @@ describe('TomarPedidoComponent', () => {
     })
     .compileComponents();
 
+    sessionStorage.setItem('User','{"uid":"AextYYpYUrghueil3WbfCfBN0p93","nombre":"Miguel"}');
+
     fixture = TestBed.createComponent(TomarPedidoComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();

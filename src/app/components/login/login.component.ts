@@ -31,6 +31,7 @@ export class LoginComponent implements OnInit {
     sessionStorage.clear();
     this.userService.login(this.formLogin.value)
     .then(response => { 
+      console.log(response);
       this.userService.getUserById(response.user.uid).then((user:any)=>{
         console.log(user);
         
