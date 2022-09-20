@@ -3,7 +3,7 @@ import { Router } from '@angular/router';
 import Users from 'src/app/data/data.users';
 
 import { UserService } from 'src/app/servicios/user.service';
-'bhjwbdqjwheiwqohqiwhiqio'
+
 @Component({
   selector: 'app-mesero',
   templateUrl: './mesero.component.html',
