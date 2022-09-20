@@ -17,7 +17,7 @@ const routes: Routes = [
   }, */
   { path: 'register', component: RegisterUserComponent },
   { path: 'login', component: LoginComponent },
-  { path: 'admin', component: ViewAdminComponent ,
+  { path: 'admin', component: ViewAdminComponent
   /* ...canActivate(() => redirectUnauthorizedTo(['/login'])) */
   },
   { path: 'waiter', component: MeseroComponent},
