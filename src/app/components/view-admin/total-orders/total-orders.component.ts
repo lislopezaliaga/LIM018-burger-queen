@@ -27,7 +27,6 @@ export class TotalOrdersComponent implements OnInit {
   ngOnInit(): void {
     this.pedidoService.getOrderTotal().subscribe((pedidos) => {
       this.pedidos = pedidos;       
-      console.log(this.pedidos);
     })
   }
 

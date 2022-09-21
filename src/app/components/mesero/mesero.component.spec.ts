@@ -10,14 +10,6 @@ describe('MeseroComponent', () => {
   beforeEach(async () => {
     UserServiceSpy = jasmine.createSpyObj<UserService>('UserService', ['register', 'login', 'signOutUser']);
 
-    /* const store: any = {};
-    spyOn(sessionStorage, 'getItem').and.callFake((key) => {
-      return store[key];
-    });
-    spyOn(sessionStorage, 'setItem').and.callFake((key, value) => {
-      console.log(key);
-      return store[key] = value + '';
-    }); */
     await TestBed.configureTestingModule({
       declarations: [MeseroComponent],
       providers: [{ provide: UserService, useValue: UserServiceSpy }],

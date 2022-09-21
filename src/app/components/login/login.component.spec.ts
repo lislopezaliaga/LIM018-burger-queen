@@ -83,14 +83,15 @@ describe('LoginComponent', () => {
     flush(); 
 
   }));
-/*   it('user not found', fakeAsync(() => {
+
+  /* it('Router', fakeAsync(() => {
     const use:any = {
       user: {uid:'hola',funcion:'admin'},
     };
     const hola:any = {
       funcion: 'admin',
     };
-    console.log('rutaaaaaaaaaa'+route);
+    //console.log('rutaaaaaaaaaa'+route);
     userServiceSpy.login.and.callFake(()=>Promise.resolve(use));
     tick();
     
@@ -101,13 +102,8 @@ describe('LoginComponent', () => {
     component.onSubmit();
     tick();
     fixture.detectChanges();
- 
-  
     // expect(route.navigate).toEqual('admin');
     expect(route.navigate).toHaveBeenCalledWith(['/admin']);
-    flush(); 
-
   }));
  */
-  
 });

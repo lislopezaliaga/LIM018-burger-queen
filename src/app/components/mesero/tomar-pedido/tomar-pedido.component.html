@@ -27,7 +27,7 @@
                     <img class="imgMenu" src={{menu.img}}>
                     <div class="adicional" *ngIf="menu.adicionales">
                         <div class="checkAdicional">    
-                            <select class="chesse"   (change) = "addEgg($event)" #eggSelected>
+                            <select class="chesse" id="egg"   (change) = "addEgg($event)" #eggSelected>
                                 <option value="0" disabled selected>🍳</option>
                                 <option value="1">1</option>
                                 <option value="2">2</option>
@@ -35,7 +35,7 @@
                             </select>
                         </div>
                         <div class="checkAdicional">
-                            <select class="chesse"  (change) = "addCheese($event)" #cheeseSelected>
+                            <select class="chesse" id="cheese" (change) = "addCheese($event)" #cheeseSelected>
                                 <option value="0" disabled selected>🧀</option>
                                 <option value="1">1</option>
                                 <option value="2">2</option>
