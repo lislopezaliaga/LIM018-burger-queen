@@ -32,10 +32,10 @@ export class ViewAdminComponent implements OnInit {
      }
 
   ngOnInit(): void {
-    this.registerM.$register.subscribe((valor)=>{this.registerSwitch=valor})
+/*     this.registerM.$register.subscribe((valor)=>{this.registerSwitch=valor})
     this.userService.getUser().subscribe((users) => {
       this.users = users;       
-    })
+    }) */
     
   }
 
@@ -45,7 +45,6 @@ export class ViewAdminComponent implements OnInit {
 
   async onClickDelete( users: Users) {
     await this.userService.deleteRegistro(users);
-    console.log(users);
     /*this.userService.deleteUsuario(users.uid).then(response =>); */
   }
   logout(){

@@ -33,10 +33,7 @@ export class RegisterUserComponent implements OnInit {
       { email: this.formReg.value.nombres.slice(0,1).toLowerCase() + this.formReg.value.apellidos.toLowerCase() + "@burger.com", 
       password: this.formReg.value.password })
       .then(async response => {
-        //this.router.navigate(['/login']);
-        console.log(response);
-        console.log(response.user.uid);
-        
+        //this.router.navigate(['/login']);  
 
         const res = await this.userService.addUser({ 
           uid: response.user.uid,
@@ -45,11 +42,9 @@ export class RegisterUserComponent implements OnInit {
           email: this.formReg.value.nombres.slice(0,1).toLowerCase() + this.formReg.value.apellidos.toLowerCase() + "@burger.com", 
           funcion: this.formReg.value.funcion,
         },response.user.uid);
-        console.log(res);
-
 
       })
-      .catch(error => console.log(error));
+      /* .catch(error => console.log(error)); */
 
 
       this.registerM.$register.emit(false);
