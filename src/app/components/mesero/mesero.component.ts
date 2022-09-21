@@ -25,11 +25,6 @@ export class MeseroComponent implements OnInit {
 
 
   }
-  saveUser() {
-    // <HTMLLabelElement>.target
-    sessionStorage.setItem('Name', JSON.stringify(this.usuario));
-  }
-
 
   logout() {
     sessionStorage.clear();

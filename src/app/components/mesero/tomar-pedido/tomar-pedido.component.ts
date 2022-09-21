@@ -44,8 +44,7 @@ export class TomarPedidoComponent implements AfterViewInit {
   ngOnInit(): void {
   }
   ngAfterViewInit(){
-    console.log(this.eSelected);
-    this.eSelected.forEach((e,i)=>i==0?console.log(e.nativeElement.value):console.log('hola'));
+   /*  this.eSelected.forEach((e,i)=>i==0?console.log(e.nativeElement.value):console.log('hola')); */
     
   }
 
@@ -71,18 +70,15 @@ export class TomarPedidoComponent implements AfterViewInit {
   }
 
 
-  addNombre(inde:number,name:string, price:string,cantItems:number){
+  addNombre(inde:number,name:string, price:any,cantItems:number){
 
     name=name+'  '+this.eggName+this.cheeseName;
-    console.log(price);
+   
+    price=price+parseInt(this.egg)+parseInt(this.cheese);  
     
-    price=price+parseInt(this.egg)+parseInt(this.cheese);
-    console.log(this.egg,this.cheese, price);
-    
-    // console.log(inde);
-    
+       
     let prueb:boolean=this.pedido.filter((element:any, indice:any) => {
-      if(element.descripcion===name){
+      if(element.descripcion==name){
         this.pedido[indice].cantidad+=1;
         this.pedido[indice].precio+=parseInt(price);
        
@@ -105,7 +101,6 @@ export class TomarPedidoComponent implements AfterViewInit {
   }
  
   addItems(name:any,precio:any){
-    console.log(name,precio);
     
     return this.pedido.map((element:any) => {
       if(element.descripcion===name){
@@ -141,8 +136,7 @@ export class TomarPedidoComponent implements AfterViewInit {
   }
 
   precioTotal(){
-    // console.log(this.addCheese,this.addEgg);
- 
+
     const prices:any = []
     this.pedido.forEach((e :any)=> {
       return prices.push(e.precio);
@@ -195,7 +189,6 @@ export class TomarPedidoComponent implements AfterViewInit {
       status:'pending',
       totalPrice:this.total
     };
-    console.log(this.takeOrder);
     if(this.pedido.length>0 && this.cliente.value!==''){
       this.pedidoService.addPedido(this.takeOrder);
       this.pedido=[];

@@ -42,8 +42,6 @@ export class ChefComponent implements AfterViewInit {
     this.pedidoService.getPedido("pending").subscribe((pedidos) => {
       this.pedidos=pedidos.sort((a:any,b:any)=>a.timeStart-b.timeStart);    
     })
-  
-      console.log(this.timeEnd);
       
     setInterval((this.mueveReloj),1000);
   
@@ -54,7 +52,6 @@ export class ChefComponent implements AfterViewInit {
     // setTimeout(()=>{
     //   this.timeEnd.forEach((e)=> console.log( e.nativeElement));
     // },2000)
-     
   }
 
 
@@ -62,8 +59,7 @@ export class ChefComponent implements AfterViewInit {
     
     this.timeEnd.forEach((e,index)=> index==i?this.timeCook =e.nativeElement.textContent:0 );
     this.pedidoService.updatePedido("ready", id, this.timeCook);
-    // console.log(this.timeCook);
-  
+ 
   }
   logout(){
     sessionStorage.clear();
@@ -72,9 +68,7 @@ export class ChefComponent implements AfterViewInit {
   }
  
   mueveReloj(timeS:any){
-    // timeS= timeS.seconds;
-    // console.log(timeS);-timeS;
-    
+     
     let momentoActual:any = new Date();
     let seg=(Date.parse(momentoActual)*0.001)-timeS;
 

@@ -25,10 +25,6 @@ export class UserService {
 
   $register = new EventEmitter<any>();
 
-  // addUser(user: Users){
-  //   const userRef = collection(this.firestore, 'users');
-  //   return addDoc(userRef, user);
-  // }
   addUser(user: Users,userId:any){
     const userRef = doc(this.firestore, 'users',userId);
     return setDoc(userRef, user);

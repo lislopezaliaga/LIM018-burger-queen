@@ -14,6 +14,8 @@ describe('TomarPedidoComponent', () => {
   let component: TomarPedidoComponent;
   let fixture: ComponentFixture<TomarPedidoComponent>;
   let order;
+  let selectEgg:any;
+  let selectCheese:HTMLElement;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
@@ -28,14 +30,19 @@ describe('TomarPedidoComponent', () => {
     fixture = TestBed.createComponent(TomarPedidoComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
+    selectEgg=fixture.nativeElement.querySelector('#egg');
+    selectCheese=fixture.nativeElement.querySelector('#cheese');
     order=[
-            {descripcion:'cafe',
+            {index:1,
+            descripcion:'cafe',
             precio: 5,
             cantidad: 1},
-            {descripcion:'jugo',
+            {index: 2,
+            descripcion:'jugo',
             precio: 6,
             cantidad: 1},
-            {descripcion:'leche',
+            {index: 2,
+            descripcion:'leche',
             precio: 7,
             cantidad: 2}
           ];
@@ -47,50 +54,66 @@ describe('TomarPedidoComponent', () => {
   });
 
   it('filterMenu Hamburguesa simple', () => {
-    fixture.detectChanges();
     component.filterMenu("Hamburguesa simple");
     expect(component.selectSimple).toBeTruthy();
     expect(component.selectDoble).toBeFalsy();
   });
 
   it('filterMenu Hamburguesa doble', () => {
-    fixture.detectChanges();
     component.filterMenu("Hamburguesa doble");
     expect(component.selectSimple).toBeFalsy();
     expect(component.selectDoble).toBeTruthy();
   });
 
   it('filterMenu desayuno', () => {
-    fixture.detectChanges();
     component.filterMenu('Desayuno');
     expect(component.typeMenu).toBe('Desayuno');
-    expect(component.selectDoble).toBeTruthy();
+    expect(component.simpleDoble).toBeFalsy();
   });
 
   it('deleteItems', () => {
-    fixture.detectChanges();
     component.deleteItems('cafe');
     expect(component.pedido.length).toBe(2);
    });
 
-   it('addItems', () => {
-    fixture.detectChanges();
-    component.addItems('cafe', 5);
-    expect(component.pedido[0].cantidad).toBe(2);
-    expect(component.pedido[0].precio).toBe(10);
-   });
+  it('addItems', () => {
+  component.addItems('cafe', 5);
+  expect(component.pedido[0].cantidad).toBe(2);
+  expect(component.pedido[0].precio).toBe(10);
+  });
 
-   it('removeItems', () => {
-    fixture.detectChanges();
-    component.removeItems('leche', 14);
-    expect(component.pedido[2].cantidad).toBe(1);
-    expect(component.pedido[2].precio).toBe(7);
-   });
+  it('addNombre', () => {
+    component.addNombre(0,'jugo', 6, 1);
+    console.log('cafe' + component.pedido[0].cantidad);
+    expect(component.pedido[1].cantidad).toBe(2);
+    expect(component.pedido[1].precio).toBe(12);
+    });
 
-/*    it('removeItems', () => {
-    fixture.detectChanges();
-    component.removeItems('jugo', 6);
-    expect(component.pedido[1].cantidad).toBe(0);
+  it('removeItems', () => {
+  component.removeItems('leche', 14);
+  expect(component.pedido[2].cantidad).toBe(1);
+  expect(component.pedido[2].precio).toBe(7);
+  });
+
+  it('removeItems', () => {
+  component.removeItems('jugo', 6);
+  expect(component.pedido.length).toBe(2);
+  });
+
+  it('precioTotal', () => {
+    component.precioTotal();
+    expect(component.total).toBe(18);
+    });
+
+/*   it('addEgg', () => {
+    fixture.detectChanges(); */
+    /* selectEgg.value = '2'; */
+/*     console.log('selectEgg.value '+ selectEgg.value);
+    selectEgg.triggerEventHandler('click', {
+      selectEgg.value = '2',
+    }); */
+    /* component.addEgg(); */
+/*     expect(component.egg).toBe('2');
     }); */
 
 });
