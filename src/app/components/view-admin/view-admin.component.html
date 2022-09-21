@@ -18,7 +18,7 @@
     <app-register-user></app-register-user>
   
   </div>
-  <button (click)="openRegister()" >
+  <button id="openReg" (click)="openRegister()" >
       Crear Usuario
       <img class="user" src="https://firebasestorage.googleapis.com/v0/b/burger-cangreburger.appspot.com/o/users.png?alt=media&token=40eb84fc-91c7-4f1b-8b69-356bd12ca5a9">
   </button>
@@ -45,7 +45,7 @@
             <img class="editar" src="https://firebasestorage.googleapis.com/v0/b/burger-cangreburger.appspot.com/o/update.png?alt=media&token=882efbf4-9400-4031-ae0c-4ba49d1320b3">
           </td>
           <td class="columnEdit">
-            <img (click)="onClickDelete(user)" class="editar" src="https://firebasestorage.googleapis.com/v0/b/burger-cangreburger.appspot.com/o/trash.png?alt=media&token=026105f1-6c89-4e2b-9fcc-c0eaf45a21f0">
+            <img id="imgDel" (click)="onClickDelete(user)" class="editar" src="https://firebasestorage.googleapis.com/v0/b/burger-cangreburger.appspot.com/o/trash.png?alt=media&token=026105f1-6c89-4e2b-9fcc-c0eaf45a21f0">
           </td>
         </tr >     
       </table>

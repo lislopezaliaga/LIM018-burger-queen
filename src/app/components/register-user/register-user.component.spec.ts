@@ -1,25 +1,28 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { DebugElement } from '@angular/core';
+import { ComponentFixture, TestBed, fakeAsync, tick, flush } from '@angular/core/testing';
 import { UserService } from 'src/app/servicios/user.service';
-
+import { By } from '@angular/platform-browser';
 import { RegisterUserComponent } from './register-user.component';
 
 describe('RegisterUserComponent', () => {
   let component: RegisterUserComponent;
   let fixture: ComponentFixture<RegisterUserComponent>;
-  let UserServiceSpy:jasmine.SpyObj<UserService>;
+  let userServiceSpy:jasmine.SpyObj<UserService>;
   // let form:DebugElement;
-  let btnLogin:HTMLElement;
+  /* let btnLogin:HTMLElement; */
+ /*  let formRegister:DebugElement; */
 
   beforeEach(async () => {
-    UserServiceSpy=jasmine.createSpyObj<UserService>('UserService',['register','login','signOutUser']);
+    userServiceSpy=jasmine.createSpyObj<UserService>('UserService',['register','addUser']);
     await TestBed.configureTestingModule({
       declarations: [ RegisterUserComponent ],
-      providers: [{provide: UserService, useValue:UserServiceSpy }],
+      providers: [{provide: UserService, useValue:userServiceSpy }],
     })
     .compileComponents();
 
     fixture = TestBed.createComponent(RegisterUserComponent);
     component = fixture.componentInstance;
+  /*   formRegister=fixture.debugElement.query(By.css('form')); */
     fixture.detectChanges();
   });
 
@@ -27,30 +30,29 @@ describe('RegisterUserComponent', () => {
     expect(component).toBeTruthy();
   });
 
-  //   it('user not found', fakeAsync(() => {
-  //   const use:any = {
-  //     user: {uid:'hola',funcion:'admin'},
-  //   };
-  //   const hola:any = {
-  //     funcion: 'admin',
-  //   };
-  //   console.log('rutaaaaaaaaaa'+route);
-  //   userServiceSpy.login.and.callFake(()=>Promise.resolve(use));
-  //   tick();
-    
-  //   userServiceSpy.getUserById.and.callFake(()=>Promise.resolve(hola));
-  //   component.formLogin.controls['email'].setValue('mesero@burger.com');
-  //   component.formLogin.controls['password'].setValue('ashgdiau');
+  it('register y adduser', fakeAsync(() => {
+  const use:any = {
+    user:{
+            id: "a",
+            uid: "12345",
+            nombre: "Mary",
+            apellido: "Gomez",
+            email: "mgomez@burger",
+            funcion: "mesero"
+  }};
 
-  //   component.onSubmit();
-  //   tick();
-  //   fixture.detectChanges();
- 
-  
-  //   // expect(route.navigate).toEqual('admin');
-  //   expect(route.navigate).toHaveBeenCalledWith(['/admin']);
-  //   flush(); 
+  userServiceSpy.register.and.callFake(()=>Promise.resolve(use));  
+  component.formReg.controls['nombres'].setValue('Ana');
+  component.formReg.controls['apellidos'].setValue('Perez');
 
-  // }));
+  userServiceSpy.addUser.and.callFake(()=>Promise.resolve());
+  component.onSubmit();
+  tick();
+  fixture.detectChanges();
+
+
+  expect(userServiceSpy.register).toHaveBeenCalled();
+  expect(userServiceSpy.addUser).toHaveBeenCalled();
+  }));
 
 });

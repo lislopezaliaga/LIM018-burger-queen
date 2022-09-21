@@ -35,4 +35,21 @@ describe('MeseroComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  it('showTakeOrder', () => {
+    fixture.detectChanges();
+    component.showTakeOrder();
+    /* btnOpenReg.triggerEventHandler('click', null); */
+    expect(component.showTakeO).toBeTruthy();
+    expect(component.showOrdersR).toBeFalsy();
+  });
+
+  it('showOrderReady', () => {
+    fixture.detectChanges();
+    component.showOrderReady();
+    /* btnOpenReg.triggerEventHandler('click', null); */
+    expect(component.showOrdersR).toBeTruthy();
+    expect(component.showTakeO).toBeFalsy();
+  });
+
 });

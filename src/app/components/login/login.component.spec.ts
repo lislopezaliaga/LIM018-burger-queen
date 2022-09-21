@@ -12,7 +12,7 @@ describe('LoginComponent', () => {
   let formLogin:DebugElement;
   let btnLogin:HTMLElement;
   let lblError:any;
-  let  route: Router;
+  let route: Router;
 
   beforeEach(async () => {
     userServiceSpy=jasmine.createSpyObj<UserService>('UserService',['getUserById','login']);
