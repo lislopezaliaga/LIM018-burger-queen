@@ -10,7 +10,7 @@ describe('OrderReadyComponent', () => {
   let pedidoServiceSpy:jasmine.SpyObj<PedidoService>;
 
   beforeEach(async () => {
-    pedidoServiceSpy=jasmine.createSpyObj<PedidoService>('PedidoService',['addPedido','getPedido','getOrderTotal','updatePedido']);
+    pedidoServiceSpy=jasmine.createSpyObj<PedidoService>('PedidoService',['updatePedido', 'getPedido']);
     pedidoServiceSpy.getPedido.and.returnValue(of([
       {
         waiter: 'Miguel',
@@ -47,5 +47,11 @@ describe('OrderReadyComponent', () => {
 
   it('should create', () => {
     expect(component).toBeTruthy();
+  });
+
+    it(' sendOrderDelivered', () => {
+    pedidoServiceSpy.updatePedido.and.callFake(() => Promise.resolve());
+    component.sendOrderDelivered('2', 0)
+    expect(pedidoServiceSpy.updatePedido).toHaveBeenCalled();
   });
 });

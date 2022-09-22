@@ -1,4 +1,4 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, fakeAsync, flush, TestBed, tick } from '@angular/core/testing';
 
 import { TomarPedidoComponent } from './tomar-pedido.component';
 import { Auth } from '@angular/fire/auth';
@@ -7,6 +7,8 @@ import { UserService } from 'src/app/servicios/user.service';
 import { PedidoService } from 'src/app/servicios/pedido.service';
 import { FIREBASE_OPTIONS } from '@angular/fire/compat';
 import { environment } from 'src/environments/environment';
+import { DebugElement } from '@angular/core';
+import { By } from '@angular/platform-browser';
 // import { AppComponent } from './app.component';
 // import { UserService } from './servicios/user.service';
 
@@ -16,12 +18,15 @@ describe('TomarPedidoComponent', () => {
   let order;
   let selectEgg:any;
   let selectCheese:HTMLElement;
+  let pedidoServiceSpy:jasmine.SpyObj<PedidoService>;
 
   beforeEach(async () => {
+    pedidoServiceSpy=jasmine.createSpyObj<PedidoService>('PedidoService',['addPedido']);
+
+
     await TestBed.configureTestingModule({
       declarations: [ TomarPedidoComponent ],
-      providers: [{provide: Auth, useValue: UserService},{provide: Firestore, useValue: UserService}],
-
+      providers: [{provide: PedidoService, useValue:pedidoServiceSpy }],
     })
     .compileComponents();
 
@@ -82,12 +87,12 @@ describe('TomarPedidoComponent', () => {
   expect(component.pedido[0].precio).toBe(10);
   });
 
-  it('addNombre', () => {
+ /*  it('addNombre', () => {
     component.addNombre(0,'jugo', 6, 1);
     console.log('cafe' + component.pedido[0].cantidad);
     expect(component.pedido[1].cantidad).toBe(2);
     expect(component.pedido[1].precio).toBe(12);
-    });
+    }); */
 
   it('removeItems', () => {
   component.removeItems('leche', 14);
@@ -115,5 +120,41 @@ describe('TomarPedidoComponent', () => {
     /* component.addEgg(); */
 /*     expect(component.egg).toBe('2');
     }); */
+
+    it(' sendOrder() if', fakeAsync(() => {
+      let takeOrder:any={
+        waiter: '',
+        client: '',
+        pedidos: '',
+        timeShow: '',
+        timeStart: '',
+        timeEnd:'',
+        status:'',
+        totalPrice:0
+      };
+      let order:any=[
+        {
+          descripción: "cafe"
+        }
+      ]
+
+      pedidoServiceSpy.addPedido.and.callFake(()=>Promise.resolve(takeOrder));
+      component.cliente.setValue("Gaby");
+      component.pedido = order;
+      component.sendOrder();
+      tick();
+      fixture.detectChanges();
+      expect(component.pedido.length).toBe(0);
+      expect(component.cliente.value).toBe('');
+      flush();
+      }));
+
+    it(' sendOrder() else', fakeAsync(() => {   
+      component.sendOrder();
+      tick(3000);
+      fixture.detectChanges();
+      expect(component.orderEmpty).toBeFalsy();
+      flush();
+      }));
 
 });

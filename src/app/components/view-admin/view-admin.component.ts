@@ -36,7 +36,6 @@ export class ViewAdminComponent implements OnInit {
     this.userService.getUser().subscribe((users) => {
       this.users = users;       
     })
-    
   }
 
   openRegister(){
