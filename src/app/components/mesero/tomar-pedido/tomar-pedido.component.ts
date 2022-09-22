@@ -189,6 +189,7 @@ export class TomarPedidoComponent implements AfterViewInit {
       status:'pending',
       totalPrice:this.total
     };
+    console.log('clientets', this.cliente.value);
     if(this.pedido.length>0 && this.cliente.value!==''){
       this.pedidoService.addPedido(this.takeOrder);
       this.pedido=[];

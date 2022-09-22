@@ -1,5 +1,5 @@
 import { DebugElement } from '@angular/core';
-import { ComponentFixture, TestBed, fakeAsync, tick, flush } from '@angular/core/testing';
+import { ComponentFixture, TestBed, fakeAsync, tick, flush, inject } from '@angular/core/testing';
 import { UserService } from 'src/app/servicios/user.service';
 import { By } from '@angular/platform-browser';
 import { RegisterUserComponent } from './register-user.component';
@@ -7,22 +7,29 @@ import { RegisterUserComponent } from './register-user.component';
 describe('RegisterUserComponent', () => {
   let component: RegisterUserComponent;
   let fixture: ComponentFixture<RegisterUserComponent>;
-  let userServiceSpy:jasmine.SpyObj<UserService>;
-  // let form:DebugElement;
-  /* let btnLogin:HTMLElement; */
- /*  let formRegister:DebugElement; */
+  let service: UserService;
 
   beforeEach(async () => {
-    userServiceSpy=jasmine.createSpyObj<UserService>('UserService',['register','addUser']);
     await TestBed.configureTestingModule({
-      declarations: [ RegisterUserComponent ],
-      providers: [{provide: UserService, useValue:userServiceSpy }],
+      declarations: [RegisterUserComponent],
+      providers: [
+        {
+          provide: UserService,
+          useValue: {
+            register: jasmine.createSpy('register'),
+            addUser: jasmine.createSpy('addUser'),
+            $register: {
+              emit: jasmine.createSpy('emit')
+            }
+          }
+        }
+      ],
     })
-    .compileComponents();
+      .compileComponents();
 
+    service = TestBed.inject(UserService);
     fixture = TestBed.createComponent(RegisterUserComponent);
     component = fixture.componentInstance;
-  /*   formRegister=fixture.debugElement.query(By.css('form')); */
     fixture.detectChanges();
   });
 
@@ -30,29 +37,36 @@ describe('RegisterUserComponent', () => {
     expect(component).toBeTruthy();
   });
 
-  it('register y adduser', fakeAsync(() => {
-  const use:any = {
-    user:{
-            id: "a",
-            uid: "12345",
-            nombre: "Mary",
-            apellido: "Gomez",
-            email: "mgomez@burger",
-            funcion: "mesero"
-  }};
+ it('register y adduser', () => {
+    const use: any = {
+      user: {
+        id: "a",
+        uid: "12345",
+        nombre: "Mary",
+        apellido: "Gomez",
+        email: "mgomez@burger",
+        funcion: "mesero"
+      }
+    };
 
-  userServiceSpy.register.and.callFake(()=>Promise.resolve(use));  
-  component.formReg.controls['nombres'].setValue('Ana');
-  component.formReg.controls['apellidos'].setValue('Perez');
+    service.register = jasmine.createSpy().and.returnValue(Promise.resolve(use));
 
-  userServiceSpy.addUser.and.callFake(()=>Promise.resolve());
-  component.onSubmit();
-  tick();
-  fixture.detectChanges();
+    component.formReg.controls['nombres'].setValue('Ana');
+    component.formReg.controls['apellidos'].setValue('Perez');
 
+    service.addUser = jasmine.createSpy().and.returnValue(Promise.resolve({name: 'betty'}));
+    component.onSubmit();
+    
+    fixture.detectChanges();
 
-  expect(userServiceSpy.register).toHaveBeenCalled();
-  expect(userServiceSpy.addUser).toHaveBeenCalled();
-  }));
+    expect(service.register).toHaveBeenCalled();
+    expect(service.$register.emit).toHaveBeenCalledWith(false);
+
+  });
+
+ it('closeRegister', () => {
+    component.closeRegister();
+    expect(service.$register.emit).toHaveBeenCalledWith(false);
+  });
 
 });
