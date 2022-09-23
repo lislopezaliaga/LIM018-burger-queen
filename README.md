@@ -149,11 +149,11 @@ Puede visualizar el proyecto en el [siguiente enlace](https://www.figma.com/prot
 
 ## 4. 📝Resultado final
 ### 4.1 Vista waiter
-![waiter](https://firebasestorage.googleapis.com/v0/b/burger-queen-peru.appspot.com/o/images%2Fwaite)
+![waiter](https://github.com/lislopezaliaga/LIM018-burger-queen/blob/main/imgReadme/mesero.gif)
 ### Vista chef
-![chef](https://firebasestorage.googleapis.com/v0/b/burger-queen-per1).gif?alt=media&tok)
+![chef](https://github.com/lislopezaliaga/LIM018-burger-queen/blob/main/imgReadme/cocinero.gif)
 ### 4.3 Vista admin
-![admin](https://firebasestorage.googleapis.com/v0/b/burger-queen-peru1)8327d)
+![admin](https://github.com/lislopezaliaga/LIM018-burger-queen/blob/main/imgReadme/admin.gif)
 
 ## 5. 🔧Tecnologías utilizadas:
 * Angular
