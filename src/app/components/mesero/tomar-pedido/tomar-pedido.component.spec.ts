@@ -99,9 +99,7 @@ describe('TomarPedidoComponent', () => {
     expect(component.pedido.length).toBe(4);
   
   });
-
-
-
+  
   it('removeItems', () => {
   component.removeItems('leche', 14);
   expect(component.pedido[2].cantidad).toBe(1);
@@ -118,14 +116,6 @@ describe('TomarPedidoComponent', () => {
     expect(component.total).toBe(18);
     });
 
-    // it('addEgg', () => {
-    // // fixture.detectChanges(); 
-    //  selectEgg.setValue('2');
-    // //  console.log('selectEgg.value '+ selectEgg.value);
-    // // selectEgg.triggerEventHandler('click',null); 
-    // //  component.addEgg(); 
-    //   expect(component.egg).toBe('2');
-    // });
 
     it(' sendOrder() if', fakeAsync(() => {
       let takeOrder:any={
