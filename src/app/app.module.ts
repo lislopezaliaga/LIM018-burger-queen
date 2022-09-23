@@ -13,7 +13,6 @@ import { RegisterUserComponent } from './components/register-user/register-user.
 import { ReactiveFormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 import { MeseroComponent } from './components/mesero/mesero.component';
-import { TomarPedidoComponent } from './components/mesero/tomar-pedido/tomar-pedido.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatCardModule } from '@angular/material/card';
 import {MatSelectModule} from '@angular/material/select';
@@ -23,6 +22,7 @@ import { OrderReadyComponent } from './components/mesero/order-ready/order-ready
 import { TotalOrdersComponent } from './components/view-admin/total-orders/total-orders.component';
 import { PedidoService } from './servicios/pedido.service';
 import { UserService } from './servicios/user.service';
+import { TomarPedidoComponent } from './components/mesero/tomar-pedido/tomar-pedido.component';
 // import { PedidoService } from './servicios/pedido.service';
 @NgModule({
   declarations: [

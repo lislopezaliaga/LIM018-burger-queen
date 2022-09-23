@@ -71,7 +71,7 @@ describe('ChefComponent', () => {
     expect(component).toBeTruthy();
   });
 
-/*   it('sendOrderReady', () => {
+  it('sendOrderReady', () => {
     let takeOrder:any={
       id: '2',
       waiter: '',
@@ -85,8 +85,9 @@ describe('ChefComponent', () => {
     };
     pedidoServiceSpy.updatePedido.and.callFake(() => Promise.resolve(takeOrder));
     component.sendOrderReady('2', 0)
+    
     expect(pedidoServiceSpy.updatePedido).toHaveBeenCalled();
-  }); */
+  });
 
   it("should return decremented duration as time passes", () => {
     let momentoActual:any = new Date();

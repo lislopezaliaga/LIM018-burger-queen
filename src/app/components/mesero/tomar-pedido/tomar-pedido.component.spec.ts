@@ -38,15 +38,15 @@ describe('TomarPedidoComponent', () => {
     selectEgg=fixture.nativeElement.querySelector('#egg');
     selectCheese=fixture.nativeElement.querySelector('#cheese');
     order=[
-            {index:1,
+            {
             descripcion:'cafe',
             precio: 5,
             cantidad: 1},
-            {index: 2,
+            {
             descripcion:'jugo',
             precio: 6,
             cantidad: 1},
-            {index: 2,
+            {
             descripcion:'leche',
             precio: 7,
             cantidad: 2}
@@ -87,12 +87,20 @@ describe('TomarPedidoComponent', () => {
   expect(component.pedido[0].precio).toBe(10);
   });
 
- /*  it('addNombre', () => {
-    component.addNombre(0,'jugo', 6, 1);
-    console.log('cafe' + component.pedido[0].cantidad);
+
+  it('addPedido exist product', () => {
+    component.addNombre(0,'jugo',6, 1);
+ 
     expect(component.pedido[1].cantidad).toBe(2);
     expect(component.pedido[1].precio).toBe(12);
-    }); */
+  });
+  it('addPedido no exist product', () => {
+    component.addNombre(0,'torta',6, 1);
+    expect(component.pedido.length).toBe(4);
+  
+  });
+
+
 
   it('removeItems', () => {
   component.removeItems('leche', 14);
@@ -110,16 +118,14 @@ describe('TomarPedidoComponent', () => {
     expect(component.total).toBe(18);
     });
 
-/*   it('addEgg', () => {
-    fixture.detectChanges(); */
-    /* selectEgg.value = '2'; */
-/*     console.log('selectEgg.value '+ selectEgg.value);
-    selectEgg.triggerEventHandler('click', {
-      selectEgg.value = '2',
-    }); */
-    /* component.addEgg(); */
-/*     expect(component.egg).toBe('2');
-    }); */
+    // it('addEgg', () => {
+    // // fixture.detectChanges(); 
+    //  selectEgg.setValue('2');
+    // //  console.log('selectEgg.value '+ selectEgg.value);
+    // // selectEgg.triggerEventHandler('click',null); 
+    // //  component.addEgg(); 
+    //   expect(component.egg).toBe('2');
+    // });
 
     it(' sendOrder() if', fakeAsync(() => {
       let takeOrder:any={

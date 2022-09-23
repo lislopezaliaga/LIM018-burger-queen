@@ -72,7 +72,7 @@ export class TomarPedidoComponent implements AfterViewInit {
 
   addNombre(inde:number,name:string, price:any,cantItems:number){
 
-    name=name+'  '+this.eggName+this.cheeseName;
+    name=name+ this.eggName+this.cheeseName;
    
     price=price+parseInt(this.egg)+parseInt(this.cheese);  
     
@@ -173,7 +173,7 @@ export class TomarPedidoComponent implements AfterViewInit {
   }
   addCheese(event:any){
     
-    this.cheeseName= `+`+event.target.value + '🧀';
+    this.cheeseName= ` +`+event.target.value + '🧀';
     this.cheese=event.target.value;
 
   }
@@ -189,7 +189,7 @@ export class TomarPedidoComponent implements AfterViewInit {
       status:'pending',
       totalPrice:this.total
     };
-    console.log('clientets', this.cliente.value);
+  
     if(this.pedido.length>0 && this.cliente.value!==''){
       this.pedidoService.addPedido(this.takeOrder);
       this.pedido=[];

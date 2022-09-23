@@ -29,7 +29,7 @@
 
                 <tr class="itemsPedido" *ngFor="let orden of pedido.pedidos">
                     <td class="centrar">{{orden.cantidad}}</td>
-                    <td>{{orden.descripcion}}</td>
+                    <td class="description">{{orden.descripcion}}</td>
                 </tr >  
             </table>
             <label class="total">Total: $ {{pedido.totalPrice}}</label>

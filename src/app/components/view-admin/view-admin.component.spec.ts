@@ -1,6 +1,7 @@
 import { ComponentFixture, TestBed, fakeAsync, tick} from '@angular/core/testing';
 import { Router } from '@angular/router';
 import { RouterTestingModule } from '@angular/router/testing';
+import { of } from 'rxjs';
 import { UserService } from 'src/app/servicios/user.service';
 import { LoginComponent } from '../login/login.component';
 
@@ -39,12 +40,20 @@ describe('ViewAdminComponent', () => {
       ]
       
     })
+    
     .compileComponents();
+
     service = TestBed.inject(UserService);
+    router = TestBed.inject(Router);
+    // service.$register.subscribe= jasmine.createSpy().and.returnValue(()=>{});
+    service.getUser= jasmine.createSpy().and.returnValue(of([{}]));
+    service.$register.subscribe= jasmine.createSpy().and.returnValue(of([]));
+
     fixture = TestBed.createComponent(ViewAdminComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
-    router = TestBed.inject(Router);
+    
+
     btnOpenReg=fixture.nativeElement.querySelector('#openReg');
     imgDelete=fixture.nativeElement.querySelector('#imgDel');
   });
@@ -60,6 +69,7 @@ describe('ViewAdminComponent', () => {
   });
 
   it('showTotalOrders', () => {
+    service.$register.subscribe= jasmine.createSpy().and.returnValue(()=>{});
     fixture.detectChanges();
     component.showTotalOrders();
      expect(component.shorTotalOrd).toBeTruthy();
@@ -93,13 +103,24 @@ describe('ViewAdminComponent', () => {
 
     it('logout()', fakeAsync(() => {
       service.signOutUser = jasmine.createSpy().and.returnValue(Promise.resolve());
-   /*    userServiceSpy.signOutUser.and.callFake(() => Promise.resolve()); */
+  
       spyOn(router, 'navigate');
       component.logout();
       tick();
       fixture.detectChanges();
       expect(router.navigate).toHaveBeenCalledWith(['login']);
       expect(service.signOutUser).toHaveBeenCalled();
+    }));
+
+
+    it('ngOnInit', fakeAsync(() =>  {
+      
+      component.ngOnInit();
+
+      tick(1000);
+      fixture.detectChanges();
+   
+      expect(service.$register.subscribe).toHaveBeenCalled();
     }));
 
 });
