@@ -1,6 +1,6 @@
 import { EventEmitter, Injectable } from '@angular/core';
 import { Auth, createUserWithEmailAndPassword, signInWithEmailAndPassword, getAuth, deleteUser,signOut} from '@angular/fire/auth';
-import { Firestore, collection, addDoc, collectionData, doc, deleteDoc, setDoc, getDoc} from '@angular/fire/firestore';
+import { Firestore, collection, addDoc, collectionData, doc, deleteDoc, setDoc, getDoc, enableIndexedDbPersistence} from '@angular/fire/firestore';
 import { Observable } from 'rxjs';
 import Users from '../data/data.users';
 
@@ -9,8 +9,30 @@ import Users from '../data/data.users';
 })
 export class UserService {
 
+//   import { enableIndexedDbPersistence } from "firebase/firestore";
+
+
+
   constructor(private auth: Auth,
-    private firestore: Firestore) { }
+    private firestore: Firestore) { 
+
+      enableIndexedDbPersistence(this.firestore)
+      .catch((err) => {
+          if (err.code == 'failed-precondition') {
+            console.log('hhhhhh',err.code);
+            
+              // Multiple tabs open, persistence can only be enabled
+              // in one tab at a a time.
+              // ...
+          } else if (err.code == 'unimplemented') {
+            console.log('hhhhhhhhh',err.code);
+              // The current browser does not support all of the
+              // features required to enable persistence
+              // ...
+          }
+      });
+    }
+
     
     register ({ email, password }: any){
       return createUserWithEmailAndPassword(this.auth, email, password)

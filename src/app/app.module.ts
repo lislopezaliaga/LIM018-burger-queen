@@ -8,7 +8,7 @@ import { ViewAdminComponent } from './components/view-admin/view-admin.component
 import { initializeApp,provideFirebaseApp } from '@angular/fire/app';
 import { environment } from '../environments/environment';
 import { provideAuth,getAuth, Auth } from '@angular/fire/auth';
-import { provideFirestore,getFirestore, Firestore } from '@angular/fire/firestore';
+import { provideFirestore,getFirestore, Firestore, enableIndexedDbPersistence } from '@angular/fire/firestore';
 import { RegisterUserComponent } from './components/register-user/register-user.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
@@ -40,8 +40,11 @@ import { TomarPedidoComponent } from './components/mesero/tomar-pedido/tomar-ped
     BrowserModule,
     ReactiveFormsModule,
     provideFirebaseApp(() => initializeApp(environment.firebase)),
+
     provideAuth(() => getAuth()),
     provideFirestore(() => getFirestore()),
+   
+    // provideFirestore.enableIndexedDbPersistence(),
     AppRoutingModule,
     BrowserAnimationsModule,
     MatCardModule,
