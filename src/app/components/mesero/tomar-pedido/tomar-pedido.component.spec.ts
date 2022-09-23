@@ -17,7 +17,7 @@ describe('TomarPedidoComponent', () => {
   let fixture: ComponentFixture<TomarPedidoComponent>;
   let order;
   let selectEgg:any;
-  let selectCheese:HTMLElement;
+  let selectCheese:any;
   let pedidoServiceSpy:jasmine.SpyObj<PedidoService>;
 
   beforeEach(async () => {
@@ -118,14 +118,22 @@ describe('TomarPedidoComponent', () => {
     expect(component.total).toBe(18);
     });
 
-    // it('addEgg', () => {
-    // // fixture.detectChanges(); 
-    //  selectEgg.setValue('2');
-    // //  console.log('selectEgg.value '+ selectEgg.value);
-    // // selectEgg.triggerEventHandler('click',null); 
-    // //  component.addEgg(); 
-    //   expect(component.egg).toBe('2');
-    // });
+    it('addEgg', () => {
+    // fixture.detectChanges(); 
+      selectEgg.value='2';
+    //  console.log('selectEgg.value '+ selectEgg.value);
+      selectEgg.dispatchEvent(new Event("change")); 
+    //  component.addEgg(); 
+      expect(component.egg).toBe('2');
+    });
+    it('addCheese', () => {
+      // fixture.detectChanges(); 
+        selectCheese.value='2';
+      //  console.log('selectEgg.value '+ selectEgg.value);
+      selectCheese.dispatchEvent(new Event("change")); 
+      //  component.addEgg(); 
+        expect(component.cheese).toBe('2');
+      });
 
     it(' sendOrder() if', fakeAsync(() => {
       let takeOrder:any={

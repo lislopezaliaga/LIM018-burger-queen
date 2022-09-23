@@ -32,7 +32,11 @@ export class ViewAdminComponent implements OnInit {
      }
 
   ngOnInit(): void {
-    this.registerM.$register.subscribe((valor)=>this.registerSwitch=valor);
+    this.registerM.$register.subscribe((valor)=>{
+      console.log('hola',valor);
+      this.registerSwitch=valor;
+    })
+ 
     this.userService.getUser().subscribe((users) => {
       this.users = users;       
     })

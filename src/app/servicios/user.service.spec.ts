@@ -1,19 +1,27 @@
-import { TestBed } from '@angular/core/testing';
-import { Auth } from '@angular/fire/auth';
+// import { TestBed } from '@angular/core/testing';
+// import { Auth } from '@angular/fire/auth';
 
-import { UserService } from './user.service';
+// import { UserService } from './user.service';
 
-/* describe('UserService', () => {
-  let service: UserService;
-  let AuthSpy:jasmine.SpyObj<Auth>;
+// describe('UserService', () => {
+//   let service: UserService;
+//   let spyAuth:jasmine.SpyObj<Auth>;
 
-  beforeEach(() => {
-    AuthSpy=jasmine.createSpyObj<Auth>('Auth',['Auth', 'createUserWithEmailAndPassword', 'signInWithEmailAndPassword','signOut']);
-    TestBed.configureTestingModule({});
-    service = TestBed.inject(UserService);
-  });
+//   beforeEach(async () => {
+//     // spyAuth = jasmine.createSpyObj<Auth>('Auth', ['getUserById', 'login']);
 
-  it('should be created', () => {
-    expect(service).toBeTruthy();
-  });
-}); */
+//     spyAuth=jasmine.createSpyObj<Auth>('Auth', ['createUserWithEmailAndPassword', 'signInWithEmailAndPassword','signOut']);
+//     await TestBed.configureTestingModule({
+//       declarations: [UserService],
+//       providers: [{ provide: Auth, useValue: spyAuth }],
+
+//     });
+//     service = TestBed.inject(UserService);
+  
+
+//     it('should be created', () => {
+//       expect(service).toBeTruthy();
+//     });
+//   })
+// })
+

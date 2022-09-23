@@ -26,8 +26,7 @@ describe('ViewAdminComponent', () => {
             signOutUser: jasmine.createSpy('signOutUser'),
             getUser: jasmine.createSpy('getUser'),
             $register: {
-              emit: jasmine.createSpy('emit'),
-              subscribe: jasmine.createSpy('subscribe')
+              subscribe: jasmine.createSpy('subscribe').and.callFake((data)=>data()),
             }
           }
         }
@@ -42,12 +41,13 @@ describe('ViewAdminComponent', () => {
     })
     
     .compileComponents();
-
+// 
     service = TestBed.inject(UserService);
     router = TestBed.inject(Router);
     // service.$register.subscribe= jasmine.createSpy().and.returnValue(()=>{});
     service.getUser= jasmine.createSpy().and.returnValue(of([{}]));
-    service.$register.subscribe= jasmine.createSpy().and.returnValue(of([]));
+    
+    
 
     fixture = TestBed.createComponent(ViewAdminComponent);
     component = fixture.componentInstance;
@@ -113,14 +113,15 @@ describe('ViewAdminComponent', () => {
     }));
 
 
-    it('ngOnInit', fakeAsync(() =>  {
-      
-      component.ngOnInit();
+    // it('ngOnInit', fakeAsync(() =>  {
+    //   service.$register.subscribe= jasmine.createSpy().and.callFake(()=>'value');
+    //   component.ngOnInit();
 
-      tick(1000);
-      fixture.detectChanges();
+    //   tick(1000);
+    //   fixture.detectChanges();
    
-      expect(service.$register.subscribe).toHaveBeenCalled();
-    }));
+    //   expect(service.$register.subscribe).toHaveBeenCalled();
+    //   expect(component.registerSwitch).toBeFalsy;
+    // }));
 
 });

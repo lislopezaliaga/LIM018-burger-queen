@@ -143,9 +143,9 @@ rápidamente a los clientes que las hicieron.
 ***
 
 ***
-### 3. 🎞Prototipo de alta fidelidad
+##  3. 🎞Prototipo de alta fidelidad
 Se desarrolló un prototipo considerando las siguientes vistas: waiter,chef y admin.
-Puede visualizar el proyecto en el [siguiente enlace](https://www.figma.com/proto/zujgLB9m5sHkRWqnAaO502/Burger-Queen?node-id=27%3A387&scaling=scale-down&page-id=0%3A1&starting-point-node-id=26%3A147&show-proto-sidebar=1).
+Puede visualizar el proyecto en el [siguiente enlace](https://www.figma.com/proto/Oc65xMtHYj5wr40X0EmV4T/Burguer-(Copy)?node-id=2%3A65&scaling=scale-down&page-id=0%3A1).
 
 ## 4. 📲Resultado final
 ### 4.1 Vista waiter
@@ -161,7 +161,6 @@ Puede visualizar el proyecto en el [siguiente enlace](https://www.figma.com/prot
 * JavaScript
 * HTML
 * CSS / SCSS
-* Bootstrap
 * Jasmine
 * Karma
 * Firebase
