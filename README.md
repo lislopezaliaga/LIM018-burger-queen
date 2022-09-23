@@ -2,19 +2,19 @@
 
 ## Índice
 
-* [1. Introducción](#1-introducción)
-* [1. Resumen del proyecto](#2-resumen-del-proyecto)
-* [3. Desarrollo del proyecto](#3-desarrollo-del-proyecto)
-* [4. Resultado final](#4-resultado-final)
-* [5. Tecnologías utilizadas](#5-tecnologías-utilizadas)
-* [6. Creadoras](#6-creadoras)
+
+* [1. Resumen del proyecto](#1-resumen)
+* [2. Desarrollo del proyecto](#3-requerimientos-del-cliente)
+* [3. Prototipo de alta fidelidad](#4-prototipo-de-alta-fidelidad)
+* [4. Resultado final](#5-resultado-final)
+
 
 ***
 
 ## 1. Resumen
-Este proyecto es una interfaz web para un restaurante de hamburguesas el cual consiste en tomar pedidos usando una _tablet_, y enviarlos a la cocina para que se preparen ordenada y eficientemente el proyecto fue desarrollado con el framework _Angular_ que permitio mantener la interfaz y el estado sincronizados.
+Este proyecto es una interfaz web para un restaurante de hamburguesas,esta ambientado tanto para un administrador que es el encargado de añadir personal al restaurante, el mesero  el cual puede tomar pedidos usando una _tablet_, y enviarlos a la cocina para que se preparen las ordenes eficientemente y tambien para el cocinero que puede ver las ordenes de los clientes, el proyecto fue desarrollado con el framework _Angular_ que permitió mantener la interfaz y el estado sincronizados.
 
-###  Requerimientos del cliente
+### 2. Requerimientos del cliente
 
 Esta es la información que tenemos del cliente:
 
@@ -143,11 +143,11 @@ rápidamente a los clientes que las hicieron.
 ***
 
 ***
-### 3.2 Prototipo de alta fidelidad
+### 3. 🎞Prototipo de alta fidelidad
 Se desarrolló un prototipo considerando las siguientes vistas: waiter,chef y admin.
 Puede visualizar el proyecto en el [siguiente enlace](https://www.figma.com/proto/zujgLB9m5sHkRWqnAaO502/Burger-Queen?node-id=27%3A387&scaling=scale-down&page-id=0%3A1&starting-point-node-id=26%3A147&show-proto-sidebar=1).
 
-## 4. 📝Resultado final
+## 4. 📲Resultado final
 ### 4.1 Vista waiter
 ![waiter](https://github.com/lislopezaliaga/LIM018-burger-queen/blob/main/imgReadme/mesero.gif)
 ### Vista chef
@@ -155,7 +155,7 @@ Puede visualizar el proyecto en el [siguiente enlace](https://www.figma.com/prot
 ### 4.3 Vista admin
 ![admin](https://github.com/lislopezaliaga/LIM018-burger-queen/blob/main/imgReadme/admin.gif)
 
-## 5. 🔧Tecnologías utilizadas:
+## 5. 👩🏻‍💻Tecnologías utilizadas:
 * Angular
 * TypeScript
 * JavaScript
