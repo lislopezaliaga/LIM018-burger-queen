@@ -169,7 +169,6 @@ export class TomarPedidoComponent implements AfterViewInit {
   addEgg(event:any){
     this.eggName=' +' +event.target.value+'🍳 '
     this.egg=event.target.value;
-
   }
   addCheese(event:any){
     

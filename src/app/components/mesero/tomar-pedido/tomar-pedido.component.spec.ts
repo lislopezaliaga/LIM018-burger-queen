@@ -99,9 +99,7 @@ describe('TomarPedidoComponent', () => {
     expect(component.pedido.length).toBe(4);
   
   });
-
-
-
+  
   it('removeItems', () => {
   component.removeItems('leche', 14);
   expect(component.pedido[2].cantidad).toBe(1);
