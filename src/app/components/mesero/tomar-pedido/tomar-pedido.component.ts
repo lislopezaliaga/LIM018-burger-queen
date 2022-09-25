@@ -1,14 +1,10 @@
 import {
   Component,
-  OnInit,
-  Input,
-  ViewChild,
   ElementRef,
   AfterViewInit,
   ViewChildren,
   QueryList,
 } from '@angular/core';
-import { elementAt } from 'rxjs';
 import menu from '../../../../assets/menu.json';
 import { FormControl } from '@angular/forms';
 import { PedidoService } from 'src/app/servicios/pedido.service';
