@@ -1,7 +1,5 @@
-import { DebugElement } from '@angular/core';
-import { ComponentFixture, TestBed, fakeAsync, tick, flush, inject } from '@angular/core/testing';
+import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { UserService } from 'src/app/servicios/user.service';
-import { By } from '@angular/platform-browser';
 import { RegisterUserComponent } from './register-user.component';
 
 describe('RegisterUserComponent', () => {
@@ -19,13 +17,12 @@ describe('RegisterUserComponent', () => {
             register: jasmine.createSpy('register'),
             addUser: jasmine.createSpy('addUser'),
             $register: {
-              emit: jasmine.createSpy('emit')
-            }
-          }
-        }
+              emit: jasmine.createSpy('emit'),
+            },
+          },
+        },
       ],
-    })
-      .compileComponents();
+    }).compileComponents();
 
     service = TestBed.inject(UserService);
     fixture = TestBed.createComponent(RegisterUserComponent);
@@ -37,36 +34,38 @@ describe('RegisterUserComponent', () => {
     expect(component).toBeTruthy();
   });
 
- it('register y adduser', () => {
+  it('register y adduser', () => {
     const use: any = {
       user: {
-        id: "a",
-        uid: "12345",
-        nombre: "Mary",
-        apellido: "Gomez",
-        email: "mgomez@burger",
-        funcion: "mesero"
-      }
+        id: 'a',
+        uid: '12345',
+        nombre: 'Mary',
+        apellido: 'Gomez',
+        email: 'mgomez@burger',
+        funcion: 'mesero',
+      },
     };
 
-    service.register = jasmine.createSpy().and.returnValue(Promise.resolve(use));
+    service.register = jasmine
+      .createSpy()
+      .and.returnValue(Promise.resolve(use));
 
     component.formReg.controls['nombres'].setValue('Ana');
     component.formReg.controls['apellidos'].setValue('Perez');
 
-    service.addUser = jasmine.createSpy().and.returnValue(Promise.resolve({name: 'betty'}));
+    service.addUser = jasmine
+      .createSpy()
+      .and.returnValue(Promise.resolve({ name: 'betty' }));
     component.onSubmit();
-    
+
     fixture.detectChanges();
 
     expect(service.register).toHaveBeenCalled();
     expect(service.$register.emit).toHaveBeenCalledWith(false);
-
   });
 
- it('closeRegister', () => {
+  it('closeRegister', () => {
     component.closeRegister();
     expect(service.$register.emit).toHaveBeenCalledWith(false);
   });
-
 });

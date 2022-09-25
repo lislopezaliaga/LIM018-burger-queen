@@ -1,32 +1,17 @@
 import { TestBed } from '@angular/core/testing';
-
-import { FIREBASE_OPTIONS } from '@angular/fire/compat';
-import { environment } from '../environments/environment';
-
-
-import { PedidoService } from './servicios/pedido.service';
 import { Auth } from '@angular/fire/auth';
 import { Firestore } from '@angular/fire/firestore';
 import { AppComponent } from './app.component';
 import { UserService } from './servicios/user.service';
-// TestBed.configureTestingModule({});
-// TestBed.configureTestingModule({
-//   AngularFireModule.initializeApp(environment.firebaseConfig),
-//   AngularFireAuthModule,
-//   AngularFireDatabaseModule,
-//   AngularFirestoreModule,
-//   AngularFirestore,
-// });
-
 
 describe('AppComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      
-      declarations: [
-        AppComponent
+      declarations: [AppComponent],
+      providers: [
+        { provide: Auth, useValue: UserService },
+        { provide: Firestore, useValue: UserService },
       ],
-      providers: [{provide: Auth, useValue: UserService},{provide: Firestore, useValue: UserService}],
     }).compileComponents();
   });
 
@@ -47,7 +32,7 @@ describe('AppComponent', () => {
   //   fixture.detectChanges();
   //   const compiled = fixture.nativeElement as HTMLElement;
   //   console.log(compiled.querySelector('.content span')?.textContent);
-    
+
   //   expect(compiled.querySelector('.content span')?.textContent).toContain('LIM018-BURGER-QUEEN app is running!');
   // });
 });

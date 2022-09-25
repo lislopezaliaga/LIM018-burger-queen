@@ -10,23 +10,24 @@ import { ChefComponent } from './components/chef/chef.component';
 
 const routes: Routes = [
   { path: '', pathMatch: 'full', redirectTo: '/login' },
-/*   {
+  /*   {
     path: 'login',
     component: LoginComponent,
     ...canActivate(() => redirectUnauthorizedTo(['/register']))
   }, */
   { path: 'register', component: RegisterUserComponent },
   { path: 'login', component: LoginComponent },
-  { path: 'admin', component: ViewAdminComponent
-  /* ...canActivate(() => redirectUnauthorizedTo(['/login'])) */
+  {
+    path: 'admin',
+    component: ViewAdminComponent,
+    /* ...canActivate(() => redirectUnauthorizedTo(['/login'])) */
   },
-  { path: 'waiter', component: MeseroComponent},
-  { path: 'chef', component: ChefComponent}
-  
+  { path: 'waiter', component: MeseroComponent },
+  { path: 'chef', component: ChefComponent },
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}

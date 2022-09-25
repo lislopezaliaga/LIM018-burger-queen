@@ -1,55 +1,69 @@
 <div class="administrador">
-<header>
-
+  <header>
     <div class="logo">
-      <img class="burguerChef" src="https://firebasestorage.googleapis.com/v0/b/burger-cangreburger.appspot.com/o/burguerChefv2.png?alt=media&token=0c79ce36-2445-4ca7-924d-0d8704534266">
+      <img
+        class="burguerChef"
+        src="https://firebasestorage.googleapis.com/v0/b/burger-cangreburger.appspot.com/o/burguerChefv2.png?alt=media&token=0c79ce36-2445-4ca7-924d-0d8704534266" />
       <label>Administrador</label>
     </div>
-    <label class="vistas" [ngClass]="{'backType':showRegister}" (click)="showUsers()" >Ver Usuarios</label>
-    <label  class="vistas" [ngClass]="{'backType':shorTotalOrd}" (click)="showTotalOrders()" >Ver Pedidos</label>
-    
-    <img class='salir' (click)="logout()" src="https://firebasestorage.googleapis.com/v0/b/burger-cangreburger.appspot.com/o/logout.png?alt=media&token=ae4fc83b-49c2-47c4-be50-ffab74bb8eb7">
+    <label
+      class="vistas"
+      [ngClass]="{ backType: showRegister }"
+      (click)="showUsers()"
+      >Ver Usuarios</label
+    >
+    <label
+      class="vistas"
+      [ngClass]="{ backType: shorTotalOrd }"
+      (click)="showTotalOrders()"
+      >Ver Pedidos</label
+    >
 
-</header>
+    <img
+      class="salir"
+      (click)="logout()"
+      src="https://firebasestorage.googleapis.com/v0/b/burger-cangreburger.appspot.com/o/logout.png?alt=media&token=ae4fc83b-49c2-47c4-be50-ffab74bb8eb7" />
+  </header>
 
-<div class="userTable" *ngIf="showRegister">
-
-  <div class="register" *ngIf="registerSwitch == true">
-    <app-register-user></app-register-user>
-  
-  </div>
-  <button id="openReg" (click)="openRegister()" >
+  <div class="userTable" *ngIf="showRegister">
+    <div class="register" *ngIf="registerSwitch === true">
+      <app-register-user></app-register-user>
+    </div>
+    <button id="openReg" (click)="openRegister()">
       Crear Usuario
-      <img class="user" src="https://firebasestorage.googleapis.com/v0/b/burger-cangreburger.appspot.com/o/users.png?alt=media&token=40eb84fc-91c7-4f1b-8b69-356bd12ca5a9">
-  </button>
+      <img
+        class="user"
+        src="https://firebasestorage.googleapis.com/v0/b/burger-cangreburger.appspot.com/o/users.png?alt=media&token=40eb84fc-91c7-4f1b-8b69-356bd12ca5a9" />
+    </button>
     <table class="usuarios">
+      <tr>
+        <th scope="row">N°</th>
+        <th>Nombres y Apellidos</th>
+        <th>Usuario</th>
+        <th>Función</th>
+        <th>Editar</th>
+        <th>Borrar</th>
+      </tr>
 
-        <tr>      
-          <th scope="row">N°</th>
-          <th>Nombres y Apellidos</th>
-          <th>Usuario</th>
-          <th>Función</th>
-          <th>Editar</th>
-          <th>Borrar</th>
-        </tr>
-      
-
-        
-        <tr class="user" *ngFor="let user of users; let i = index">
-      
-          <th>{{i+1}}</th>
-          <td>{{user.nombre}} {{user.apellido}}</td>
-          <td>{{user.email}}</td>
-          <td>{{user.funcion}}</td>
-          <td class="columnEdit">
-            <img class="editar" src="https://firebasestorage.googleapis.com/v0/b/burger-cangreburger.appspot.com/o/update.png?alt=media&token=882efbf4-9400-4031-ae0c-4ba49d1320b3">
-          </td>
-          <td class="columnEdit">
-            <img id="imgDel" (click)="onClickDelete(user)" class="editar" src="https://firebasestorage.googleapis.com/v0/b/burger-cangreburger.appspot.com/o/trash.png?alt=media&token=026105f1-6c89-4e2b-9fcc-c0eaf45a21f0">
-          </td>
-        </tr >     
-      </table>
-
-</div>
+      <tr class="user" *ngFor="let user of users; let i = index">
+        <th>{{ i + 1 }}</th>
+        <td>{{ user.nombre }} {{ user.apellido }}</td>
+        <td>{{ user.email }}</td>
+        <td>{{ user.funcion }}</td>
+        <td class="columnEdit">
+          <img
+            class="editar"
+            src="https://firebasestorage.googleapis.com/v0/b/burger-cangreburger.appspot.com/o/update.png?alt=media&token=882efbf4-9400-4031-ae0c-4ba49d1320b3" />
+        </td>
+        <td class="columnEdit">
+          <img
+            id="imgDel"
+            (click)="onClickDelete(user)"
+            class="editar"
+            src="https://firebasestorage.googleapis.com/v0/b/burger-cangreburger.appspot.com/o/trash.png?alt=media&token=026105f1-6c89-4e2b-9fcc-c0eaf45a21f0" />
+        </td>
+      </tr>
+    </table>
+  </div>
 </div>
 <app-total-orders *ngIf="shorTotalOrd"></app-total-orders>

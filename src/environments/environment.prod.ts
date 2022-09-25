@@ -8,5 +8,5 @@ export const environment = {
     authDomain: 'burger-cangreburger.firebaseapp.com',
     messagingSenderId: '958764295826',
   },
-  production: true
+  production: true,
 };

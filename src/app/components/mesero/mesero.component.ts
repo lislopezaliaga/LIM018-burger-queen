@@ -7,7 +7,7 @@ import { UserService } from 'src/app/servicios/user.service';
 @Component({
   selector: 'app-mesero',
   templateUrl: './mesero.component.html',
-  styleUrls: ['./mesero.component.css']
+  styleUrls: ['./mesero.component.css'],
 })
 export class MeseroComponent implements OnInit {
   sesion: any = sessionStorage.getItem('User');
@@ -17,13 +17,10 @@ export class MeseroComponent implements OnInit {
   showOrdersR: boolean = false;
   cssColor: any = true;
 
-  constructor(private router: Router,
-    private userService: UserService) { }
+  constructor(private router: Router, private userService: UserService) {}
 
   ngOnInit(): void {
     // this.nameUser();
-
-
   }
 
   logout() {
@@ -35,13 +32,10 @@ export class MeseroComponent implements OnInit {
   showTakeOrder() {
     this.showTakeO = true;
     this.showOrdersR = false;
-
   }
 
   showOrderReady() {
     this.showOrdersR = true;
     this.showTakeO = false;
   }
-
-
 }

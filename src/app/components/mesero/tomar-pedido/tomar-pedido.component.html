@@ -1,99 +1,147 @@
 <div class="tomarPedido">
-    <div class="options">
-        <img class="optionImg" (click)="filterMenu('Desayuno')" src="https://firebasestorage.googleapis.com/v0/b/burger-cangreburger.appspot.com/o/taza-de-cafe.png?alt=media&token=d9b0de7e-5500-4dda-8988-58c901de9a56
-        ">
-        <img class="optionImg" (click)="filterMenu('Hamburguesa simple')" src="https://firebasestorage.googleapis.com/v0/b/burger-cangreburger.appspot.com/o/hamburguesa.png?alt=media&token=8fe79943-d7ae-43b2-93dd-054f139db25a
-        ">
-        <img class="optionImg" (click)="filterMenu('Bebidas')" src="https://firebasestorage.googleapis.com/v0/b/burger-cangreburger.appspot.com/o/soda.png?alt=media&token=b2bb18c8-9e63-4b2e-939d-777e60fb22cc
-        ">
-        <img class="optionImg" (click)="filterMenu('Acompañamientos')" src="https://firebasestorage.googleapis.com/v0/b/burger-cangreburger.appspot.com/o/fried-potatoes.png?alt=media&token=7c9ec7fc-e98b-4a5f-bc7f-ab387814b9c8
-        ">
-    </div>
-    <div class="contenedorMesero">
-        <div class="menuOrden">
-            <div class="titleMenu">
-                <label class="typeMenu"> {{typeMenu}}</label>
-                <div class="simpleDoble" *ngIf="simpleDoble">
-                  
-                    <button class="btnBurguer" [ngClass]="{'backType':selectSimple}" (click)="filterMenu('Hamburguesa simple')" >Simples</button>
-                    <button class="btnBurguer" [ngClass]="{'backType':selectDoble}"(click)="filterMenu('Hamburguesa doble')">Dobles</button>
-            
-                </div>
-
-            <div class="menu">
-              
-                <div class="tarjeta" *ngFor="let menu of menus">
-                    <label class="menuName">{{menu.item}}</label>
-                    <img class="imgMenu" src={{menu.img}}>
-                    <div class="adicional" *ngIf="menu.adicionales">
-                        <div class="checkAdicional">    
-                            <select class="chesse" id="egg"   (change) = "addEgg($event)" #eggSelected>
-                                <option value="0" disabled selected>🍳</option>
-                                <option value="1">1</option>
-                                <option value="2">2</option>
-                                <option value="3">3</option>                    
-                            </select>
-                        </div>
-                        <div class="checkAdicional">
-                            <select class="chesse" id="cheese" (change) = "addCheese($event)" #cheeseSelected>
-                                <option value="0" disabled selected>🧀</option>
-                                <option value="1">1</option>
-                                <option value="2">2</option>
-                                <option value="3">3</option>                    
-                              </select>
-                        </div>                     
-                    </div>
-                    <div class="pricebtn">
-                   <label class="price">$ {{menu.price}}</label>
-                   <button class="btnAdd" (click)="addNombre(menu.id-5,menu.item, menu.price,contador)">Agregar</button>
-                </div>
-                </div>
-
-            </div>
-
-            </div>
-            
-            <div class="orden">
-                <div class="client">
-                    <label class="clientLabel" >Cliente</label>
-                    <input [formControl]="cliente" class="clientInput"  type="text" id="clienteInput" >
-                    <label class="date">{{date}}</label>
-                </div>
-                <div class="ordenPedido">
-                <label class="orderTable" >Orden de Pedido</label>
-                <table class="tableOrder">
-
-                    <tr>      
-                    <th scope="row">Descripción</th>
-                    <th>Cantidad</th>
-                    <th>Precio</th>
-                    <th></th>
-                    </tr>  
-
-                    <tr class="itemsPedido" *ngFor="let orden of pedido">
-                
-                    <td class="descripcion" >{{orden.descripcion}}</td>
-                    <td>
-                        <button class="btnPlus" (click)="removeItems(orden.descripcion,orden.precio)">-</button> {{orden.cantidad}} <button class="btnPlus" (click)="addItems(orden.descripcion,orden.precio)">+</button>
-                    </td>
-                    <td>$ {{orden.precio}}</td>
-                    <td></td>
-                    
-                    <td class="columnEdit">
-                        <img  class="eliminar" (click)="deleteItems(orden.descripcion)" src="https://firebasestorage.googleapis.com/v0/b/burger-cangreburger.appspot.com/o/trash.png?alt=media&token=026105f1-6c89-4e2b-9fcc-c0eaf45a21f0">
-                    </td>
-                    </tr >     
-                </table>
-            </div>
-            <div class="sendKitchen">
-                <div class="total">
-                    <label class="precioTotal">TOTAL</label>
-                    <label class="precioTotal">$ {{precioTotal()}}</label>
-                </div>
-                <label class="error" *ngIf="orderEmpty">El nombre del cliente o la orden estan vacíos</label>
-                <button class="send" (click)="sendOrder()" > Enviar a la Cocina</button>
-            </div>
-            </div>
+  <div class="options">
+    <img
+      class="optionImg"
+      (click)="filterMenu('Desayuno')"
+      src="https://firebasestorage.googleapis.com/v0/b/burger-cangreburger.appspot.com/o/taza-de-cafe.png?alt=media&token=d9b0de7e-5500-4dda-8988-58c901de9a56
+        " />
+    <img
+      class="optionImg"
+      (click)="filterMenu('Hamburguesa simple')"
+      src="https://firebasestorage.googleapis.com/v0/b/burger-cangreburger.appspot.com/o/hamburguesa.png?alt=media&token=8fe79943-d7ae-43b2-93dd-054f139db25a
+        " />
+    <img
+      class="optionImg"
+      (click)="filterMenu('Bebidas')"
+      src="https://firebasestorage.googleapis.com/v0/b/burger-cangreburger.appspot.com/o/soda.png?alt=media&token=b2bb18c8-9e63-4b2e-939d-777e60fb22cc
+        " />
+    <img
+      class="optionImg"
+      (click)="filterMenu('Acompañamientos')"
+      src="https://firebasestorage.googleapis.com/v0/b/burger-cangreburger.appspot.com/o/fried-potatoes.png?alt=media&token=7c9ec7fc-e98b-4a5f-bc7f-ab387814b9c8
+        " />
+  </div>
+  <div class="contenedorMesero">
+    <div class="menuOrden">
+      <div class="titleMenu">
+        <label class="typeMenu"> {{ typeMenu }}</label>
+        <div class="simpleDoble" *ngIf="simpleDoble">
+          <button
+            class="btnBurguer"
+            [ngClass]="{ backType: selectSimple }"
+            (click)="filterMenu('Hamburguesa simple')">
+            Simples
+          </button>
+          <button
+            class="btnBurguer"
+            [ngClass]="{ backType: selectDoble }"
+            (click)="filterMenu('Hamburguesa doble')">
+            Dobles
+          </button>
         </div>
+
+        <div class="menu">
+          <div class="tarjeta" *ngFor="let menu of menus">
+            <label class="menuName">{{ menu.item }}</label>
+            <img class="imgMenu" src="{{ menu.img }}" />
+            <div class="adicional" *ngIf="menu.adicionales">
+              <div class="checkAdicional">
+                <select
+                  class="chesse"
+                  id="egg"
+                  (change)="addEgg($event)"
+                  #eggSelected>
+                  <option value="0" disabled selected>🍳</option>
+                  <option value="1">1</option>
+                  <option value="2">2</option>
+                  <option value="3">3</option>
+                </select>
+              </div>
+              <div class="checkAdicional">
+                <select
+                  class="chesse"
+                  id="cheese"
+                  (change)="addCheese($event)"
+                  #cheeseSelected>
+                  <option value="0" disabled selected>🧀</option>
+                  <option value="1">1</option>
+                  <option value="2">2</option>
+                  <option value="3">3</option>
+                </select>
+              </div>
+            </div>
+            <div class="pricebtn">
+              <label class="price">$ {{ menu.price }}</label>
+              <button
+                class="btnAdd"
+                (click)="
+                  addNombre(menu.id - 5, menu.item, menu.price, contador)
+                ">
+                Agregar
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="orden">
+        <div class="client">
+          <label class="clientLabel">Cliente</label>
+          <input
+            [formControl]="cliente"
+            class="clientInput"
+            type="text"
+            id="clienteInput" />
+          <label class="date">{{ date }}</label>
+        </div>
+        <div class="ordenPedido">
+          <label class="orderTable">Orden de Pedido</label>
+          <table class="tableOrder">
+            <tr>
+              <th scope="row">Descripción</th>
+              <th>Cantidad</th>
+              <th>Precio</th>
+              <th></th>
+            </tr>
+
+            <tr class="itemsPedido" *ngFor="let orden of pedido">
+              <td class="descripcion">{{ orden.descripcion }}</td>
+              <td>
+                <button
+                  class="btnPlus"
+                  (click)="removeItems(orden.descripcion, orden.precio)">
+                  -
+                </button>
+                {{ orden.cantidad }}
+                <button
+                  class="btnPlus"
+                  (click)="addItems(orden.descripcion, orden.precio)">
+                  +
+                </button>
+              </td>
+              <td>$ {{ orden.precio }}</td>
+              <td></td>
+
+              <td class="columnEdit">
+                <img
+                  class="eliminar"
+                  (click)="deleteItems(orden.descripcion)"
+                  src="https://firebasestorage.googleapis.com/v0/b/burger-cangreburger.appspot.com/o/trash.png?alt=media&token=026105f1-6c89-4e2b-9fcc-c0eaf45a21f0" />
+              </td>
+            </tr>
+          </table>
+        </div>
+        <div class="sendKitchen">
+          <div class="total">
+            <label class="precioTotal">TOTAL</label>
+            <label class="precioTotal">$ {{ precioTotal() }}</label>
+          </div>
+          <label class="error" *ngIf="orderEmpty"
+            >El nombre del cliente o la orden estan vacíos</label
+          >
+          <button class="send" (click)="sendOrder()">Enviar a la Cocina</button>
+        </div>
+      </div>
     </div>
+  </div>
 </div>

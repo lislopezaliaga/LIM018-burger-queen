@@ -1,56 +1,59 @@
-import { ComponentFixture, fakeAsync, flush, TestBed, tick } from '@angular/core/testing';
+import {
+  ComponentFixture,
+  fakeAsync,
+  flush,
+  TestBed,
+  tick,
+} from '@angular/core/testing';
 
 import { TomarPedidoComponent } from './tomar-pedido.component';
-import { Auth } from '@angular/fire/auth';
-import { Firestore } from '@angular/fire/firestore';
-import { UserService } from 'src/app/servicios/user.service';
 import { PedidoService } from 'src/app/servicios/pedido.service';
-import { FIREBASE_OPTIONS } from '@angular/fire/compat';
-import { environment } from 'src/environments/environment';
-import { DebugElement } from '@angular/core';
-import { By } from '@angular/platform-browser';
-// import { AppComponent } from './app.component';
-// import { UserService } from './servicios/user.service';
 
 describe('TomarPedidoComponent', () => {
   let component: TomarPedidoComponent;
   let fixture: ComponentFixture<TomarPedidoComponent>;
   let order;
-  let selectEgg:any;
-  let selectCheese:any;
-  let pedidoServiceSpy:jasmine.SpyObj<PedidoService>;
+  let selectEgg: any;
+  let selectCheese: any;
+  let pedidoServiceSpy: jasmine.SpyObj<PedidoService>;
 
   beforeEach(async () => {
-    pedidoServiceSpy=jasmine.createSpyObj<PedidoService>('PedidoService',['addPedido']);
-
+    pedidoServiceSpy = jasmine.createSpyObj<PedidoService>('PedidoService', [
+      'addPedido',
+    ]);
 
     await TestBed.configureTestingModule({
-      declarations: [ TomarPedidoComponent ],
-      providers: [{provide: PedidoService, useValue:pedidoServiceSpy }],
-    })
-    .compileComponents();
+      declarations: [TomarPedidoComponent],
+      providers: [{ provide: PedidoService, useValue: pedidoServiceSpy }],
+    }).compileComponents();
 
-    sessionStorage.setItem('User','{"uid":"AextYYpYUrghueil3WbfCfBN0p93","nombre":"Miguel"}');
+    sessionStorage.setItem(
+      'User',
+      '{"uid":"AextYYpYUrghueil3WbfCfBN0p93","nombre":"Miguel"}'
+    );
 
     fixture = TestBed.createComponent(TomarPedidoComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
-    selectEgg=fixture.nativeElement.querySelector('#egg');
-    selectCheese=fixture.nativeElement.querySelector('#cheese');
-    order=[
-            {
-            descripcion:'cafe',
-            precio: 5,
-            cantidad: 1},
-            {
-            descripcion:'jugo',
-            precio: 6,
-            cantidad: 1},
-            {
-            descripcion:'leche',
-            precio: 7,
-            cantidad: 2}
-          ];
+    selectEgg = fixture.nativeElement.querySelector('#egg');
+    selectCheese = fixture.nativeElement.querySelector('#cheese');
+    order = [
+      {
+        descripcion: 'cafe',
+        precio: 5,
+        cantidad: 1,
+      },
+      {
+        descripcion: 'jugo',
+        precio: 6,
+        cantidad: 1,
+      },
+      {
+        descripcion: 'leche',
+        precio: 7,
+        cantidad: 2,
+      },
+    ];
     component.pedido = order;
   });
 
@@ -59,13 +62,13 @@ describe('TomarPedidoComponent', () => {
   });
 
   it('filterMenu Hamburguesa simple', () => {
-    component.filterMenu("Hamburguesa simple");
+    component.filterMenu('Hamburguesa simple');
     expect(component.selectSimple).toBeTruthy();
     expect(component.selectDoble).toBeFalsy();
   });
 
   it('filterMenu Hamburguesa doble', () => {
-    component.filterMenu("Hamburguesa doble");
+    component.filterMenu('Hamburguesa doble');
     expect(component.selectSimple).toBeFalsy();
     expect(component.selectDoble).toBeTruthy();
   });
@@ -79,94 +82,85 @@ describe('TomarPedidoComponent', () => {
   it('deleteItems', () => {
     component.deleteItems('cafe');
     expect(component.pedido.length).toBe(2);
-   });
-
-  it('addItems', () => {
-  component.addItems('cafe', 5);
-  expect(component.pedido[0].cantidad).toBe(2);
-  expect(component.pedido[0].precio).toBe(10);
   });
 
+  it('addItems', () => {
+    component.addItems('cafe', 5);
+    expect(component.pedido[0].cantidad).toBe(2);
+    expect(component.pedido[0].precio).toBe(10);
+  });
 
   it('addPedido exist product', () => {
-    component.addNombre(0,'jugo',6, 1);
- 
+    component.addNombre(0, 'jugo', 6, 1);
+
     expect(component.pedido[1].cantidad).toBe(2);
     expect(component.pedido[1].precio).toBe(12);
   });
   it('addPedido no exist product', () => {
-    component.addNombre(0,'torta',6, 1);
+    component.addNombre(0, 'torta', 6, 1);
     expect(component.pedido.length).toBe(4);
-  
-  });
-  
-  it('removeItems', () => {
-  component.removeItems('leche', 14);
-  expect(component.pedido[2].cantidad).toBe(1);
-  expect(component.pedido[2].precio).toBe(7);
   });
 
   it('removeItems', () => {
-  component.removeItems('jugo', 6);
-  expect(component.pedido.length).toBe(2);
+    component.removeItems('leche', 14);
+    expect(component.pedido[2].cantidad).toBe(1);
+    expect(component.pedido[2].precio).toBe(7);
+  });
+
+  it('removeItems', () => {
+    component.removeItems('jugo', 6);
+    expect(component.pedido.length).toBe(2);
   });
 
   it('precioTotal', () => {
     component.precioTotal();
     expect(component.total).toBe(18);
-    });
+  });
 
-    it('addEgg', () => {
-    // fixture.detectChanges(); 
-      selectEgg.value='2';
-    //  console.log('selectEgg.value '+ selectEgg.value);
-      selectEgg.dispatchEvent(new Event("change")); 
-    //  component.addEgg(); 
-      expect(component.egg).toBe('2');
-    });
-    it('addCheese', () => {
-      // fixture.detectChanges(); 
-        selectCheese.value='2';
-      //  console.log('selectEgg.value '+ selectEgg.value);
-      selectCheese.dispatchEvent(new Event("change")); 
-      //  component.addEgg(); 
-        expect(component.cheese).toBe('2');
-      });
+  it('addEgg', () => {
+    selectEgg.value = '2';
+    selectEgg.dispatchEvent(new Event('change'));
+    expect(component.egg).toBe('2');
+  });
+  it('addCheese', () => {
+    selectCheese.value = '2';
+    selectCheese.dispatchEvent(new Event('change'));
+    expect(component.cheese).toBe('2');
+  });
 
-    it(' sendOrder() if', fakeAsync(() => {
-      let takeOrder:any={
-        waiter: '',
-        client: '',
-        pedidos: '',
-        timeShow: '',
-        timeStart: '',
-        timeEnd:'',
-        status:'',
-        totalPrice:0
-      };
-      let order:any=[
-        {
-          descripción: "cafe"
-        }
-      ]
+  it(' sendOrder() if', fakeAsync(() => {
+    let takeOrder: any = {
+      waiter: '',
+      client: '',
+      pedidos: '',
+      timeShow: '',
+      timeStart: '',
+      timeEnd: '',
+      status: '',
+      totalPrice: 0,
+    };
+    let order: any = [
+      {
+        descripción: 'cafe',
+      },
+    ];
 
-      pedidoServiceSpy.addPedido.and.callFake(()=>Promise.resolve(takeOrder));
-      component.cliente.setValue("Gaby");
-      component.pedido = order;
-      component.sendOrder();
-      tick();
-      fixture.detectChanges();
-      expect(component.pedido.length).toBe(0);
-      expect(component.cliente.value).toBe('');
-      flush();
-      }));
+    pedidoServiceSpy.addPedido.and.callFake(() => Promise.resolve(takeOrder));
+    component.cliente.setValue('Gaby');
+    component.pedido = order;
+    component.sendOrder();
+    tick();
+    fixture.detectChanges();
+    expect(component.pedido.length).toBe(0);
+    expect(component.cliente.value).toBe('');
+    flush();
+  }));
 
-    it(' sendOrder() else', fakeAsync(() => {   
-      component.sendOrder();
-      tick(3000);
-      fixture.detectChanges();
-      expect(component.orderEmpty).toBeFalsy();
-      flush();
-      }));
-
+  it(' sendOrder() else', fakeAsync(() => {
+    component.sendOrder();
+    tick(3000);
+    fixture.detectChanges();
+    expect(component.orderEmpty).toBeFalsy();
+    flush();
+  }));
 });

@@ -1,41 +1,52 @@
 <header>
-    <div class="name"> 
-        <img class="burguerChef" src="https://firebasestorage.googleapis.com/v0/b/burger-cangreburger.appspot.com/o/burguerChefv2.png?alt=media&token=0c79ce36-2445-4ca7-924d-0d8704534266">
-        <label>{{usuario}}</label>
-    </div>
-    <div class="logo">
-        <img class='chef' src="https://firebasestorage.googleapis.com/v0/b/burger-cangreburger.appspot.com/o/cocinero.png?alt=media&token=58e8b90e-3679-4a2d-abb5-1eec4ee1e1c0">
-    </div>
-    <div class="sal">
-        <img class='salir' (click)="logout()" src="https://firebasestorage.googleapis.com/v0/b/burger-cangreburger.appspot.com/o/logout.png?alt=media&token=ae4fc83b-49c2-47c4-be50-ffab74bb8eb7">
-    </div>
-    
+  <div class="name">
+    <img
+      class="burguerChef"
+      src="https://firebasestorage.googleapis.com/v0/b/burger-cangreburger.appspot.com/o/burguerChefv2.png?alt=media&token=0c79ce36-2445-4ca7-924d-0d8704534266" />
+    <label>{{ usuario }}</label>
+  </div>
+  <div class="logo">
+    <img
+      class="chef"
+      src="https://firebasestorage.googleapis.com/v0/b/burger-cangreburger.appspot.com/o/cocinero.png?alt=media&token=58e8b90e-3679-4a2d-abb5-1eec4ee1e1c0" />
+  </div>
+  <div class="sal">
+    <img
+      class="salir"
+      (click)="logout()"
+      src="https://firebasestorage.googleapis.com/v0/b/burger-cangreburger.appspot.com/o/logout.png?alt=media&token=ae4fc83b-49c2-47c4-be50-ffab74bb8eb7" />
+  </div>
 </header>
 <div class="orders">
-    <div class="title">
-        <label>Pedidos Pendientes</label>
+  <div class="title">
+    <label>Pedidos Pendientes</label>
+  </div>
+  <div class="tableOrder">
+    <div class="pendingOrder" *ngFor="let pedido of pedidos; let i = index">
+      <label class="time" #timeEnd>{{
+        mueveReloj(pedido.timeStart.seconds)
+      }}</label>
+      <label>Fecha: {{ pedido.timeShow }}</label>
+      <label>Cliente: {{ pedido.client }}</label>
+      <label class="centrar">Pedido</label>
+      <table>
+        <tr>
+          <th scope="row">Cant</th>
+          <th>Descripción</th>
+        </tr>
+
+        <tr class="itemsPedido" *ngFor="let orden of pedido.pedidos">
+          <td class="centrar">{{ orden.cantidad }}</td>
+          <td class="description">{{ orden.descripcion }}</td>
+        </tr>
+      </table>
+      <label class="total">Total: $ {{ pedido.totalPrice }}</label>
+      <button
+        class="btnListo"
+        id="btnReady"
+        (click)="sendOrderReady(pedido.id, i)">
+        Listo
+      </button>
     </div>
-    <div class="tableOrder">
-        <div class="pendingOrder" *ngFor="let pedido of pedidos; let i = index">
-            <label class="time" #timeEnd>{{mueveReloj(pedido.timeStart.seconds)}}</label>
-            <label>Fecha: {{pedido.timeShow}}</label>
-            <label>Cliente: {{pedido.client}}</label>
-            <label class="centrar">Pedido</label>
-            <table>
-                <tr>      
-                    <th scope="row">Cant</th>
-                    <th>Descripción</th>
-                </tr>  
-
-                <tr class="itemsPedido" *ngFor="let orden of pedido.pedidos">
-                    <td class="centrar">{{orden.cantidad}}</td>
-                    <td class="description">{{orden.descripcion}}</td>
-                </tr >  
-            </table>
-            <label class="total">Total: $ {{pedido.totalPrice}}</label>
-            <button class="btnListo" id= "btnReady"(click)="sendOrderReady(pedido.id,i)">Listo</button>
-
-        </div>
-
-    </div>
+  </div>
 </div>
