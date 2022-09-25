@@ -1,16 +1,33 @@
 <header>
-    <div class="name"> 
-        <img class="burguerChef" src="https://firebasestorage.googleapis.com/v0/b/burger-cangreburger.appspot.com/o/burguerChefv2.png?alt=media&token=0c79ce36-2445-4ca7-924d-0d8704534266">
-        <label  >{{usuario}}</label>
-    </div>
-    <img class='mesera' src="https://firebasestorage.googleapis.com/v0/b/burger-cangreburger.appspot.com/o/waitress.png?alt=media&token=e7061018-4062-4449-8892-40193a3cd774
-    ">
-    <div class="vistasgeneral">
-        <label class="vistas" [ngClass]="{'backType':showTakeO}" (click)="showTakeOrder()">Tomar Pedido</label>
-        <label class="vistas" [ngClass]="{'backType':showOrdersR}"(click)="showOrderReady()">Ver Pedidos</label>
-       
-    <img class='salir' (click)="logout()" src="https://firebasestorage.googleapis.com/v0/b/burger-cangreburger.appspot.com/o/logout.png?alt=media&token=ae4fc83b-49c2-47c4-be50-ffab74bb8eb7">
-</div>
+  <div class="name">
+    <img
+      class="burguerChef"
+      src="https://firebasestorage.googleapis.com/v0/b/burger-cangreburger.appspot.com/o/burguerChefv2.png?alt=media&token=0c79ce36-2445-4ca7-924d-0d8704534266" />
+    <label>{{ usuario }}</label>
+  </div>
+  <img
+    class="mesera"
+    src="https://firebasestorage.googleapis.com/v0/b/burger-cangreburger.appspot.com/o/waitress.png?alt=media&token=e7061018-4062-4449-8892-40193a3cd774
+    " />
+  <div class="vistasgeneral">
+    <label
+      class="vistas"
+      [ngClass]="{ backType: showTakeO }"
+      (click)="showTakeOrder()"
+      >Tomar Pedido</label
+    >
+    <label
+      class="vistas"
+      [ngClass]="{ backType: showOrdersR }"
+      (click)="showOrderReady()"
+      >Ver Pedidos</label
+    >
+
+    <img
+      class="salir"
+      (click)="logout()"
+      src="https://firebasestorage.googleapis.com/v0/b/burger-cangreburger.appspot.com/o/logout.png?alt=media&token=ae4fc83b-49c2-47c4-be50-ffab74bb8eb7" />
+  </div>
 </header>
 <app-tomar-pedido *ngIf="showTakeO"></app-tomar-pedido>
 <app-order-ready *ngIf="showOrdersR"></app-order-ready>

@@ -6,42 +6,37 @@ import { Router } from '@angular/router';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
-  styleUrls: ['./login.component.scss']
+  styleUrls: ['./login.component.scss'],
 })
-
 export class LoginComponent implements OnInit {
   formLogin: FormGroup;
   errorText: boolean = true;
   textError: string = '';
 
-  constructor(
-    private userService: UserService,
-    private router: Router
-  ) {
+  constructor(private userService: UserService, private router: Router) {
     this.formLogin = new FormGroup({
       email: new FormControl(),
-      password: new FormControl()
-    })
+      password: new FormControl(),
+    });
   }
 
-  ngOnInit(): void {
-  }
+  ngOnInit(): void {}
 
   onSubmit() {
     sessionStorage.clear();
-    this.userService.login(this.formLogin.value)
+    this.userService
+      .login(this.formLogin.value)
       .then(response => {
-
         this.userService.getUserById(response.user.uid).then((user: any) => {
           sessionStorage.setItem('User', JSON.stringify(user));
-          if (user.funcion === "admin") {
+          if (user.funcion === 'admin') {
             this.router.navigate(['admin']);
-          } else if (user.funcion === "mesero") {
+          } else if (user.funcion === 'mesero') {
             this.router.navigate(['waiter']);
-          } else if (user.funcion === "cocinero") {
+          } else if (user.funcion === 'cocinero') {
             this.router.navigate(['chef']);
           }
-        })
+        });
       })
       .catch(error => {
         if (error.code == 'auth/missing-email') {
@@ -63,7 +58,6 @@ export class LoginComponent implements OnInit {
             this.errorText = false;
           }, 3000);
         }
-      })
+      });
   }
-
 }

@@ -1,4 +1,9 @@
-import { ComponentFixture, fakeAsync, TestBed, tick } from '@angular/core/testing';
+import {
+  ComponentFixture,
+  fakeAsync,
+  TestBed,
+  tick,
+} from '@angular/core/testing';
 import { Router } from '@angular/router';
 import { RouterTestingModule } from '@angular/router/testing';
 import { UserService } from 'src/app/servicios/user.service';
@@ -12,21 +17,26 @@ describe('MeseroComponent', () => {
   let router: Router;
 
   beforeEach(async () => {
-    userServiceSpy = jasmine.createSpyObj<UserService>('UserService', ['register', 'login', 'signOutUser']);
+    userServiceSpy = jasmine.createSpyObj<UserService>('UserService', [
+      'register',
+      'login',
+      'signOutUser',
+    ]);
 
     await TestBed.configureTestingModule({
       declarations: [MeseroComponent],
       providers: [{ provide: UserService, useValue: userServiceSpy }],
       imports: [
         RouterTestingModule.withRoutes([
-            { path: 'login', component: LoginComponent },
-        ])
-      ]
+          { path: 'login', component: LoginComponent },
+        ]),
+      ],
+    }).compileComponents();
 
-    })
-      .compileComponents();
-
-    sessionStorage.setItem('User','{"uid":"AextYYpYUrghueil3WbfCfBN0p93","nombre":"Miguel"}');
+    sessionStorage.setItem(
+      'User',
+      '{"uid":"AextYYpYUrghueil3WbfCfBN0p93","nombre":"Miguel"}'
+    );
     router = TestBed.inject(Router);
     fixture = TestBed.createComponent(MeseroComponent);
     component = fixture.componentInstance;
@@ -62,5 +72,4 @@ describe('MeseroComponent', () => {
     expect(router.navigate).toHaveBeenCalledWith(['login']);
     expect(userServiceSpy.signOutUser).toHaveBeenCalled();
   }));
-
 });

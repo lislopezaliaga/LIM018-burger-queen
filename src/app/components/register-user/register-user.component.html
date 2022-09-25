@@ -1,29 +1,27 @@
-    <div class="formContent">
-    <form [formGroup] = "formReg" (ngSubmit)="onSubmit()">
-        <button class = "btnCerrar" id="btnCerrar" (click)="closeRegister()">✖</button>
-        <h1>Crear usuario</h1>
+<div class="formContent">
+  <form [formGroup]="formReg" (ngSubmit)="onSubmit()">
+    <button class="btnCerrar" id="btnCerrar" (click)="closeRegister()">
+      ✖
+    </button>
+    <h1>Crear usuario</h1>
 
-        <div class="inputContent">
-            <label>Nombres</label>
-            <input type="text" class="form-control" formControlName="nombres">
+    <div class="inputContent">
+      <label>Nombres</label>
+      <input type="text" class="form-control" formControlName="nombres" />
 
-            <label>Apellidos</label>
-            <input type="text" class="form-control" formControlName="apellidos">
+      <label>Apellidos</label>
+      <input type="text" class="form-control" formControlName="apellidos" />
 
-            <label>Password</label>
-            <input type="password" class="form-control" formControlName="password">
-            <label>Funcion</label>
-            <select formControlName="funcion"  name="select">
-                
-                <option value="admin">Admin</option>
-                <option value="mesero">Mesero</option>
-                <option value="cocinero">Cocinero</option>
-
-              </select>
-
-        </div>
-
-        <button class="btnRegister" type="submit">Registrar</button>
-    </form>
-
+      <label>Password</label>
+      <input type="password" class="form-control" formControlName="password" />
+      <label>Funcion</label>
+      <select formControlName="funcion" name="select">
+        <option value="admin">Admin</option>
+        <option value="mesero">Mesero</option>
+        <option value="cocinero">Cocinero</option>
+      </select>
     </div>
+
+    <button class="btnRegister" type="submit">Registrar</button>
+  </form>
+</div>
