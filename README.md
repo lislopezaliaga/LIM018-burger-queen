@@ -165,3 +165,4 @@ Puede visualizar el proyecto en el [siguiente enlace](https://www.figma.com/prot
 * Karma
 * Firebase
 * Git and GitHub
+* ESLint
